@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Business Starter Checklist | SoloOS</title>
+  <meta name="description" content="Everything you need to do to get your business legally set up, in the right order. Free fillable checklist from SoloOS." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #1B2A4E;
+      --gold:  #C49A45;
+      --cream: #FAF7F2;
+      --tan:   #E8DFD0;
+      --field: #FBF5EA;
+      --muted: #6B6B6B;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--navy);
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .wordmark {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    header span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 56px 32px 52px;
+      text-align: center;
+    }
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 46px);
+      color: #fff;
+      line-height: 1.15;
+      max-width: 640px;
+      margin: 0 auto 18px;
+    }
+    .hero p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── PROGRESS ── */
+    .progress-bar {
+      background: var(--tan);
+      border-radius: 8px;
+      height: 8px;
+      margin-bottom: 36px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 8px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+    .progress-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom: 40px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--tan);
+    }
+    .section-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--navy);
+    }
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ── CHECKLIST ITEMS ── */
+    .checklist { display: flex; flex-direction: column; gap: 10px; }
+
+    .check-item {
+      background: #fff;
+      border: 1.5px solid var(--tan);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .check-item:hover { border-color: var(--gold); }
+    .check-item.done {
+      background: #f8fdf5;
+      border-color: #7bbb6e;
+    }
+
+    .check-item input[type="checkbox"] {
+      margin-top: 1px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--gold);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .check-body {}
+    .check-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .check-item.done .check-label {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+    .check-note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .check-note a { color: var(--gold); }
+
+    /* ── INPUT FIELDS ── */
+    .info-field {
+      background: #fff;
+      border: 1.5px solid var(--tan);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-top: -4px;
+      display: none;
+    }
+    .info-field.show { display: block; }
+    .info-field label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .info-field input {
+      width: 100%;
+      border: 1.5px solid var(--tan);
+      border-radius: 7px;
+      padding: 10px 13px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      background: var(--field);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .info-field input:focus { border-color: var(--gold); }
+    .info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 480px) { .info-row { grid-template-columns: 1fr; } }
+
+    /* ── CEO DASHBOARD CTA ── */
+    .ceo-cta {
+      background: var(--navy);
+      border-radius: 14px;
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      margin-top: 48px;
+    }
+    @media (max-width: 560px) {
+      .ceo-cta { grid-template-columns: 1fr; text-align: center; }
+    }
+    .ceo-cta-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .ceo-cta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .ceo-cta p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+    .btn-gold {
+      display: inline-block;
+      padding: 14px 26px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-gold:hover { background: #d4ad5e; transform: translateY(-1px); }
+
+    /* ── NOTES ── */
+    .notes-section {
+      margin-top: 40px;
+    }
+    .notes-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    textarea.notes-box {
+      width: 100%;
+      min-height: 120px;
+      border: 1.5px solid var(--tan);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      background: #fff;
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    textarea.notes-box:focus { border-color: var(--gold); }
+
+    /* ── SAVE/PRINT ── */
+    .action-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .btn-outline {
+      padding: 12px 22px;
+      border: 1.5px solid var(--navy);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-outline:hover { background: var(--navy); color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+    footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    @media print {
+      header, .action-bar, .ceo-cta, footer { display: none; }
+      body { background: white; }
+      .check-item { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="https://mysoloos.com" class="wordmark">SoloOS</a>
+  <span>Free business starter resources</span>
+</header>
+
+<div class="hero">
+  <p class="hero-tag">Free Checklist · SoloOS</p>
+  <h1>New Business Starter Checklist</h1>
+  <p>Everything you need to do to get your business legally set up — in the right order. Check things off as you go. Save your info as you get it.</p>
+</div>
+
+<main class="main">
+
+  <div class="progress-label">
+    <span id="prog-text">0 of 18 items complete</span>
+    <span id="prog-pct">0%</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+
+  <!-- ── SECTION 1: BUSINESS NAME & STRUCTURE ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div>
+        <div class="section-title">Choose Your Business Name & Structure</div>
+        <div class="section-sub">Before you can register anything, you need a name and a plan.</div>
+      </div>
+    </div>
+    <div class="checklist">
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Choose your business name</div>
+          <div class="check-note">Make sure it's not already taken in your state. Search your state's Secretary of State business name database.</div>
+        </div>
+      </label>
+      <div class="info-field">
+        <label>Business Name</label>
+        <input type="text" placeholder="e.g. Sa Roan Holdings LLC" />
+      </div>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Choose your business structure</div>
+          <div class="check-note">For most solopreneurs: LLC is the sweet spot. It protects your personal assets and has simple taxes. Sole prop is easier but offers no protection.</div>
+        </div>
+      </label>
+      <div class="info-field">
+        <label>Structure</label>
+        <input type="text" placeholder="LLC / Sole Proprietor / S-Corp / C-Corp" />
+      </div>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Choose your state of formation</div>
+          <div class="check-note">Usually the state where you live and work. Delaware and Wyoming are popular for tax reasons — worth researching if you plan to scale.</div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: FORM YOUR LLC ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div>
+        <div class="section-title">Form Your LLC (or Register Your Business)</div>
+        <div class="section-sub">File the paperwork with your state. Usually $50–$200.</div>
+      </div>
+    </div>
+    <div class="checklist">
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">File Articles of Organization with your state</div>
+          <div class="check-note">Go to your state's Secretary of State website and file online. Most states process in 1–5 business days. Fee is typically $50–$200.</div>
+        </div>
+      </label>
+      <div class="info-field">
+        <div class="info-row">
+          <div>
+            <label>Date Filed</label>
+            <input type="date" />
+          </div>
+          <div>
+            <label>Filing Fee Paid</label>
+            <input type="text" placeholder="e.g. $100" />
+          </div>
+        </div>
+      </div>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Receive your LLC approval / Certificate of Formation</div>
+          <div class="check-note">Save this document somewhere safe. You'll need it to open a business bank account and for various applications.</div>
+        </div>
+      </label>
+      <div class="info-field">
+        <div class="info-row">
+          <div>
+            <label>Approval Date</label>
+            <input type="date" />
+          </div>
+          <div>
+            <label>State LLC / Entity Number</label>
+            <input type="text" placeholder="From your state filing" />
+          </div>
+        </div>
+      </div>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Create your Operating Agreement</div>
+          <div class="check-note">Not required in all states but highly recommended. Even for single-member LLCs — it establishes that your business is separate from you personally.</div>
+        </div>
+      </label>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Set up a Registered Agent</div>
+          <div class="check-note">Required for LLCs. You can be your own registered agent (use your home address) or use a service like Northwest ($39/yr) for more privacy.</div>
+        </div>
+      </label>
+      <div class="info-field">
+        <label>Registered Agent Name / Service</label>
+        <input type="text" placeholder="Your name, or service name (e.g. Northwest Registered Agent)" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 3: EIN ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div>
+        <div class="section-title">Get Your EIN (Employer Identification Number)</div>
+        <div class="section-sub">Your business's Social Security number. Free from the IRS — takes 5 minutes online.</div>
+      </div>
+    </div>
+    <div class="checklist">
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Apply for your EIN at IRS.gov</div>
+          <div class="check-note">Go to IRS.gov → "Apply for an EIN online." It's free, instant, and you get the number immediately. Only apply on the official IRS site — other sites charge unnecessary fees.</div>
+        </div>
+      </label>
+      <div class="info-field">
+        <div class="info-row">
+          <div>
+            <label>Your EIN</label>
+            <input type="text" placeholder="XX-XXXXXXX" />
+          </div>
+          <div>
+            <label>Date Obtained</label>
+            <input type="date" />
+          </div>
+        </div>
+      </div>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Save your EIN confirmation letter (CP 575)</div>
+          <div class="check-note">Download and save the CP 575 letter immediately — the IRS only issues it once. You'll need it for bank accounts, loans, and payroll.</div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- ── SECTION 4: BUSINESS BANKING ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div>
+        <div class="section-title">Open a Business Bank Account</div>
+        <div class="section-sub">Keeping business money separate from personal money is non-negotiable. This protects your LLC status.</div>
+      </div>
+    </div>
+    <div class="checklist">
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Open a business checking account</div>
+          <div class="check-note">You'll need: EIN, LLC formation documents, ID, and an opening deposit. Good options for small businesses: Relay, Mercury (free, online-first), or your local bank/credit union.</div>
+        </div>
+      </label>
+      <div class="info-field">
+        <div class="info-row">
+          <div>
+            <label>Bank Name</label>
+            <input type="text" placeholder="e.g. Relay, Mercury, Chase" />
+          </div>
+          <div>
+            <label>Account Opened Date</label>
+            <input type="date" />
+          </div>
+        </div>
+      </div>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Get a business debit or credit card</div>
+          <div class="check-note">All business expenses go on this card. Makes bookkeeping and tax prep dramatically simpler — no sorting through personal statements.</div>
+        </div>
+      </label>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Set up a business savings account (optional but recommended)</div>
+          <div class="check-note">Set aside 25–30% of every deposit for taxes. Putting it in a separate account means it's not accidentally spent.</div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- ── SECTION 5: DIGITAL SETUP ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div>
+        <div class="section-title">Set Up Your Digital Presence</div>
+        <div class="section-sub">The basics that make you look like a real business.</div>
+      </div>
+    </div>
+    <div class="checklist">
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Secure a business domain name</div>
+          <div class="check-note">Even if you're not building a website yet, register your domain before someone else does. Namecheap or Google Domains are straightforward and affordable.</div>
+        </div>
+      </label>
+      <div class="info-field">
+        <label>Domain Name</label>
+        <input type="text" placeholder="e.g. mysoloos.com" />
+      </div>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Create a business email address</div>
+          <div class="check-note">hello@yourbusiness.com looks more professional than gmail. Google Workspace starts at $6/mo — worth it. Or set up free email forwarding through your domain registrar.</div>
+        </div>
+      </label>
+      <div class="info-field">
+        <label>Business Email</label>
+        <input type="text" placeholder="e.g. hello@mysoloos.com" />
+      </div>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Set up a basic bookkeeping system</div>
+          <div class="check-note">You need to track income and expenses from day one. It doesn't have to be complicated — a well-organized spreadsheet or a dedicated PDF tracker works fine when you're starting out.</div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- ── SECTION 6: OPTIONAL BUT USEFUL ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div>
+        <div class="section-title">Optional (But Worth Knowing About)</div>
+        <div class="section-sub">You don't need these on day one. Add them when they become relevant.</div>
+      </div>
+    </div>
+    <div class="checklist">
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Get a DUNS Number (if you'll work with larger companies or apply for grants)</div>
+          <div class="check-note">Free through Dun & Bradstreet. Required for some federal contracts, grants, and working with certain large corporations. Most solo businesses don't need this immediately.</div>
+        </div>
+      </label>
+      <div class="info-field">
+        <label>DUNS Number</label>
+        <input type="text" placeholder="9-digit number from D&B" />
+      </div>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Register for state sales tax (if selling physical goods or taxable services)</div>
+          <div class="check-note">Digital products have varying tax rules by state. Check your state's requirements — many states have a threshold before you're required to collect.</div>
+        </div>
+      </label>
+
+      <label class="check-item" onclick="toggle(this)">
+        <input type="checkbox" />
+        <div class="check-body">
+          <div class="check-label">Get basic business insurance</div>
+          <div class="check-note">General liability insurance protects you if a client claims your work caused them harm. Hiscox and Next Insurance are popular, affordable options for solopreneurs.</div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- ── CEO DASHBOARD CTA ── -->
+  <div class="ceo-cta">
+    <div>
+      <p class="ceo-cta-tag">A SoloOS Module</p>
+      <h3>Now that you're set up — stay on top of your numbers.</h3>
+      <p>The CEO Dashboard is a 25-page fillable PDF that tracks income, expenses, cash flow, taxes, and goals in one place. Built for the person wearing every hat.</p>
+    </div>
+    <a href="https://saroan.gumroad.com/l/febxfd" class="btn-gold" target="_blank" rel="noopener">Get the CEO Dashboard — $37</a>
+  </div>
+
+  <!-- ── NOTES ── -->
+  <div class="notes-section">
+    <h3>Notes</h3>
+    <textarea class="notes-box" placeholder="Passwords, account numbers, reminders, things to follow up on..."></textarea>
+  </div>
+
+  <div class="action-bar">
+    <button class="btn-outline" onclick="window.print()">Print / Save as PDF</button>
+    <button class="btn-outline" onclick="resetAll()">Start Over</button>
+  </div>
+
+</main>
+
+<footer>
+  <p>SoloOS · Free tools for solopreneurs · <a href="https://mysoloos.com">mysoloos.com</a> · © 2026 Sa Roan Holdings LLC</p>
+</footer>
+
+<script>
+  const TOTAL = document.querySelectorAll('.check-item input[type="checkbox"]').length;
+
+  function toggle(label) {
+    const cb = label.querySelector('input[type="checkbox"]');
+    if (event.target === cb) return; // let native checkbox handle it
+    cb.checked = !cb.checked;
+    updateItem(label, cb.checked);
+  }
+
+  document.querySelectorAll('.check-item input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      updateItem(cb.closest('.check-item'), cb.checked);
+    });
+  });
+
+  function updateItem(label, checked) {
+    label.classList.toggle('done', checked);
+    // Show/hide info field that follows
+    const infoField = label.nextElementSibling;
+    if (infoField && infoField.classList.contains('info-field')) {
+      infoField.classList.toggle('show', checked);
+    }
+    updateProgress();
+    saveState();
+  }
+
+  function updateProgress() {
+    const done = document.querySelectorAll('.check-item input:checked').length;
+    const pct = Math.round(done / TOTAL * 100);
+    document.getElementById('prog-fill').style.width = pct + '%';
+    document.getElementById('prog-text').textContent = done + ' of ' + TOTAL + ' items complete';
+    document.getElementById('prog-pct').textContent = pct + '%';
+  }
+
+  function saveState() {
+    const state = {};
+    document.querySelectorAll('.check-item input').forEach((cb, i) => {
+      state['cb_' + i] = cb.checked;
+    });
+    document.querySelectorAll('.info-field input, .notes-box').forEach((el, i) => {
+      state['field_' + i] = el.value;
+    });
+    try { localStorage.setItem('soloos_checklist', JSON.stringify(state)); } catch(e){}
+  }
+
+  function loadState() {
+    try {
+      const state = JSON.parse(localStorage.getItem('soloos_checklist') || '{}');
+      document.querySelectorAll('.check-item input').forEach((cb, i) => {
+        if (state['cb_' + i]) {
+          cb.checked = true;
+          cb.closest('.check-item').classList.add('done');
+          const infoField = cb.closest('.check-item').nextElementSibling;
+          if (infoField && infoField.classList.contains('info-field')) infoField.classList.add('show');
+        }
+      });
+      document.querySelectorAll('.info-field input, .notes-box').forEach((el, i) => {
+        if (state['field_' + i]) el.value = state['field_' + i];
+      });
+      updateProgress();
+    } catch(e){}
+  }
+
+  function resetAll() {
+    if (!confirm('Reset all progress? This cannot be undone.')) return;
+    document.querySelectorAll('.check-item input').forEach(cb => {
+      cb.checked = false;
+      cb.closest('.check-item').classList.remove('done');
+    });
+    document.querySelectorAll('.info-field').forEach(f => f.classList.remove('show'));
+    document.querySelectorAll('.info-field input, .notes-box').forEach(el => el.value = '');
+    try { localStorage.removeItem('soloos_checklist'); } catch(e){}
+    updateProgress();
+  }
+
+  // Auto-save on input
+  document.querySelectorAll('.info-field input, .notes-box').forEach(el => {
+    el.addEventListener('input', saveState);
+  });
+
+  loadState();
+</script>
+</body>
+</html>

@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoloOS — The Operating System for the Solo Builder</title>
+  <meta name="description" content="Fillable PDF tools for solopreneurs, side hustlers, freelancers, and small business owners. Track your money. Run your business. Stay on top of it all." />
+  <meta property="og:title" content="SoloOS — The Operating System for the Solo Builder" />
+  <meta property="og:description" content="Fillable PDF tools built for the person wearing every hat." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mysoloos.com" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Gumroad overlay checkout -->
+  <script src="https://gumroad.com/js/gumroad.js"></script>
+  <!-- Kit (ConvertKit) email capture -->
+  <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1B2A4E;
+      --navy-deep: #111d37;
+      --gold:      #C49A45;
+      --gold-lt:   #d4ad5e;
+      --cream:     #FAF7F2;
+      --tan:       #E8DFD0;
+      --field:     #FBF5EA;
+      --muted:     #6B6B6B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links .nav-cta {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 7px;
+      font-size: 13px;
+      transition: background 0.15s;
+    }
+    .nav-links .nav-cta:hover { background: var(--gold-lt); color: var(--navy); }
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .nav-links li:not(:last-child) { display: none; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 96px 40px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,154,69,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 68px);
+      color: #fff;
+      line-height: 1.1;
+      max-width: 820px;
+      margin: 0 auto 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: rgba(255,255,255,0.58);
+      max-width: 580px;
+      margin: 0 auto 42px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 32px;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.03em;
+      border-radius: 9px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-block;
+      padding: 16px 32px;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.8);
+      font-weight: 600;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      border-radius: 9px;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Hero stats */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.38);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
+    @media (max-width: 600px) {
+      .section-wrap { padding: 60px 20px; }
+    }
+    .section-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 48px;
+    }
+
+    /* ── FREE OFFER STRIP ── */
+    .offer-strip {
+      background: linear-gradient(135deg, var(--navy) 0%, #243660 100%);
+      padding: 56px 40px;
+    }
+    .offer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (max-width: 680px) {
+      .offer-inner { grid-template-columns: 1fr; text-align: center; }
+    }
+    .offer-badge {
+      display: inline-block;
+      background: rgba(196,154,69,0.15);
+      border: 1px solid rgba(196,154,69,0.3);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .offer-strip h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3.5vw, 34px);
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .offer-strip p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      max-width: 480px;
+    }
+    .offer-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 320px;
+    }
+    @media (max-width: 440px) { .offer-form { min-width: 0; width: 100%; } }
+    .offer-form input {
+      height: 48px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .offer-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .offer-form input:focus { border-color: var(--gold); }
+    .bot-trap { display: none; }
+    .offer-success {
+      display: none;
+      background: rgba(196,154,69,0.12);
+      border: 1px solid rgba(196,154,69,0.3);
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.55;
+      max-width: 320px;
+      width: 100%;
+    }
+    .offer-error {
+      display: none;
+      font-size: 12px;
+      color: #e57373;
+      padding: 8px 0;
+    }
+
+    /* ── PRODUCTS GRID ── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) { .products-grid { grid-template-columns: 1fr; } }
+
+    .product-card {
+      background: var(--navy);
+      border-radius: 14px;
+      padding: 30px 28px 26px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+    }
+    .product-card.free-card::before { background: linear-gradient(90deg, var(--gold), #d4ad5e); }
+
+    .product-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .product-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .product-price {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+    }
+    .product-pages {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      text-align: right;
+      line-height: 1.4;
+    }
+    .btn-buy {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.03em;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-buy:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-free {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn-free:hover { background: var(--gold); color: var(--navy); }
+
+    /* ── FREE TOOLS ── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 640px) { .tools-grid { grid-template-columns: 1fr; } }
+
+    .tool-card {
+      background: #fff;
+      border: 1.5px solid var(--tan);
+      border-radius: 14px;
+      padding: 32px 30px 28px;
+    }
+    .tool-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .tool-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .tool-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+    .btn-tool {
+      display: inline-block;
+      padding: 12px 22px;
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn-tool:hover { background: var(--navy); color: #fff; }
+
+    /* ── ABOUT ── */
+    .about-section {
+      background: var(--navy);
+      padding: 80px 40px;
+    }
+    .about-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .about-section .section-tag { color: var(--gold); }
+    .about-section .section-title { color: #fff; }
+    .about-body {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.85;
+    }
+    .about-body p + p { margin-top: 18px; }
+
+    /* ── BUNDLE SECTION ── */
+    .bundles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 800px) { .bundles-grid { grid-template-columns: 1fr; } }
+
+    .bundle-card {
+      background: var(--field);
+      border: 1.5px solid var(--tan);
+      border-radius: 14px;
+      padding: 28px 26px;
+    }
+    .bundle-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .bundle-products {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .bundle-pricing {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .bundle-price {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--navy);
+      font-family: 'Playfair Display', serif;
+    }
+    .bundle-was {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    .bundle-save {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(196,154,69,0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* ── FAQ ── */
+    .faq { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--tan);
+      padding: 20px 0;
+    }
+    .faq-q {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      user-select: none;
+    }
+    .faq-q::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--gold);
+      font-weight: 300;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding-top 0.2s;
+    }
+    .faq-item.open .faq-a { max-height: 400px; padding-top: 14px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-deep);
+      padding: 56px 40px 32px;
+    }
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    @media (max-width: 800px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    .footer-brand .wordmark-footer {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+      text-decoration: none;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.65;
+    }
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 14px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      margin-bottom: 9px;
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 24px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">SoloOS</a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#free-tools">Free Tools</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#free-resources" class="nav-cta">Free Starter Pack</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <p class="hero-tag">Built for the solo builder</p>
+  <h1>The operating system<br>for <em>your</em> business.</h1>
+  <p class="hero-sub">Fillable PDF tools for solopreneurs, side hustlers, freelancers, and small business owners. No complicated software. No subscription. Just the tools you actually need.</p>
+  <div class="hero-actions">
+    <a href="#products" class="btn-primary">Browse the Tools</a>
+    <a href="#free-resources" class="btn-ghost">Get the Free Starter Pack</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">6</div>
+      <div class="stat-label">PDF Tools</div>
+    </div>
+    <div>
+      <div class="stat-num">475</div>
+      <div class="stat-label">Fillable Fields</div>
+    </div>
+    <div>
+      <div class="stat-num">$7</div>
+      <div class="stat-label">Starting from</div>
+    </div>
+    <div>
+      <div class="stat-num">2</div>
+      <div class="stat-label">Free Calculators</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FREE STARTER PACK ── -->
+<section class="offer-strip" id="free-resources">
+  <div class="offer-inner">
+    <div>
+      <span class="offer-badge">Free — No Catch</span>
+      <h2>Get the New Business Starter Pack</h2>
+      <p>Two free resources, yours immediately: the New Business Starter Checklist (LLC, EIN, banking, setup — in order) plus the Business Health Scorecard. Drop your email and they're on their way.</p>
+    </div>
+    <div>
+      <iframe name="kit-hidden" style="display:none" aria-hidden="true"></iframe>
+      <form class="offer-form" action="https://app.kit.com/forms/9519803/subscriptions" method="post" target="kit-hidden" onsubmit="handleOffer(event)">
+        <input type="text"  name="fields[first_name]" placeholder="First name"    autocomplete="given-name" />
+        <input type="email" name="email_address"       placeholder="Email address" required autocomplete="email" />
+        <button type="submit" class="btn-primary" id="offer-btn">Send Me the Starter Pack</button>
+        <div class="offer-error" id="offer-error">Something went wrong. Try again or email hello@mysoloos.com.</div>
+      </form>
+      <div class="offer-success" id="offer-success">
+        It's on its way. Check your inbox for the checklist and scorecard. And if you want to go deeper — everything below is built for exactly where you're headed.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ── -->
+<section id="products">
+  <div class="section-wrap">
+    <p class="section-tag">The SoloOS Library</p>
+    <h2 class="section-title">Tools for every stage.</h2>
+    <p class="section-sub">Start with what you need right now. Every module works on its own — and they work even better together.</p>
+
+    <div class="products-grid">
+
+      <!-- CEO Dashboard -->
+      <div class="product-card">
+        <p class="product-tag">A SoloOS Module · Flagship</p>
+        <h3 class="product-name">CEO Dashboard</h3>
+        <p class="product-desc">The complete financial system for your business. Income, expenses, cash flow, tax prep, goals, and more — all in one place. The only document your business needs.</p>
+        <div class="product-meta">
+          <div class="product-price">$37</div>
+          <div class="product-pages">25 pages<br>475 fillable fields</div>
+        </div>
+        <a class="btn-buy gumroad-button" href="https://saroan.gumroad.com/l/febxfd">Get the CEO Dashboard</a>
+      </div>
+
+      <!-- Bill & Budget -->
+      <div class="product-card">
+        <p class="product-tag">A SoloOS Module</p>
+        <h3 class="product-name">Bill & Budget Tracker</h3>
+        <p class="product-desc">Ten minutes a week. Total clarity on where your money goes. Pre-filled categories, daily spending log, savings goals, and a monthly overview you'll actually use.</p>
+        <div class="product-meta">
+          <div class="product-price">$17</div>
+          <div class="product-pages">12 pages<br>Fillable PDF</div>
+        </div>
+        <a class="btn-buy gumroad-button" href="https://saroan.gumroad.com/l/pliies">Get the Bill & Budget Tracker</a>
+      </div>
+
+      <!-- Side Hustle -->
+      <div class="product-card">
+        <p class="product-tag">A SoloOS Module</p>
+        <h3 class="product-name">Side Hustle Profit Tracker</h3>
+        <p class="product-desc">Selling on Etsy, Shopify, Amazon, or Gumroad? See which platform is actually making you money — after fees, time, and expenses.</p>
+        <div class="product-meta">
+          <div class="product-price">$15</div>
+          <div class="product-pages">10 pages<br>Fillable PDF</div>
+        </div>
+        <a class="btn-buy gumroad-button" href="https://saroan.gumroad.com/l/terqbh">Get the Profit Tracker</a>
+      </div>
+
+      <!-- Debt Payoff -->
+      <div class="product-card">
+        <p class="product-tag">A SoloOS Module</p>
+        <h3 class="product-name">Debt Payoff Planner</h3>
+        <p class="product-desc">A clear plan beats willpower every time. Map up to 12 debts, choose snowball or avalanche, track payments month by month, and find the extra money hiding in your budget.</p>
+        <div class="product-meta">
+          <div class="product-price">$9</div>
+          <div class="product-pages">8 pages<br>Fillable PDF</div>
+        </div>
+        <a class="btn-buy gumroad-button" href="https://saroan.gumroad.com/l/zkpchu">Get the Debt Planner</a>
+      </div>
+
+      <!-- Savings Challenge -->
+      <div class="product-card">
+        <p class="product-tag">A SoloOS Module</p>
+        <h3 class="product-name">Savings Challenge Tracker</h3>
+        <p class="product-desc">Save $1,378 this year, one week at a time. Track multiple goals at once, build your emergency fund with milestones, and stay motivated with a built-in rewards planner.</p>
+        <div class="product-meta">
+          <div class="product-price">$7</div>
+          <div class="product-pages">6 pages<br>Fillable PDF</div>
+        </div>
+        <a class="btn-buy gumroad-button" href="https://saroan.gumroad.com/l/yhgjft">Get the Savings Tracker</a>
+      </div>
+
+      <!-- Scorecard FREE -->
+      <div class="product-card free-card">
+        <p class="product-tag">Free — Instant Download</p>
+        <h3 class="product-name">Business Health Scorecard</h3>
+        <p class="product-desc">Rate your business across 8 key areas in under 10 minutes. It won't tell you what you want to hear. It'll tell you where to focus first.</p>
+        <div class="product-meta">
+          <div class="product-price" style="font-size:22px;color:#fff;">Free</div>
+          <div class="product-pages">1 page<br>Instant download</div>
+        </div>
+        <a class="btn-buy btn-free gumroad-button" href="https://saroan.gumroad.com/l/qjdejs">Get the Free Scorecard</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── BUNDLES ── -->
+<section style="background: var(--field); padding: 0;">
+  <div class="section-wrap">
+    <p class="section-tag">Save More</p>
+    <h2 class="section-title">Get them together.</h2>
+    <p class="section-sub">Three bundles for the way most people work — or grab the whole library at once.</p>
+    <div class="bundles-grid">
+      <div class="bundle-card">
+        <h3 class="bundle-name">Money Stack</h3>
+        <p class="bundle-products">Bill & Budget Tracker + Savings Challenge + Debt Payoff Planner</p>
+        <div class="bundle-pricing">
+          <span class="bundle-price">$25</span>
+          <span class="bundle-was">$33</span>
+          <span class="bundle-save">Save $8</span>
+        </div>
+        <a class="btn-buy gumroad-button" href="https://saroan.gumroad.com" style="font-size:13px;padding:11px;">Get the Money Stack</a>
+      </div>
+      <div class="bundle-card">
+        <h3 class="bundle-name">Operator Stack</h3>
+        <p class="bundle-products">Side Hustle Profit Tracker + CEO Dashboard + Business Health Scorecard</p>
+        <div class="bundle-pricing">
+          <span class="bundle-price">$42</span>
+          <span class="bundle-was">$52</span>
+          <span class="bundle-save">Save $10</span>
+        </div>
+        <a class="btn-buy gumroad-button" href="https://saroan.gumroad.com" style="font-size:13px;padding:11px;">Get the Operator Stack</a>
+      </div>
+      <div class="bundle-card" style="background: var(--navy);">
+        <h3 class="bundle-name" style="color:#fff;">Full SoloOS Library</h3>
+        <p class="bundle-products" style="color:rgba(255,255,255,0.45);">All 6 SoloOS modules — everything you need from day one.</p>
+        <div class="bundle-pricing">
+          <span class="bundle-price" style="color:var(--gold);">$59</span>
+          <span class="bundle-was">$85</span>
+          <span class="bundle-save">Save $26</span>
+        </div>
+        <a class="btn-buy gumroad-button" href="https://saroan.gumroad.com" style="font-size:13px;padding:11px;">Get the Full Library</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FREE TOOLS ── -->
+<section id="free-tools">
+  <div class="section-wrap">
+    <p class="section-tag">Free — No Signup</p>
+    <h2 class="section-title">Free calculators for solopreneurs.</h2>
+    <p class="section-sub">Use them, share them, bookmark them. Built by SoloOS, free forever.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <p class="tool-tag">Free Calculator</p>
+        <h3 class="tool-name">Freelance Pricing Calculator</h3>
+        <p class="tool-desc">Enter your income goal and get your exact hourly rate, day rate, and project rate — including a self-employment tax toggle most people forget about.</p>
+        <a href="https://soloos-pricing-calculator.netlify.app" class="btn-tool" target="_blank" rel="noopener">Try the Calculator →</a>
+      </div>
+      <div class="tool-card">
+        <p class="tool-tag">Free Calculator</p>
+        <h3 class="tool-name">Etsy Fee Calculator</h3>
+        <p class="tool-desc">See every fee on every Etsy sale — transaction, payment processing, listing renewal, and the Offsite Ads fee most sellers don't know about. Reverse mode included.</p>
+        <a href="https://soloos-etsy-fees.netlify.app" class="btn-tool" target="_blank" rel="noopener">Try the Calculator →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <p class="section-tag">The story</p>
+    <h2 class="section-title" style="margin-bottom:28px;">Built by someone who's been in your books.</h2>
+    <div class="about-body">
+      <p>I spent years managing the books for small businesses before I started running my own. The same problem showed up everywhere: most owners had no real system. Receipts in a folder, a spreadsheet that stopped making sense in March, and no clear picture of whether they were actually making money.</p>
+      <p>I built SoloOS because I couldn't find anything that worked for real people running real businesses. Not a course. Not a complicated accounting app. Just clean, fillable tools that give you the full picture without requiring a finance degree to use them.</p>
+      <p>Every product is designed to work on its own. They work even better together.</p>
+      <p style="color:rgba(255,255,255,0.4); font-size:14px; margin-top:28px;">SoloOS is a product of Sa Roan Holdings LLC. We answer every email.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section>
+  <div class="section-wrap">
+    <p class="section-tag">Questions</p>
+    <h2 class="section-title" style="margin-bottom:40px;">The ones we get most.</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What format are the tools?</div>
+        <div class="faq-a">All SoloOS products are fillable PDFs. They work in Adobe Acrobat (free), GoodNotes, Notability, and most standard PDF readers. You can type directly into them on your computer or tablet, or print them and write by hand.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I get my purchase?</div>
+        <div class="faq-a">Instant digital download — your file is available immediately after purchase through Gumroad. You'll also receive a download link by email.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I use these on my phone?</div>
+        <div class="faq-a">Yes. Most PDF apps on iOS and Android support fillable forms. GoodNotes and Notability on iPad are especially popular for this. For the best experience, a computer or tablet is recommended.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Are these good for a new business or an established one?</div>
+        <div class="faq-a">Both. The Savings Challenge and Bill & Budget Tracker are great starting points if you're just getting organized. The CEO Dashboard and Side Hustle Profit Tracker are built for people already running something who need a real system. The Business Health Scorecard is useful at any stage.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What if I have a question or need help?</div>
+        <div class="faq-a">Email us at hello@mysoloos.com. We answer every email — usually within 24 hours on business days.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="wordmark-footer">SoloOS</a>
+      <p>The operating system for the solo builder. Fillable PDF tools for solopreneurs, side hustlers, freelancers, and small business owners.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="https://saroan.gumroad.com/l/febxfd" class="gumroad-button">CEO Dashboard — $37</a>
+      <a href="https://saroan.gumroad.com/l/pliies" class="gumroad-button">Bill & Budget — $17</a>
+      <a href="https://saroan.gumroad.com/l/terqbh" class="gumroad-button">Side Hustle Tracker — $15</a>
+      <a href="https://saroan.gumroad.com/l/zkpchu" class="gumroad-button">Debt Planner — $9</a>
+      <a href="https://saroan.gumroad.com/l/yhgjft" class="gumroad-button">Savings Challenge — $7</a>
+      <a href="https://saroan.gumroad.com/l/qjdejs" class="gumroad-button">Free Scorecard</a>
+    </div>
+    <div class="footer-col">
+      <h4>Free Tools</h4>
+      <a href="https://soloos-pricing-calculator.netlify.app" target="_blank" rel="noopener">Pricing Calculator</a>
+      <a href="https://soloos-etsy-fees.netlify.app" target="_blank" rel="noopener">Etsy Fee Calculator</a>
+      <a href="new-business-starter-checklist.html">Business Starter Checklist</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#about">About</a>
+      <a href="https://saroan.gumroad.com" target="_blank" rel="noopener">Gumroad Store</a>
+      <a href="mailto:hello@mysoloos.com">hello@mysoloos.com</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sa Roan Holdings LLC · All rights reserved</span>
+    <span>Made for the people wearing every hat.</span>
+  </div>
+</footer>
+
+<script>
+  // ── FAQ ──
+  function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+  }
+
+  // ── Email capture (Kit via hidden iframe — no page refresh) ──
+  function handleOffer(e) {
+    const form = e.target;
+    const btn = document.getElementById('offer-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    // Let the form POST to Kit inside the hidden iframe (no e.preventDefault)
+    // Show success after a short delay to let the iframe request complete
+    setTimeout(() => {
+      form.style.display = 'none';
+      document.getElementById('offer-success').style.display = 'block';
+    }, 1500);
+  }
+
+  // ── Smooth scroll offset for sticky nav ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      const top = el.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
