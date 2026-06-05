@@ -1,0 +1,44 @@
+name: Fix Netlify calculator email captures
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-netlify-forms.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          changes = [
+            (Path('SoloOS Website deploy/pricing-calculator/index.html'), 'pricing-calc-capture', '/pricing-calculator/'),
+            (Path('SoloOS Website deploy/etsy-fee-calculator/index.html'), 'etsy-calc-capture', '/etsy-fee-calculator/'),
+          ]
+
+          for path, form_name, endpoint in changes:
+            s = path.read_text(encoding='utf-8')
+            s = s.replace(f'action="/" data-netlify="true"', f'action="{endpoint}" data-netlify="true" data-netlify-form="{form_name}"')
+            s = s.replace("fetch('/', {", f"fetch('{endpoint}', {{")
+            path.write_text(s, encoding='utf-8')
+
+          root_forms = Path('SoloOS Website deploy/forms.html')
+          root_forms.write_text('''<!doctype html>
+          <html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>SoloOS Forms</title></head><body>
+          <form name="pricing-calc-capture" method="POST" action="/pricing-calculator/" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="pricing-calc-capture"><input name="source"><input name="bot-field"><input name="hourly_rate"><input name="annual_revenue"><input name="name"><input type="email" name="email">
+          </form>
+          <form name="etsy-calc-capture" method="POST" action="/etsy-fee-calculator/" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="etsy-calc-capture"><input name="source"><input name="bot-field"><input name="calc_listing_price"><input name="calc_take_home"><input name="name"><input type="email" name="email">
+          </form>
+          </body></html>''', encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 'SoloOS Website deploy'
+          git commit -m 'Fix Netlify calculator email captures'
+          git push
