@@ -1,0 +1,43 @@
+name: Integrate corrected calculators
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/integrate-calculators.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Integrate calculators
+        shell: bash
+        run: |
+          set -euo pipefail
+          root='SoloOS Website deploy'
+          mkdir -p "$root/pricing-calculator" "$root/etsy-fee-calculator"
+          curl --fail --location --retry 3 https://soloos-pricing-calculator.netlify.app/ -o "$root/pricing-calculator/index.html"
+          curl --fail --location --retry 3 https://soloos-etsy-fees.netlify.app/ -o "$root/etsy-fee-calculator/index.html"
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('SoloOS Website deploy/index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('href="https://soloos-pricing-calculator.netlify.app" class="btn-tool" target="_blank" rel="noopener"', 'href="pricing-calculator/" class="btn-tool"')
+          s = s.replace('href="https://soloos-etsy-fees.netlify.app" class="btn-tool" target="_blank" rel="noopener"', 'href="etsy-fee-calculator/" class="btn-tool"')
+          s = s.replace('href="https://soloos-pricing-calculator.netlify.app" target="_blank" rel="noopener"', 'href="pricing-calculator/"')
+          s = s.replace('href="https://soloos-etsy-fees.netlify.app" target="_blank" rel="noopener"', 'href="etsy-fee-calculator/"')
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit integration
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 'SoloOS Website deploy'
+          git diff --cached --quiet && exit 0
+          git commit -m 'Integrate corrected calculators'
+          git push
