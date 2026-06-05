@@ -24,13 +24,36 @@ jobs:
           curl --fail --location --retry 3 https://soloos-etsy-fees.netlify.app/ -o "$root/etsy-fee-calculator/index.html"
           python - <<'PY'
           from pathlib import Path
-          p = Path('SoloOS Website deploy/index.html')
-          s = p.read_text(encoding='utf-8')
+
+          root = Path('SoloOS Website deploy')
+          home = root / 'index.html'
+          s = home.read_text(encoding='utf-8')
           s = s.replace('href="https://soloos-pricing-calculator.netlify.app" class="btn-tool" target="_blank" rel="noopener"', 'href="pricing-calculator/" class="btn-tool"')
           s = s.replace('href="https://soloos-etsy-fees.netlify.app" class="btn-tool" target="_blank" rel="noopener"', 'href="etsy-fee-calculator/" class="btn-tool"')
           s = s.replace('href="https://soloos-pricing-calculator.netlify.app" target="_blank" rel="noopener"', 'href="pricing-calculator/"')
           s = s.replace('href="https://soloos-etsy-fees.netlify.app" target="_blank" rel="noopener"', 'href="etsy-fee-calculator/"')
-          p.write_text(s, encoding='utf-8')
+          home.write_text(s, encoding='utf-8')
+
+          pricing = root / 'pricing-calculator/index.html'
+          s = pricing.read_text(encoding='utf-8')
+          s = s.replace('<a href="https://saroan.gumroad.com" class="wordmark">SoloOS</a>', '<a href="https://mysoloos.com" class="wordmark">SoloOS</a>')
+          s = s.replace('<a href="https://saroan.gumroad.com">All Products</a>', '<a href="https://mysoloos.com/#products">All Products</a>')
+          s = s.replace('<a href="https://saroan.gumroad.com">saroan.gumroad.com</a>', '<a href="https://mysoloos.com">mysoloos.com</a>')
+          s = s.replace('<input type="hidden" name="form-name" value="pricing-calc-capture" />', '<input type="hidden" name="form-name" value="pricing-calc-capture" />\n          <input type="hidden" name="source" value="pricing-calculator" />')
+          s = s.replace("const weeksOff = parseFloat(document.getElementById('weeksOff').value) || 4;", "const weeksOff = parseFloat(document.getElementById('weeksOff').value);")
+          pricing.write_text(s, encoding='utf-8')
+
+          etsy = root / 'etsy-fee-calculator/index.html'
+          s = etsy.read_text(encoding='utf-8').replace('2025', '2026')
+          s = s.replace('<a href="https://saroan.gumroad.com" class="wordmark">SoloOS</a>', '<a href="https://mysoloos.com" class="wordmark">SoloOS</a>')
+          s = s.replace('<a href="https://saroan.gumroad.com">All Products</a>', '<a href="https://mysoloos.com/#products">All Products</a>')
+          s = s.replace('<a href="https://saroan.gumroad.com">saroan.gumroad.com</a>', '<a href="https://mysoloos.com">mysoloos.com</a>')
+          s = s.replace('<input type="hidden" name="form-name" value="etsy-calc-capture" />', '<input type="hidden" name="form-name" value="etsy-calc-capture" />\n          <input type="hidden" name="source" value="etsy-fee-calculator" />')
+          s = s.replace('const ADS_LOW  = 0.15; // 15% Offsite Ads — <$10k/year shops', 'const ADS_LOW  = 0.15; // 15% Offsite Ads — <$10k/year shops\n  const ADS_CAP  = 100;  // Etsy caps Offsite Ads fees at $100 per order')
+          s = s.replace('const fAds  = withAds ? total * ads : 0;', 'const fAds  = withAds ? Math.min(total * ads, ADS_CAP) : 0;')
+          s = s.replace('const fAds     = withAds ? total * ads : 0;', 'const fAds     = withAds ? Math.min(total * ads, ADS_CAP) : 0;')
+          s = s.replace('const denominator = 1 - TX - PP - ads;\n    const total = denominator > 0 ? (target + PPFL + LST) / denominator : 0;', "const denominator = 1 - TX - PP - ads;\n    const uncappedTotal = denominator > 0 ? (target + PPFL + LST) / denominator : 0;\n    const adsWouldBeCapped = withAds && uncappedTotal * ads > ADS_CAP;\n    const total = adsWouldBeCapped\n      ? (target + PPFL + LST + ADS_CAP) / (1 - TX - PP)\n      : uncappedTotal;")
+          etsy.write_text(s, encoding='utf-8')
           PY
       - name: Commit integration
         shell: bash
