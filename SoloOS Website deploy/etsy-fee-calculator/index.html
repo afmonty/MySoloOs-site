@@ -1005,10 +1005,14 @@
     const withAds = $('useAdsB').checked;
     const ads     = withAds ? adsRate('highVolumeB') : 0;
 
-    // Reverse: target = total*(1 - TX - PP - ads) - PPFL - LST
-    // total = (target + PPFL + LST) / (1 - TX - PP - ads)
+    // Calculate the uncapped result first, then switch to the capped formula
+    // when that result would exceed Etsy's $100 Offsite Ads fee cap.
     const denominator = 1 - TX - PP - ads;
-    const total    = denominator > 0 ? (target + PPFL + LST) / denominator : 0;
+    const uncappedTotal = denominator > 0 ? (target + PPFL + LST) / denominator : 0;
+    const adsWouldBeCapped = withAds && uncappedTotal * ads > ADS_CAP;
+    const total = adsWouldBeCapped
+      ? (target + PPFL + LST + ADS_CAP) / (1 - TX - PP)
+      : uncappedTotal;
     const item     = Math.max(0, total - ship);
     const fTx      = total * TX;
     const fPp      = total * PP + PPFL;
