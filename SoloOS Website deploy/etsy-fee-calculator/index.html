@@ -827,7 +827,7 @@
         <p>Get a free PDF guide: <em>The Complete Etsy Fee Breakdown</em> — every fee explained, with a pricing worksheet to make sure every listing hits your income goals.</p>
       </div>
       <div>
-        <form class="email-form" name="etsy-calc-capture" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event)">
+        <form class="email-form" name="etsy-calc-capture" method="POST" action="/etsy-fee-calculator/" data-netlify="true" data-netlify-form="etsy-calc-capture" netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event)">
           <input type="hidden" name="form-name" value="etsy-calc-capture" />
           <input type="hidden" name="source" value="etsy-fee-calculator" />
           <p class="bot-trap"><label>Don't fill this out: <input name="bot-field" /></label></p>
@@ -1073,7 +1073,7 @@
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    fetch('/', {
+    fetch('/etsy-fee-calculator/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(new FormData(form)).toString()
