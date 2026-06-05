@@ -419,10 +419,10 @@
 <body>
 
 <header class="site-header">
-  <a href="https://saroan.gumroad.com" class="wordmark">SoloOS</a>
+  <a href="https://mysoloos.com" class="wordmark">SoloOS</a>
   <span class="header-nav">
     Free tools for solopreneurs &nbsp;|&nbsp;
-    <a href="https://saroan.gumroad.com">All Products</a>
+    <a href="https://mysoloos.com/#products">All Products</a>
   </span>
 </header>
 
@@ -536,6 +536,7 @@
       <div>
         <form class="email-form" name="pricing-calc-capture" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event)">
           <input type="hidden" name="form-name" value="pricing-calc-capture" />
+          <input type="hidden" name="source" value="pricing-calculator" />
           <p class="bot-trap"><label>Don't fill this out: <input name="bot-field" /></label></p>
           <input type="hidden" name="hourly_rate" id="form_hourly" />
           <input type="hidden" name="annual_revenue" id="form_annual" />
@@ -579,7 +580,7 @@
 
 <footer>
   <p>SoloOS · Free tools for solopreneurs ·
-    <a href="https://saroan.gumroad.com">saroan.gumroad.com</a> ·
+    <a href="https://mysoloos.com">mysoloos.com</a> ·
     © 2026 Sa Roan Holdings LLC
   </p>
 </footer>
@@ -598,7 +599,7 @@
     const desiredIncome = parseFloat(document.getElementById('income').value) || 0;
     const expenses = parseFloat(document.getElementById('expenses').value) || 0;
     const billableHours = parseFloat(document.getElementById('billableHours').value) || 25;
-    const weeksOff = parseFloat(document.getElementById('weeksOff').value) || 4;
+    const weeksOff = parseFloat(document.getElementById('weeksOff').value);
     const includeOverhead = document.getElementById('includeOverhead').checked;
     const includeTax = document.getElementById('includeTax').checked;
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Etsy Fee Calculator 2025 — What Does Etsy Really Take? | SoloOS</title>
+  <title>Etsy Fee Calculator 2026 — What Does Etsy Really Take? | SoloOS</title>
   <meta name="description" content="See exactly what Etsy charges on every sale — transaction fee, payment processing, listing fee, and the Offsite Ads fee most sellers miss. Free, instant, no signup." />
   <meta property="og:title" content="Etsy Fee Calculator — See Every Fee, Know Your Real Take-Home" />
   <meta property="og:description" content="The free Etsy fee calculator that shows all the fees — including the one most sellers don't know about." />
@@ -583,16 +583,16 @@
 
 <!-- HEADER -->
 <header class="site-header">
-  <a href="https://saroan.gumroad.com" class="wordmark">SoloOS</a>
+  <a href="https://mysoloos.com" class="wordmark">SoloOS</a>
   <span class="header-nav">
     Free tools for solopreneurs &nbsp;|&nbsp;
-    <a href="https://saroan.gumroad.com">All Products</a>
+    <a href="https://mysoloos.com/#products">All Products</a>
   </span>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-label">Free Calculator · Fees Updated 2025</p>
+  <p class="hero-label">Free Calculator · Fees Updated 2026</p>
   <h1>How Much Does Etsy Actually Take?</h1>
   <p>Every fee. Every line. See exactly what lands in your pocket — and what Etsy keeps.</p>
 </section>
@@ -829,6 +829,7 @@
       <div>
         <form class="email-form" name="etsy-calc-capture" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event)">
           <input type="hidden" name="form-name" value="etsy-calc-capture" />
+          <input type="hidden" name="source" value="etsy-fee-calculator" />
           <p class="bot-trap"><label>Don't fill this out: <input name="bot-field" /></label></p>
           <input type="hidden" name="calc_listing_price" id="form-listing" />
           <input type="hidden" name="calc_take_home"     id="form-keep" />
@@ -871,7 +872,7 @@
 <!-- FOOTER -->
 <footer>
   <p>SoloOS · Free tools for solopreneurs ·
-    <a href="https://saroan.gumroad.com">saroan.gumroad.com</a> ·
+    <a href="https://mysoloos.com">mysoloos.com</a> ·
     © 2026 Sa Roan Holdings LLC
   </p>
 </footer>
@@ -884,6 +885,7 @@
   const LST  = 0.20;    // $0.20 listing renewal fee (per sale)
   const ADS_HIGH = 0.12; // 12% Offsite Ads — $10k+/year shops
   const ADS_LOW  = 0.15; // 15% Offsite Ads — <$10k/year shops
+  const ADS_CAP  = 100;  // Etsy caps Offsite Ads fees at $100 per order
 
   let currentMode = 'fees';
 
@@ -949,7 +951,7 @@
     const fTx   = total * TX;
     const fPp   = total * PP + PPFL;
     const fLst  = LST;
-    const fAds  = withAds ? total * ads : 0;
+    const fAds  = withAds ? Math.min(total * ads, ADS_CAP) : 0;
     const fAll  = fTx + fPp + fLst + fAds;
     const keep  = total - fAll;
     const rate  = total > 0 ? fAll / total * 100 : 0;
@@ -1011,7 +1013,7 @@
     const fTx      = total * TX;
     const fPp      = total * PP + PPFL;
     const fLst     = LST;
-    const fAds     = withAds ? total * ads : 0;
+    const fAds     = withAds ? Math.min(total * ads, ADS_CAP) : 0;
     const fAll     = fTx + fPp + fLst + fAds;
     const keep     = total - fAll;
     const rate     = total > 0 ? fAll / total * 100 : 0;
