@@ -1,0 +1,23 @@
+name: Verify Netlify email captures
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-netlify-forms.yml'
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Netlify deploy
+        run: sleep 45
+      - name: Verify pricing capture
+        run: |
+          curl --fail-with-body --silent --show-error \
+            -X POST 'https://mysoloos.com/pricing-calculator/' \
+            -H 'Content-Type: application/x-www-form-urlencoded' \
+            --data 'form-name=pricing-calc-capture&source=pricing-calculator&hourly_rate=%2453&annual_revenue=%2463600&name=AutomatedTest&email=netlify-test-pricing%40example.com'
+      - name: Verify Etsy capture
+        run: |
+          curl --fail-with-body --silent --show-error \
+            -X POST 'https://mysoloos.com/etsy-fee-calculator/' \
+            -H 'Content-Type: application/x-www-form-urlencoded' \
+            --data 'form-name=etsy-calc-capture&source=etsy-fee-calculator&calc_listing_price=%2435&calc_take_home=%2431&name=AutomatedTest&email=netlify-test-etsy%40example.com'
