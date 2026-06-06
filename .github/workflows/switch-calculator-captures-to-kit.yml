@@ -18,57 +18,27 @@ jobs:
           import re
 
           pages = [
-            {
-              'path': Path('SoloOS Website deploy/pricing-calculator/index.html'),
-              'name': 'pricing-calc-capture',
-              'iframe': 'kit-pricing-hidden',
-              'success': 'formSuccess',
-              'error': 'formError',
-            },
-            {
-              'path': Path('SoloOS Website deploy/etsy-fee-calculator/index.html'),
-              'name': 'etsy-calc-capture',
-              'iframe': 'kit-etsy-hidden',
-              'success': 'form-success',
-              'error': 'form-error',
-            },
+            ('SoloOS Website deploy/pricing-calculator/index.html', 'pricing-calc-capture', 'kit-pricing-hidden', 'formSuccess', 'formError'),
+            ('SoloOS Website deploy/etsy-fee-calculator/index.html', 'etsy-calc-capture', 'kit-etsy-hidden', 'form-success', 'form-error'),
           ]
 
-          for page in pages:
-            path = page['path']
+          for filename, form_name, iframe, success, error in pages:
+            path = Path(filename)
             text = path.read_text(encoding='utf-8')
-
-            form_re = re.compile(r'<form class="email-form" name="' + re.escape(page['name']) + r'"[^>]*>')
-            form_html = (
-              f'<iframe name="{page["iframe"]}" style="display:none" aria-hidden="true"></iframe>\n'
-              f'        <form class="email-form" name="{page["name"]}" '
-              f'action="https://app.kit.com/forms/9519803/subscriptions" method="post" '
-              f'target="{page["iframe"]}" onsubmit="handleFormSubmit(event)">'
-            )
+            form_re = re.compile(r'<form class="email-form" name="' + re.escape(form_name) + r'"[^>]*>')
+            form_html = '<iframe name="' + iframe + '" style="display:none" aria-hidden="true"></iframe>\n        <form class="email-form" name="' + form_name + '" action="https://app.kit.com/forms/9519803/subscriptions" method="post" target="' + iframe + '" onsubmit="handleFormSubmit(event)">'
             text, count = form_re.subn(form_html, text, count=1)
             if count != 1:
-              raise RuntimeError(f'Could not replace form in {path}')
+              raise RuntimeError('Could not replace form in ' + filename)
 
             text = text.replace('name="name"', 'name="fields[first_name]"', 1)
             text = text.replace('name="email"', 'name="email_address"', 1)
 
             handler_re = re.compile(r'  function handleFormSubmit\(e\) \{.*?\n  \}\n', re.S)
-            handler = f'''  function handleFormSubmit(e) {{
-    const form = e.target;
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    document.getElementById('{page['error']}').style.display = 'none';
-    setTimeout(() => {{
-      form.style.display = 'none';
-      document.getElementById('{page['success']}').style.display = 'block';
-    }}, 1500);
-  }}
-'''
+            handler = '  function handleFormSubmit(e) {\n    const form = e.target;\n    const btn = form.querySelector(\'button[type="submit"]\');\n    btn.disabled = true;\n    btn.textContent = \'Sending...\';\n    document.getElementById(\'' + error + '\').style.display = \'none\';\n    setTimeout(() => {\n      form.style.display = \'none\';\n      document.getElementById(\'' + success + '\').style.display = \'block\';\n    }, 1500);\n  }\n'
             text, count = handler_re.subn(handler, text, count=1)
             if count != 1:
-              raise RuntimeError(f'Could not replace submit handler in {path}')
-
+              raise RuntimeError('Could not replace submit handler in ' + filename)
             path.write_text(text, encoding='utf-8')
           PY
           git config user.name 'github-actions[bot]'
