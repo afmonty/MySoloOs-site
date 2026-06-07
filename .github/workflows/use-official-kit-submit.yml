@@ -1,0 +1,52 @@
+name: Use official Kit form submission contract
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/use-official-kit-submit.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  update-kit-forms:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add Kit loader and official form attributes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          configs = [
+              (Path('SoloOS Website deploy/etsy-fee-calculator/index.html'), '9532049', '4eae138570'),
+              (Path('SoloOS Website deploy/pricing-calculator/index.html'), '9532052', 'bc512ff33c'),
+          ]
+          for path, form_id, uid in configs:
+              text = path.read_text(encoding='utf-8')
+              if 'https://f.convertkit.com/ckjs/ck.5.js' not in text:
+                  marker = '</head>'
+                  text = text.replace(marker, '  <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>\n' + marker, 1)
+              old = f'<form class="email-form" action="https://app.kit.com/forms/{form_id}/subscriptions" method="post" target="kit-' 
+              start = text.find(old)
+              if start == -1:
+                  raise SystemExit(f'Expected form missing: {path}')
+              end = text.find('>', start) + 1
+              current = text[start:end]
+              replacement = f'<form class="email-form seva-form formkit-form" action="https://app.kit.com/forms/{form_id}/subscriptions" method="post" data-sv-form="{form_id}" data-uid="{uid}" data-format="inline" data-version="5" onsubmit="handleFormSubmit(event)">'
+              text = text[:start] + replacement + text[end:]
+              # Remove the now-unused hidden target iframe immediately before the form.
+              iframe_start = text.rfind('<iframe name="kit-', 0, start)
+              if iframe_start != -1:
+                  iframe_end = text.find('</iframe>', iframe_start) + len('</iframe>')
+                  text = text[:iframe_start] + text[iframe_end:]
+              path.write_text(text, encoding='utf-8')
+          Path('.github/workflows/use-official-kit-submit.yml').unlink()
+          PY
+      - name: Commit official Kit submission setup
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Use official Kit form submission contract'
+          git push
