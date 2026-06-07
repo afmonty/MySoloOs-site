@@ -1,0 +1,5 @@
+/etsy-fee-calculator/*
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/pricing-calculator/*
+  Cache-Control: no-cache, no-store, must-revalidate
