@@ -1,0 +1,48 @@
+name: Clean Kit capture payloads
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/clean-kit-captures.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  clean-captures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove Netlify-only fields from Kit forms
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          paths = [
+              Path('SoloOS Website deploy/etsy-fee-calculator/index.html'),
+              Path('SoloOS Website deploy/pricing-calculator/index.html'),
+          ]
+          patterns = [
+              r'\s*<input type="hidden" name="form-name"[^>]*?/?>',
+              r'\s*<input type="hidden" name="source"[^>]*?/?>',
+              r'\s*<p class="bot-trap">.*?</p>',
+              r'\s*<input type="hidden" name="calc_listing_price"[^>]*?/?>',
+              r'\s*<input type="hidden" name="calc_take_home"[^>]*?/?>',
+              r'\s*<input type="hidden" name="hourly_rate"[^>]*?/?>',
+              r'\s*<input type="hidden" name="annual_revenue"[^>]*?/?>',
+          ]
+          for path in paths:
+              text = path.read_text(encoding='utf-8')
+              for pattern in patterns:
+                  text = re.sub(pattern, '', text, flags=re.S)
+              path.write_text(text, encoding='utf-8')
+          Path('.github/workflows/clean-kit-captures.yml').unlink()
+          PY
+      - name: Commit cleaned Kit forms
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Clean calculator Kit capture payloads'
+          git push
