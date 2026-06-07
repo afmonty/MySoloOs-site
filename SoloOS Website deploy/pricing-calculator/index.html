@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -30,6 +31,7 @@
       min-height: 100vh;
     }
 
+    /* ── HEADER ── */
     .site-header {
       background: var(--navy);
       padding: 16px 32px;
@@ -46,10 +48,17 @@
       text-transform: uppercase;
       text-decoration: none;
     }
-    .site-header .header-nav { font-size: 13px; color: rgba(255,255,255,0.6); }
-    .site-header .header-nav a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .site-header .header-nav {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+    .site-header .header-nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+    }
     .site-header .header-nav a:hover { color: var(--gold); }
 
+    /* ── HERO ── */
     .hero {
       background: var(--navy);
       padding: 64px 32px 56px;
@@ -79,6 +88,7 @@
       line-height: 1.6;
     }
 
+    /* ── MAIN CALCULATOR ── */
     .calc-wrap {
       max-width: 1080px;
       margin: 0 auto;
@@ -92,6 +102,7 @@
       .calc-wrap { grid-template-columns: 1fr; padding: 32px 20px; }
     }
 
+    /* ── INPUT PANEL ── */
     .input-panel {
       background: #fff;
       border-radius: 12px;
@@ -106,7 +117,9 @@
       color: var(--gold);
       margin-bottom: 28px;
     }
-    .field-group { margin-bottom: 28px; }
+    .field-group {
+      margin-bottom: 28px;
+    }
     .field-group label {
       display: block;
       font-size: 14px;
@@ -129,12 +142,15 @@
       overflow: hidden;
       transition: border-color 0.15s;
     }
-    .input-with-prefix:focus-within { border-color: var(--gold); }
+    .input-with-prefix:focus-within {
+      border-color: var(--gold);
+    }
     .input-prefix {
       padding: 0 14px;
       font-size: 16px;
       color: var(--gold);
       font-weight: 600;
+      background: transparent;
       border-right: 1.5px solid var(--tan);
       height: 48px;
       display: flex;
@@ -151,7 +167,11 @@
       color: var(--navy);
       outline: none;
     }
-    .range-row { display: flex; align-items: center; gap: 16px; }
+    .range-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
     .range-row input[type="range"] {
       flex: 1;
       -webkit-appearance: none;
@@ -196,9 +216,14 @@
       accent-color: var(--gold);
       cursor: pointer;
     }
-    .overhead-toggle span { font-size: 13px; color: var(--navy); line-height: 1.4; }
+    .overhead-toggle span {
+      font-size: 13px;
+      color: var(--navy);
+      line-height: 1.4;
+    }
     .overhead-toggle strong { font-weight: 600; }
 
+    /* ── RESULTS PANEL ── */
     .results-panel {
       background: var(--navy);
       border-radius: 12px;
@@ -207,7 +232,9 @@
       position: sticky;
       top: 24px;
     }
-    .results-panel .panel-title { color: var(--gold); }
+    .results-panel .panel-title {
+      color: var(--gold);
+    }
     .rate-card {
       background: rgba(255,255,255,0.06);
       border-radius: 10px;
@@ -215,7 +242,10 @@
       margin-bottom: 14px;
       border-left: 3px solid var(--gold);
     }
-    .rate-card.primary { background: rgba(196,154,69,0.12); }
+    .rate-card.primary {
+      background: rgba(196,154,69,0.12);
+      border-left-color: var(--gold);
+    }
     .rate-card .rate-label {
       font-size: 11px;
       font-weight: 600;
@@ -232,7 +262,10 @@
       margin-bottom: 4px;
     }
     .rate-card.primary .rate-value { font-size: 44px; }
-    .rate-card .rate-sub { font-size: 12px; color: rgba(255,255,255,0.5); }
+    .rate-card .rate-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
     .results-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -252,7 +285,11 @@
       color: rgba(255,255,255,0.45);
       margin-bottom: 4px;
     }
-    .mini-stat .stat-value { font-size: 20px; font-weight: 600; color: #fff; }
+    .mini-stat .stat-value {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+    }
     .reality-check {
       background: rgba(196,154,69,0.1);
       border-radius: 8px;
@@ -265,6 +302,7 @@
     }
     .reality-check strong { color: var(--gold); }
 
+    /* ── EMAIL CAPTURE ── */
     .email-section {
       max-width: 1080px;
       margin: 0 auto;
@@ -290,8 +328,16 @@
       line-height: 1.25;
       margin-bottom: 10px;
     }
-    .email-box p { font-size: 15px; color: var(--muted); line-height: 1.6; }
-    .email-form { display: flex; flex-direction: column; gap: 12px; }
+    .email-box p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .email-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
     .email-form input[type="text"],
     .email-form input[type="email"] {
       height: 48px;
@@ -320,9 +366,12 @@
       transition: background 0.15s, transform 0.1s;
     }
     .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .btn-gold:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
     .bot-trap { display: none; }
-    .form-note { font-size: 11px; color: var(--muted); text-align: center; }
+    .form-note {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
     .form-success {
       display: none;
       background: #f0faf4;
@@ -344,7 +393,12 @@
       line-height: 1.5;
     }
 
-    .crosssell { max-width: 1080px; margin: 0 auto; padding: 0 24px 64px; }
+    /* ── CROSS-SELL ── */
+    .crosssell {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
     .crosssell-box {
       background: var(--navy);
       border-radius: 12px;
@@ -372,8 +426,17 @@
       line-height: 1.2;
       margin-bottom: 12px;
     }
-    .crosssell-box p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.6; max-width: 500px; }
-    .crosssell-box ul { margin: 14px 0 0 0; padding: 0; list-style: none; }
+    .crosssell-box p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      max-width: 500px;
+    }
+    .crosssell-box ul {
+      margin: 14px 0 0 0;
+      padding: 0;
+      list-style: none;
+    }
     .crosssell-box ul li {
       font-size: 13px;
       color: rgba(255,255,255,0.6);
@@ -403,8 +466,12 @@
       white-space: nowrap;
       transition: background 0.15s, color 0.15s;
     }
-    .btn-outline-gold:hover { background: var(--gold); color: var(--navy); }
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
 
+    /* ── FOOTER ── */
     footer {
       background: var(--navy-deep);
       padding: 28px 32px;
@@ -415,10 +482,10 @@
     footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
     footer a:hover { color: var(--gold); }
   </style>
-  <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="site-header">
   <a href="https://mysoloos.com" class="wordmark">SoloOS</a>
   <span class="header-nav">
@@ -427,14 +494,18 @@
   </span>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <p class="hero-label">Free Calculator</p>
   <h1>What Should You Actually Charge?</h1>
   <p>Stop picking a number out of thin air. Tell us what you want to make, and we'll tell you exactly what you need to charge.</p>
 </section>
 
+<!-- CALCULATOR -->
 <main>
   <div class="calc-wrap">
+
+    <!-- LEFT: INPUTS -->
     <section class="input-panel">
       <p class="panel-title">Your Numbers</p>
 
@@ -485,6 +556,7 @@
       </label>
     </section>
 
+    <!-- RIGHT: RESULTS -->
     <section class="results-panel">
       <p class="panel-title">Your Rates</p>
 
@@ -524,10 +596,13 @@
         </div>
       </div>
 
-      <div class="reality-check" id="realityCheck">Enter your numbers to see your rates.</div>
+      <div class="reality-check" id="realityCheck">
+        Enter your numbers to see your rates.
+      </div>
     </section>
   </div>
 
+  <!-- EMAIL CAPTURE -->
   <section class="email-section">
     <div class="email-box">
       <div>
@@ -535,7 +610,7 @@
         <p>We'll email you a PDF summary of your rates plus a free guide: <em>The 5 Pricing Mistakes Freelancers Make</em>. No pitch. No spam.</p>
       </div>
       <div>
-        <form class="email-form seva-form formkit-form" name="pricing-calc-capture" action="https://app.kit.com/forms/9532052/subscriptions" method="post" data-sv-form="9532052" data-uid="bc512ff33c" data-format="inline" data-version="5" onsubmit="handleFormSubmit(event)">
+        <form class="email-form seva-form formkit-form" action="https://app.kit.com/forms/9532052/subscriptions" method="post" data-sv-form="9532052" data-uid="bc512ff33c" data-format="inline" data-version="5" onsubmit="handleFormSubmit(event)">
           <input type="text" name="fields[first_name]" placeholder="First name" required autocomplete="given-name" />
           <input type="email" name="email_address" placeholder="Email address" required autocomplete="email" />
           <button type="submit" class="btn-gold">Send Me My Pricing PDF</button>
@@ -545,35 +620,37 @@
           You're in. Check your email for your pricing breakdown. And if you're ready to actually track all of this — the CEO Dashboard was built for exactly that.
         </div>
         <div class="form-error" id="formError">
-          Something went wrong. Try again, or email us at <a href="mailto:annafmonty@gmail.com" style="color:#b71c1c;">annafmonty@gmail.com</a>.
+          Something went wrong. Try again, or email us directly at <a href="mailto:annafmonty@gmail.com" style="color:#b71c1c;">annafmonty@gmail.com</a>.
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CROSS-SELL -->
   <section class="crosssell">
     <div class="crosssell-box">
       <div>
         <p class="cs-tag">A SoloOS Module</p>
         <h3>Now you know what to charge. Track what you actually make.</h3>
-        <p>The CEO Dashboard is a 25-page fillable PDF system for small business owners. Track income, expenses, profit margins, cash flow, and goals — all in one document you'll actually want to open.</p>
+        <p>The CEO Dashboard turns your business activity into an automatic control center. See profit, margin, tax reserve, outstanding invoices, and the next actions that need your attention.</p>
         <ul>
-          <li>25 pages, 475 fillable fields</li>
-          <li>Income tracker, expense tracker, invoice log</li>
-          <li>Pricing calculator and profit margin tools built in</li>
+          <li>25 connected pages with an automatic control center</li>
+          <li>Automatic totals, margins, pricing, break-even, and tax reserve</li>
+          <li>Versioned backup, restore, and transaction CSV export</li>
           <li>Instant download — start today</li>
         </ul>
       </div>
       <div>
         <a href="https://saroan.gumroad.com/l/febxfd" class="btn-outline-gold" target="_blank" rel="noopener">
-          Get the CEO Dashboard<br>
-          <span style="font-size:12px;font-weight:400;display:block;margin-top:3px;opacity:0.8;">$37 — Instant Download</span>
+          Get the CEO Dashboard v2<br>
+          <span style="font-size:12px; font-weight:400; display:block; margin-top:3px; opacity:0.8;">$37 — Instant Download</span>
         </a>
       </div>
     </div>
   </section>
 </main>
 
+<!-- FOOTER -->
 <footer>
   <p>SoloOS · Free tools for solopreneurs ·
     <a href="https://mysoloos.com">mysoloos.com</a> ·
@@ -582,7 +659,9 @@
 </footer>
 
 <script>
-  function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString();
+  }
 
   function syncRange(rangeId, valId) {
     const el = document.getElementById(rangeId);
@@ -603,13 +682,16 @@
     const annualHours = billableHours * workingWeeks;
     const monthlyHours = annualHours / 12;
 
+    // Gross up take-home for SE taxes if toggled (desired income is after-tax, so reverse the tax rate)
     const taxedIncome = includeTax ? desiredIncome / 0.70 : desiredIncome;
     const monthlyRevBase = taxedIncome + expenses;
     let monthlyRevNeeded = monthlyRevBase;
-    if (includeOverhead) monthlyRevNeeded = monthlyRevBase / 0.75;
+    if (includeOverhead) monthlyRevNeeded = monthlyRevBase / 0.75; // 25% overhead: billable time is only 75% of total time
 
     const annualRevNeeded = monthlyRevNeeded * 12;
+
     const baseHourly = monthlyHours > 0 ? monthlyRevNeeded / monthlyHours : 0;
+
     const dayRate = baseHourly * 8;
     const projectRate = baseHourly * 10;
     const retainerRate = baseHourly * 80;
@@ -620,9 +702,8 @@
     document.getElementById('retainerRate').textContent = fmt(retainerRate);
     document.getElementById('annualRevenue').textContent = fmt(annualRevNeeded);
     document.getElementById('annualHours').textContent = Math.round(annualHours).toLocaleString();
-    document.getElementById('form_hourly').value = fmt(baseHourly);
-    document.getElementById('form_annual').value = fmt(annualRevNeeded);
 
+    // Reality check message
     const rc = document.getElementById('realityCheck');
     if (baseHourly === 0) {
       rc.innerHTML = 'Enter your numbers to see your rates.';
@@ -641,14 +722,17 @@
     const form = e.target;
     const btn = form.querySelector('button[type="submit"]');
     btn.disabled = true;
-    btn.textContent = 'Sending...';
+    btn.textContent = 'Sending…';
+
     document.getElementById('formError').style.display = 'none';
+
     setTimeout(() => {
       form.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
     }, 1500);
   }
 
+  // Init
   calc();
 </script>
 </body>
