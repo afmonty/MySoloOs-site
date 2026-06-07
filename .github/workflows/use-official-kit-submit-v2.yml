@@ -1,0 +1,41 @@
+name: Deploy official Kit submission setup
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/use-official-kit-submit-v2.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          configs = [
+              (Path('SoloOS Website deploy/etsy-fee-calculator/index.html'), '9532049', '4eae138570', 'etsy-calc-capture'),
+              (Path('SoloOS Website deploy/pricing-calculator/index.html'), '9532052', 'bc512ff33c', 'pricing-calc-capture'),
+          ]
+          for path, form_id, uid, name in configs:
+              text = path.read_text(encoding='utf-8')
+              if 'https://f.convertkit.com/ckjs/ck.5.js' not in text:
+                  text = text.replace('</head>', '  <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>\n</head>', 1)
+              pattern = rf'\s*<iframe name="kit-[^"]+"[^>]*></iframe>\s*<form class="email-form"[^>]*action="https://app\.kit\.com/forms/{form_id}/subscriptions"[^>]*>'
+              replacement = f'\n        <form class="email-form seva-form formkit-form" name="{name}" action="https://app.kit.com/forms/{form_id}/subscriptions" method="post" data-sv-form="{form_id}" data-uid="{uid}" data-format="inline" data-version="5" onsubmit="handleFormSubmit(event)">'
+              text, count = re.subn(pattern, replacement, text, count=1)
+              if count != 1:
+                  raise SystemExit(f'Could not update {path}')
+              path.write_text(text, encoding='utf-8')
+          Path('.github/workflows/use-official-kit-submit-v2.yml').unlink()
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Deploy official Kit submission setup'
+          git push
