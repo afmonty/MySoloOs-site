@@ -1,0 +1,37 @@
+name: Fix Kit form routing
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/fix-kit-form-routing.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  fix-routing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Route each calculator to its guide form
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          replacements = {
+              Path('SoloOS Website deploy/etsy-fee-calculator/index.html'): ('https://app.kit.com/forms/9519803/subscriptions', 'https://app.kit.com/forms/9532049/subscriptions'),
+              Path('SoloOS Website deploy/pricing-calculator/index.html'): ('https://app.kit.com/forms/9519803/subscriptions', 'https://app.kit.com/forms/9532052/subscriptions'),
+          }
+          for path, (old, new) in replacements.items():
+              text = path.read_text(encoding='utf-8')
+              if old not in text:
+                  raise SystemExit(f'Expected old Kit form URL missing from {path}')
+              path.write_text(text.replace(old, new), encoding='utf-8')
+          Path('.github/workflows/fix-kit-form-routing.yml').unlink()
+          PY
+      - name: Commit routing fix
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Route calculators to separate Kit guide forms'
+          git push
