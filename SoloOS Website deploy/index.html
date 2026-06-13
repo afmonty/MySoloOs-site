@@ -637,7 +637,7 @@
     <li><a href="#products">Products</a></li>
     <li><a href="#free-tools">Free Tools</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#free-resources" class="nav-cta">Free Starter Pack</a></li>
+    <li><a href="https://saroan.gumroad.com/l/qjdejs" class="nav-cta">Start Free</a></li>
   </ul>
 </nav>
 
@@ -716,14 +716,14 @@
 
       <!-- CEO Dashboard -->
       <div class="product-card">
-        <p class="product-tag">Interactive System · Flagship</p>
-        <h3 class="product-name">CEO Dashboard</h3>
+        <p class="product-tag">Interactive System · Most Popular</p>
+        <h3 class="product-name">Know What Your Business Needs Next</h3>
         <p class="product-desc">Open one control center and know what happened, what needs attention, and what to do next. Automatically calculate profit, margins, tax reserve, outstanding invoices, pricing, break-even, and more.</p>
         <div class="product-meta">
           <div class="product-price">$37</div>
           <div class="product-pages">25 connected pages<br>Backups + transaction export</div>
         </div>
-        <a class="btn-buy gumroad-button" href="https://saroan.gumroad.com/l/febxfd">Get the CEO Dashboard v2</a>
+        <a class="btn-buy" href="ceo-dashboard/">See the CEO Dashboard</a>
       </div>
 
       <!-- Bill & Budget -->
@@ -813,7 +813,7 @@
           <span class="bundle-price">$37</span>
           <span class="bundle-save">CEO Dashboard</span>
         </div>
-        <a class="btn-buy gumroad-button" href="https://saroan.gumroad.com/l/febxfd" style="font-size:13px;padding:11px;">Run My Business Clearly</a>
+        <a class="btn-buy" href="ceo-dashboard/" style="font-size:13px;padding:11px;">Run My Business Clearly</a>
       </div>
       <div class="bundle-card" style="background: var(--navy);">
         <h3 class="bundle-name" style="color:#fff;">Where should I focus first?</h3>
@@ -921,7 +921,7 @@
     <div class="footer-col">
       <h4>Products</h4>
       <a href="profit-clarity-checkup/">Profit Clarity Checkup — $79</a>
-      <a href="https://saroan.gumroad.com/l/febxfd" class="gumroad-button">CEO Dashboard — $37</a>
+      <a href="ceo-dashboard/">CEO Dashboard — $37</a>
       <a href="https://saroan.gumroad.com/l/pliies" class="gumroad-button">Bill & Budget — $17</a>
       <a href="https://saroan.gumroad.com/l/terqbh" class="gumroad-button">Side Hustle Tracker — $15</a>
       <a href="https://saroan.gumroad.com/l/zkpchu" class="gumroad-button">Debt Planner — $9</a>
@@ -979,6 +979,15 @@
       e.preventDefault();
       const top = el.getBoundingClientRect().top + window.scrollY - 72;
       window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  document.querySelectorAll('a[href*="gumroad.com"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const detail = { label: link.textContent.trim(), destination: link.href, page: 'homepage' };
+      if (window.zaraz && typeof window.zaraz.track === 'function') window.zaraz.track('cta_click', detail);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'cta_click', ...detail });
     });
   });
 </script>
