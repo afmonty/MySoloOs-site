@@ -505,6 +505,23 @@
     }
     .btn-tool:hover { background: var(--navy); color: #fff; }
 
+    /* RESOURCE GUIDES */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .resource-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--field);
+      border: 1.5px solid var(--tan);
+      border-radius: 14px;
+      padding: 28px 26px;
+    }
+    .resource-card .tool-desc { flex: 1; }
+    @media (max-width: 800px) { .resource-grid { grid-template-columns: 1fr; } }
+
     /* ── ABOUT ── */
     .about-section {
       background: var(--navy);
@@ -761,7 +778,7 @@
         <div class="offer-error" id="offer-error">Something went wrong. Try again or email hello@mysoloos.com.</div>
       </form>
       <div class="offer-success" id="offer-success">
-        It's on its way. Check your inbox for the checklist and scorecard. And if you want to go deeper — everything below is built for exactly where you're headed.
+        Thanks — check your inbox for the checklist and scorecard. If it does not arrive within a few minutes, check spam or email hello@mysoloos.com. Everything below is built for where you're headed next.
       </div>
     </div>
   </div>
@@ -782,7 +799,7 @@
         <h3 class="product-name">Profit Clarity Checkup</h3>
         <p class="product-desc">Turn one month of scattered sales, costs, fees, expenses, and working time into a completed profit diagnosis and three prioritized actions.</p>
         <div class="product-meta">
-          <div class="product-price">$79</div>
+          <div class="product-price">$49</div>
           <div class="product-pages">Personalized analysis<br>Business Control Center included</div>
         </div>
         <a class="btn-buy" href="profit-clarity-checkup/">See the Founding Offer</a>
@@ -925,6 +942,35 @@
   </div>
 </section>
 
+<!-- RESOURCE GUIDES -->
+<section id="resources">
+  <div class="section-wrap">
+    <p class="section-tag">Plain-English Guides</p>
+    <h2 class="section-title">Answer the money question that is slowing you down.</h2>
+    <p class="section-sub">Practical explanations first. Use a tool only when it helps you make the next decision.</p>
+    <div class="resource-grid">
+      <article class="resource-card">
+        <p class="tool-tag">Profit Clarity</p>
+        <h3 class="tool-name">Why am I making sales but not making money?</h3>
+        <p class="tool-desc">Find the five common reasons revenue fails to become profit and the numbers worth checking before trying to sell more.</p>
+        <a href="resources/why-am-i-making-sales-but-not-money.html" class="btn-tool">Find the Profit Leak →</a>
+      </article>
+      <article class="resource-card">
+        <p class="tool-tag">Owner Pay</p>
+        <h3 class="tool-name">How do I pay myself from my solo business?</h3>
+        <p class="tool-desc">Separate the payment-method question from the affordability question and build a more deliberate owner-pay rhythm.</p>
+        <a href="resources/how-to-pay-yourself-solo-business.html" class="btn-tool">Understand Owner Pay →</a>
+      </article>
+      <article class="resource-card">
+        <p class="tool-tag">Pricing</p>
+        <h3 class="tool-name">What should my price include?</h3>
+        <p class="tool-desc">Build a sustainable price that covers direct costs, fees, overhead, all working time, and profit.</p>
+        <a href="resources/what-should-my-price-include.html" class="btn-tool">Build a Better Price →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ── ABOUT ── -->
 <section class="about-section" id="about">
   <div class="about-inner">
@@ -982,7 +1028,7 @@
     </div>
     <div class="footer-col">
       <h4>Products</h4>
-      <a href="profit-clarity-checkup/">Profit Clarity Checkup — $79</a>
+      <a href="profit-clarity-checkup/">Profit Clarity Checkup — $49</a>
       <a href="ceo-dashboard/">Business Control Center — $37</a>
       <a href="https://saroan.gumroad.com/l/pliies" class="gumroad-button">Bill & Budget — $17</a>
       <a href="https://saroan.gumroad.com/l/terqbh" class="gumroad-button">Side Hustle Tracker — $15</a>
@@ -996,6 +1042,9 @@
       <a href="etsy-fee-calculator/">Etsy Fee Calculator</a>
       <a href="profit-margin-calculator/">Profit Margin Calculator</a>
       <a href="new-business-starter-checklist.html">Business Starter Checklist</a>
+      <a href="resources/why-am-i-making-sales-but-not-money.html">Why Sales Aren't Becoming Profit</a>
+      <a href="resources/how-to-pay-yourself-solo-business.html">How to Pay Yourself</a>
+      <a href="resources/what-should-my-price-include.html">What Your Price Should Include</a>
     </div>
     <div class="footer-col">
       <h4>Company</h4>
