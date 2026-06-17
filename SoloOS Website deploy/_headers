@@ -3,3 +3,6 @@
 
 /pricing-calculator/*
   Cache-Control: no-cache, no-store, must-revalidate
+
+/ceo-dashboard/*
+  Cache-Control: no-cache, no-store, must-revalidate
