@@ -21,8 +21,8 @@
   <header class="header"><a href="/">MySoloOS</a></header>
   <main>
     <h1>Profit Clarity Checkup Intake</h1>
-    <p class="lead">Use one recent, reasonably typical month. Exact numbers are helpful, but honest estimates are better than leaving important costs out.</p>
-    <p class="notice"><strong>Privacy:</strong> This page calculates locally in your browser. Do not enter bank credentials, account numbers, tax IDs, customer names, or other sensitive information. Download the completed summary and send it only using the instructions provided with your checkup.</p>
+    <p class="lead">Use one recent, reasonably typical month. Exact numbers are helpful, but honest estimates are better than leaving important costs or record gaps out.</p>
+    <p class="notice"><strong>Privacy:</strong> This page calculates locally in your browser. Do not enter bank credentials, full account numbers, tax IDs, customer names, or other sensitive information. For business records, list what exists and where it lives; do not paste private identifiers.</p>
     <div class="layout">
       <form class="panel" id="intake">
         <h2>Your summarized month</h2><p class="intro">Fields marked optional help make the final recommendations more useful.</p>
@@ -51,6 +51,8 @@
           <div class="section-title">Context</div>
           <div class="field full"><label for="uncertain">Which numbers are estimated or uncertain?</label><div class="input" style="height:auto"><textarea id="uncertain"></textarea></div></div>
           <div class="field full"><label for="question">What business-money question worries you most right now?</label><div class="input" style="height:auto"><textarea id="question"></textarea></div></div>
+          <div class="field full"><label for="recordGaps">Which business records are missing, scattered, or hard to find?</label><div class="input" style="height:auto"><textarea id="recordGaps" placeholder="Examples: EIN letter location, sales tax permit, resale certificate, bank statement folder, state filing docs, vendor application info. Do not paste private ID numbers."></textarea></div><small>List record names and locations only. Do not enter sensitive numbers.</small></div>
+          <div class="field full"><label for="formsNeeded">Any forms, applications, or setup tasks you need these numbers for?</label><div class="input" style="height:auto"><textarea id="formsNeeded" placeholder="Examples: vendor account, wholesale application, sales tax filing, bank setup, platform verification, W-9 request."></textarea></div></div>
           <div class="field full"><label>Top offers or sales channels (optional)</label>
             <table class="offer-table"><thead><tr><th>Offer / channel</th><th>Revenue</th><th>Direct costs + fees</th><th>Hours</th></tr></thead><tbody>
               <tr><td><input id="offer1Name"></td><td><input id="offer1Revenue" type="number" min="0" step=".01"></td><td><input id="offer1Costs" type="number" min="0" step=".01"></td><td><input id="offer1Hours" type="number" min="0" step=".25"></td></tr>
@@ -72,7 +74,7 @@
     </div>
   </main>
   <script>
-    const ids=["business","month","type","salesCount","revenue","refunds","directCosts","shipping","fees","ads","software","otherExpenses","hours","hourlyGoal","uncertain","question","offer1Name","offer1Revenue","offer1Costs","offer1Hours","offer2Name","offer2Revenue","offer2Costs","offer2Hours","offer3Name","offer3Revenue","offer3Costs","offer3Hours"];
+    const ids=["business","month","type","salesCount","revenue","refunds","directCosts","shipping","fees","ads","software","otherExpenses","hours","hourlyGoal","uncertain","question","recordGaps","formsNeeded","offer1Name","offer1Revenue","offer1Costs","offer1Hours","offer2Name","offer2Revenue","offer2Costs","offer2Hours","offer3Name","offer3Revenue","offer3Costs","offer3Hours"];
     const $=id=>document.getElementById(id),n=id=>Math.max(0,Number($(id).value)||0),money=v=>(v<0?"-$":"$")+Math.abs(v).toFixed(2);
     function calculate(){
       const netRevenue=n("revenue")-n("refunds"),expenses=n("directCosts")+n("shipping")+n("fees")+n("ads")+n("software")+n("otherExpenses"),operating=netRevenue-expenses,hours=n("hours"),labor=hours*n("hourlyGoal"),real=operating-labor,margin=netRevenue?operating/netRevenue*100:0,effective=hours?operating/hours:0;
@@ -81,7 +83,7 @@
       const state={};ids.forEach(id=>state[id]=$(id).value);localStorage.setItem("mysoloos-profit-checkup-intake",JSON.stringify(state));
     }
     function download(){
-      calculate();const data={version:1,createdAt:new Date().toISOString(),notice:"Summarized business information only. No bank credentials, account numbers, tax IDs, or customer data.",fields:{}};ids.forEach(id=>data.fields[id]=$(id).value);
+      calculate();const data={version:1,createdAt:new Date().toISOString(),notice:"Summarized business information and high-level record locations only. No bank credentials, full account numbers, tax IDs, customer data, or private identifiers.",fields:{}};ids.forEach(id=>data.fields[id]=$(id).value);
       const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=`mysoloos-profit-checkup-${$("month").value||"intake"}.json`;a.click();URL.revokeObjectURL(url);
     }
     ids.forEach(id=>$(id).addEventListener("input",calculate));$("download").addEventListener("click",download);$("clear").addEventListener("click",()=>{if(confirm("Clear all intake data saved in this browser?")){localStorage.removeItem("mysoloos-profit-checkup-intake");$("intake").reset();calculate()}});
