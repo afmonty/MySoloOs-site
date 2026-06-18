@@ -6,3 +6,6 @@
 
 /ceo-dashboard/*
   Cache-Control: no-cache, no-store, must-revalidate
+
+/ai-for-bookkeepers/*
+  Cache-Control: no-cache, no-store, must-revalidate
