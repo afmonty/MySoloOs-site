@@ -80,6 +80,8 @@
     .path { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; counter-reset:path; }
     .path-card { background:#fff; border:1px solid var(--tan); border-radius:16px; padding:24px; position:relative; }
     .path-card::before { counter-increment:path; content:counter(path); display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:var(--gold); color:var(--navy); font-weight:800; margin-bottom:16px; }
+    .tool-card .next-step { display:block; color:var(--gold); font-size:13px; font-weight:800; text-decoration:none; margin-top:auto; }
+    .tool-card .next-step:hover { color:var(--gold2); }
     .resource-list { display:grid; gap:13px; }
     .resource-link { background:#fff; border:1px solid var(--tan); border-radius:14px; padding:18px 20px; text-decoration:none; display:grid; gap:3px; }
     .resource-link strong { font-family:"Playfair Display",Georgia,serif; font-size:21px; }
@@ -96,7 +98,7 @@
     @media (max-width:900px) {
       .hero-grid,.grid-3,.grid-2,.path,.footer-grid { grid-template-columns:1fr; }
       .hero { padding-top:55px; }
-      .nav-links a:not(.nav-cta) { display:none; }
+      .nav-links a:nth-child(n+3) { display:none; }
     }
     @media (max-width:560px) {
       nav { padding:0 18px; }
@@ -109,23 +111,21 @@
   <nav>
     <a class="logo" href="/">SoloOS</a>
     <div class="nav-links">
-      <a href="#bookkeepers">Bookkeepers</a>
-      <a href="#solo-business">Solo Business</a>
+      <a href="#tools">Tools</a>
       <a href="#free-tools">Free Tools</a>
-      <a class="nav-cta" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=nav_checkout">Get the Kit</a>
+      <a href="#resources">Resources</a>
+      <a href="#about">About</a>
     </div>
   </nav>
 
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="kicker">The current focus</p>
-        <h1>Safe AI workflows for bookkeepers. Simple money systems for solo owners.</h1>
-        <p class="hero-sub">SoloOS is being focused around practical tools that solve immediate work problems: safer AI use for bookkeepers, cleaner money routines for small solo businesses, and free calculators that answer the first question fast.</p>
-        <div class="plain-proof">The main offer right now is <strong>AI for Bookkeepers</strong>, with a higher-touch setup option for people who want the workflows built with them.</div>
+        <h1>Practical tools for people running a business alone.</h1>
+        <p class="hero-sub">Spreadsheets, systems, and shortcuts built by a bookkeeper with 20 years inside real businesses. No fluff. No subscriptions. Download and use today.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=hero_checkout">Get AI for Bookkeepers - $47</a>
-          <a class="btn btn-secondary" href="ai-for-bookkeepers/">Preview what's inside</a>
+          <a class="btn btn-primary" href="#tools">See All Tools</a>
+          <a class="btn btn-secondary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=hero_checkout">Get AI for Bookkeepers - $47</a>
         </div>
       </div>
       <aside class="hero-card">
@@ -142,49 +142,31 @@
     </div>
   </header>
 
-  <section id="bookkeepers">
+  <section id="tools">
     <div class="wrap">
       <div class="section-head">
-        <p class="kicker">For bookkeepers</p>
-        <h2 class="section-title">Use AI where it helps, not where it risks trust.</h2>
-        <p class="section-sub">This is the clearest commercial lane because it matches Anna's bookkeeping experience and a real buyer fear: "I know AI could help, but I cannot paste client data into a public tool."</p>
+        <p class="kicker">Tools</p>
+        <h2 class="section-title">Pick the tool that solves the problem in front of you.</h2>
+        <p class="section-sub">Start with the clearest problem: safer AI workflows, a simple money routine, a profit diagnosis, or one place to see the business.</p>
       </div>
       <div class="grid-3">
         <article class="card featured">
           <p class="meta">$47 kit</p>
           <h3>AI for Bookkeepers</h3>
           <p>Prompt library, privacy rules, fake examples, and a one-hour implementation plan for careful bookkeepers.</p>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=bookkeeper_section_kit">Get the Kit - $47</a>
+          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Get the Kit - $47</a>
         </article>
         <article class="card">
           <p class="meta">$297 setup</p>
           <h3>Safe AI Workflow Setup</h3>
           <p>Done-with-you help to set up reusable workflows for missing-items emails, cleanup notes, monthly close summaries, and SOP drafts.</p>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-bookkeepers-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=bookkeeper_section">Book Setup</a>
+          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-bookkeepers-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Book Setup</a>
         </article>
-        <article class="card">
-          <p class="meta">Free resource</p>
-          <h3>Client Email Templates</h3>
-          <p>Ten reusable emails for missing receipts, uncategorized transactions, cleanup updates, scope boundaries, and monthly summaries.</p>
-          <a class="btn btn-primary" href="resources/bookkeeper-client-email-templates.html">Use the Templates</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="solo-business" class="light">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="kicker">For solo business owners</p>
-        <h2 class="section-title">Clean up the money routine before buying another complicated tool.</h2>
-        <p class="section-sub">This lane is for freelancers, creators, consultants, Etsy sellers, and service providers who need a weekly system for invoices, payments, expenses, receipts, and decisions.</p>
-      </div>
-      <div class="grid-3">
         <article class="card">
           <p class="meta">$97 setup</p>
           <h3>Simple Money System Setup</h3>
           <p>A 30-minute setup call plus a practical routine for invoice/payment tracking, expense capture, and a weekly money check-in.</p>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=solo_business">Book Setup</a>
+          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Book Setup</a>
         </article>
         <article class="card">
           <p class="meta">$49 service</p>
@@ -198,30 +180,12 @@
           <p>A browser-based control center for solo business owners who need one place for profit, expenses, invoices, company records, and next actions.</p>
           <a class="btn btn-primary" href="ceo-dashboard/">See Control Center</a>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="section-head">
-        <p class="kicker">How to start</p>
-        <h2 class="section-title">Choose the tool that matches the problem in front of you.</h2>
-        <p class="section-sub">Start with the smallest useful next step: a safer AI workflow, a cleaner money routine, or a control center for the numbers and records you keep needing.</p>
-      </div>
-      <div class="path">
-        <div class="path-card">
-          <h3>Use AI safely</h3>
-          <p>For bookkeepers who want help with client emails, cleanup notes, summaries, and SOP drafts without exposing private client data.</p>
-        </div>
-        <div class="path-card">
-          <h3>Clean up the money routine</h3>
-          <p>For solo owners who need a simple way to track invoices, payments, expenses, receipts, and weekly money decisions.</p>
-        </div>
-        <div class="path-card">
-          <h3>Run the business from one place</h3>
-          <p>For owners who need profit, expenses, invoices, company records, and next actions connected in one practical dashboard.</p>
-        </div>
+        <article class="card">
+          <p class="meta">Free resource</p>
+          <h3>Client Email Templates</h3>
+          <p>Ten reusable emails for missing receipts, uncategorized transactions, cleanup updates, scope boundaries, and monthly summaries.</p>
+          <a class="btn btn-primary" href="resources/bookkeeper-client-email-templates.html">Use the Templates</a>
+        </article>
       </div>
     </div>
   </section>
@@ -234,22 +198,30 @@
         <p class="section-sub">These answer real questions people already search for. They are traffic assets and trust builders, not the main paid offer.</p>
       </div>
       <div class="grid-2">
-        <a class="resource-link" href="pricing-calculator/">
+        <article class="card tool-card">
           <strong>Freelance Pricing Calculator</strong>
-          <span>Find the rate that covers taxes, expenses, and income goals.</span>
-        </a>
-        <a class="resource-link" href="etsy-fee-calculator/">
+          <p>Find the rate that covers taxes, expenses, and income goals.</p>
+          <a class="next-step" href="pricing-calculator/">Use the calculator</a>
+          <a class="next-step" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=pricing">Then see Simple Money System</a>
+        </article>
+        <article class="card tool-card">
           <strong>Etsy Fee Calculator</strong>
-          <span>See what fees do to a sale before margin disappears.</span>
-        </a>
-        <a class="resource-link" href="profit-margin-calculator/">
+          <p>See what fees do to a sale before margin disappears.</p>
+          <a class="next-step" href="etsy-fee-calculator/">Use the calculator</a>
+          <a class="next-step" href="profit-clarity-checkup/?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=etsy_fees">Then see Profit Clarity Checkup</a>
+        </article>
+        <article class="card tool-card">
           <strong>Real Profit Margin Calculator</strong>
-          <span>Calculate what a sale actually leaves after costs, labor, fees, and tax planning.</span>
-        </a>
-        <a class="resource-link" href="new-business-starter-checklist.html">
+          <p>Calculate what a sale actually leaves after costs, labor, fees, and tax planning.</p>
+          <a class="next-step" href="profit-margin-calculator/">Use the calculator</a>
+          <a class="next-step" href="profit-clarity-checkup/?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=profit_margin">Then see Profit Clarity Checkup</a>
+        </article>
+        <article class="card tool-card">
           <strong>New Business Starter Checklist</strong>
-          <span>Set up structure, EIN, banking, bookkeeping, licenses, and launch basics in order.</span>
-        </a>
+          <p>Set up structure, EIN, banking, bookkeeping, licenses, and launch basics in order.</p>
+          <a class="next-step" href="new-business-starter-checklist.html">Use the checklist</a>
+          <a class="next-step" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=starter_checklist">Then see Simple Money System</a>
+        </article>
       </div>
     </div>
   </section>
@@ -286,8 +258,8 @@
     <div class="wrap about">
       <p class="kicker">Why trust this</p>
       <h2 class="section-title">Built by someone who has been inside the books.</h2>
-      <p>I'm Anna. I have spent years working in and around bookkeeping, small business finances, operations, and the messy middle where owners are trying to make decisions with incomplete information.</p>
-      <p>That is why the current focus is not generic "AI for business" content. It is careful, specific, practical help for people doing real work with real risk: bookkeepers protecting client data, and solo owners trying to understand what came in, what went out, and what to fix next.</p>
+      <p>I'm Anna. I spent 20 years as a bookkeeper inside real businesses - construction, automotive, logistics, retail. I know what the books look like when things are working, and what they look like when they're not.</p>
+      <p>The tools here are built from that experience. They solve problems I watched business owners struggle with for two decades. Not generic templates - the tools I wished existed when I was inside those businesses.</p>
       <p>SoloOS is a product of Sa Roan Holdings LLC.</p>
     </div>
   </section>
