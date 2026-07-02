@@ -16,7 +16,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script src="https://gumroad.com/js/gumroad.js"></script>
   <style>
     :root {
       --navy:#1B2A4E;
@@ -47,6 +46,8 @@
     h1 { font-size:clamp(42px,6vw,72px); letter-spacing:-.035em; margin-bottom:22px; }
     .hero-sub { color:rgba(255,255,255,.72); font-size:18px; max-width:650px; margin-bottom:26px; }
     .plain-proof { background:rgba(255,255,255,.08); border-left:5px solid var(--gold); border-radius:14px; padding:18px 20px; color:#fff; margin:28px 0; }
+    .checkout-note { color:rgba(255,255,255,.58); font-size:12px; margin-top:10px; }
+    .hero-card .checkout-note, .card .checkout-note, .testing-note .checkout-note { color:var(--muted); }
     .actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
     .btn { display:inline-block; border-radius:9px; padding:14px 21px; text-decoration:none; font-weight:800; font-size:14px; border:1.5px solid transparent; }
     .btn-primary { background:var(--gold); color:var(--navy); }
@@ -96,15 +97,20 @@
     footer a { display:block; color:rgba(255,255,255,.68); text-decoration:none; font-size:13px; margin:8px 0; }
     footer a:hover { color:var(--gold); }
     .small { font-size:12px; color:rgba(255,255,255,.42); margin-top:20px; }
+    .sticky-checkout { position:fixed; left:0; right:0; bottom:0; z-index:80; background:var(--deep); border-top:2px solid var(--gold); padding:12px 18px; display:flex; justify-content:center; align-items:center; gap:14px; box-shadow:0 -12px 28px rgba(0,0,0,.22); }
+    .sticky-checkout span { color:#fff; font-size:13px; font-weight:800; }
+    .sticky-checkout a { background:var(--gold); color:var(--navy); border-radius:8px; padding:10px 14px; font-size:12px; font-weight:800; text-decoration:none; white-space:nowrap; }
     @media (max-width:900px) {
       .hero-grid,.grid-3,.grid-2,.path,.footer-grid { grid-template-columns:1fr; }
       .hero { padding-top:55px; }
-      .nav-links a:nth-child(n+3) { display:none; }
+      .nav-links a:nth-child(3), .nav-links a:nth-child(4) { display:none; }
     }
     @media (max-width:560px) {
       nav { padding:0 18px; }
       .hero, section { padding-left:18px; padding-right:18px; }
       .actions .btn { width:100%; text-align:center; }
+      .sticky-checkout { align-items:flex-start; flex-direction:column; gap:8px; }
+      .sticky-checkout a { width:100%; text-align:center; }
     }
   </style>
 </head>
@@ -116,6 +122,7 @@
       <a href="#free-tools">Free Tools</a>
       <a href="#resources">Resources</a>
       <a href="#about">About</a>
+      <a class="nav-cta" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=nav_checkout">Buy AI Kit</a>
     </div>
   </nav>
 
@@ -123,11 +130,12 @@
     <div class="wrap hero-grid">
       <div>
         <h1>Practical tools for people running a business alone.</h1>
-        <p class="hero-sub">Spreadsheets, systems, and shortcuts built by a bookkeeper with 20 years inside real businesses. No fluff. No subscriptions. Download and use today.</p>
+        <p class="hero-sub">Spreadsheets, systems, and shortcuts built from 20 years inside real business books. No fluff. No subscriptions. Download and use today.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="#tools">See All Tools</a>
-          <a class="btn btn-secondary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=hero_checkout">Get AI for Bookkeepers - $47</a>
+          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=hero_checkout">Buy AI for Bookkeepers - $47</a>
+          <a class="btn btn-secondary" href="#free-tools">Use a Free Tool First</a>
         </div>
+        <p class="checkout-note">Secure checkout opens on Gumroad. Instant digital download.</p>
       </div>
       <aside class="hero-card">
         <img src="ai-for-bookkeepers/ai-for-bookkeepers-preview.svg" alt="AI for Bookkeepers product preview" />
@@ -138,7 +146,8 @@
           <span class="price-pill">$47 self-serve kit</span>
           <span class="price-pill">$297 setup add-on</span>
         </div>
-        <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=featured_card">Get the Kit - $47</a>
+        <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=featured_card">Buy on Gumroad - $47</a>
+        <p class="checkout-note">SoloOS by Sa Roan Holdings. Secure checkout opens on Gumroad.</p>
       </aside>
     </div>
   </header>
@@ -155,28 +164,32 @@
           <p class="meta">$47 kit</p>
           <h3>AI for Bookkeepers</h3>
           <p>Prompt library, privacy rules, fake examples, and a one-hour implementation plan for careful bookkeepers.</p>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Get the Kit - $47</a>
+          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Buy on Gumroad - $47</a>
+          <p class="checkout-note">Instant digital download.</p>
         </article>
         <article class="card">
           <p class="meta">$297 setup</p>
           <h3>Safe AI Workflow Setup</h3>
           <p>Done-with-you help to set up reusable workflows for missing-items emails, cleanup notes, monthly close summaries, and SOP drafts.</p>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-bookkeepers-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Book Setup</a>
+          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-bookkeepers-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Book on Gumroad - $297</a>
+          <p class="checkout-note">Bookable setup offer. Checkout opens on Gumroad.</p>
         </article>
         <article class="card">
           <p class="meta">$97 setup</p>
           <h3>Simple Money System Setup</h3>
           <p>A 30-minute setup call plus a practical routine for invoice/payment tracking, expense capture, and a weekly money check-in.</p>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Book Setup</a>
+          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Book on Gumroad - $97</a>
+          <p class="checkout-note">Bookable setup offer. Checkout opens on Gumroad.</p>
         </article>
         <article class="card">
           <p class="meta">$49 service</p>
           <h3>Profit Clarity Checkup</h3>
           <p>A focused look at one month of sales, fees, expenses, and working time so you can see where the money is leaking.</p>
-          <a class="btn btn-primary" href="profit-clarity-checkup/">See Checkup</a>
+          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/profit-clarity-checkup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Buy on Gumroad - $49</a>
+          <p class="checkout-note">Private intake link is included after checkout.</p>
         </article>
         <article class="card">
-          <p class="meta">$37 founding version</p>
+          <p class="meta">$37 one-time purchase</p>
           <h3>Business Control Center</h3>
           <p>A browser-based control center for solo business owners who need one place for profit, expenses, invoices, company records, and next actions.</p>
           <a class="btn btn-primary" href="ceo-dashboard/">See Control Center</a>
@@ -203,26 +216,33 @@
           <strong>Freelance Pricing Calculator</strong>
           <p>Find the rate that covers taxes, expenses, and income goals.</p>
           <a class="next-step" href="pricing-calculator/">Use the calculator</a>
-          <a class="next-step" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=pricing">Then see Simple Money System</a>
+          <a class="next-step" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=pricing">Book the $97 money setup</a>
         </article>
         <article class="card tool-card">
           <strong>Etsy Fee Calculator</strong>
           <p>See what fees do to a sale before margin disappears.</p>
           <a class="next-step" href="etsy-fee-calculator/">Use the calculator</a>
-          <a class="next-step" href="profit-clarity-checkup/?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=etsy_fees">Then see Profit Clarity Checkup</a>
+          <a class="next-step" href="https://saroan.gumroad.com/l/profit-clarity-checkup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=etsy_fees">Buy the $49 profit checkup</a>
         </article>
         <article class="card tool-card">
           <strong>Real Profit Margin Calculator</strong>
           <p>Calculate what a sale actually leaves after costs, labor, fees, and tax planning.</p>
           <a class="next-step" href="profit-margin-calculator/">Use the calculator</a>
-          <a class="next-step" href="profit-clarity-checkup/?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=profit_margin">Then see Profit Clarity Checkup</a>
+          <a class="next-step" href="https://saroan.gumroad.com/l/profit-clarity-checkup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=profit_margin">Buy the $49 profit checkup</a>
         </article>
         <article class="card tool-card">
           <strong>New Business Starter Checklist</strong>
           <p>Set up structure, EIN, banking, bookkeeping, licenses, and launch basics in order.</p>
           <a class="next-step" href="new-business-starter-checklist.html">Use the checklist</a>
-          <a class="next-step" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=starter_checklist">Then see Simple Money System</a>
+          <a class="next-step" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=starter_checklist">Book the $97 money setup</a>
         </article>
+      </div>
+      <div class="testing-note" style="margin-top:28px;">
+        <p class="kicker">Traffic but no clarity?</p>
+        <h3>Have sales, site visits, or Etsy views but no idea what is working?</h3>
+        <p>Send one month of sales, fees, expenses, and working time. I will look for the obvious profit leaks and give you the next money decision to make.</p>
+        <a class="btn btn-primary" href="https://saroan.gumroad.com/l/profit-clarity-checkup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=clarity_strip">Buy the $49 Profit Checkup</a>
+        <p class="checkout-note">Secure Gumroad checkout. Private intake link included after purchase.</p>
       </div>
     </div>
   </section>
@@ -263,7 +283,7 @@
     <div class="wrap about">
       <p class="kicker">Why trust this</p>
       <h2 class="section-title">Built by someone who has been inside the books.</h2>
-      <p>I'm Anna. I spent 20 years as a bookkeeper inside real businesses - construction, automotive, logistics, retail. I know what the books look like when things are working, and what they look like when they're not.</p>
+      <p>I'm Anna. I spent 20 years inside real business books - construction, automotive, logistics, retail. I know what the books look like when things are working, and what they look like when they're not.</p>
       <p>The tools here are built from that experience. They solve problems I watched business owners struggle with for two decades. Not generic templates - the tools I wished existed when I was inside those businesses.</p>
       <p>SoloOS is owned and operated by Sa Roan Holdings LLC.</p>
     </div>
@@ -284,7 +304,7 @@
       <div>
         <h4>Solo Business</h4>
         <a href="https://saroan.gumroad.com/l/simple-money-system-setup">Simple Money System Setup</a>
-        <a href="profit-clarity-checkup/">Profit Clarity Checkup</a>
+        <a href="https://saroan.gumroad.com/l/profit-clarity-checkup?utm_source=mysoloos&utm_medium=footer&utm_campaign=sitewide">Profit Clarity Checkup</a>
         <a href="ceo-dashboard/">Business Control Center Preview</a>
       </div>
       <div>
@@ -293,10 +313,15 @@
         <a href="etsy-fee-calculator/">Etsy Fee Calculator</a>
         <a href="profit-margin-calculator/">Profit Margin Calculator</a>
         <a href="privacy.html">Privacy Policy</a>
-        <a href="mailto:hello@mysoloos.com">hello@mysoloos.com</a>
+        <a href="mailto:hello@mysoloos.com?subject=SoloOS%20question">Contact SoloOS</a>
       </div>
     </div>
   </footer>
+
+  <div class="sticky-checkout" aria-label="Buy SoloOS AI for Bookkeepers">
+    <span>Most useful paid offer: AI for Bookkeepers.</span>
+    <a href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=sticky&utm_campaign=homepage_checkout">Buy on Gumroad - $47</a>
+  </div>
 
   <script>
     document.querySelectorAll('a[href^="#"]').forEach(link => {
