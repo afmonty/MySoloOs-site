@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SoloOS - Safe AI Workflows and Simple Business Systems</title>
-  <meta name="description" content="Practical tools and setup help for bookkeepers and solo business owners: AI for Bookkeepers, Safe AI Workflow Setup, Simple Money System Setup, and free business calculators." />
-  <meta property="og:title" content="SoloOS - Safe AI Workflows and Simple Business Systems" />
-  <meta property="og:description" content="Start with safe AI workflows for bookkeepers, simple money setup help, or free tools for pricing, profit, and business decisions." />
+  <title>SoloOS - Simple Business Tools for People Running the Whole Thing Alone</title>
+  <meta name="description" content="SoloOS creates practical business tools and setup help for bookkeepers, freelancers, sellers, and solo business owners who need clearer money systems and safer AI workflows." />
+  <meta property="og:title" content="SoloOS - Simple Business Tools" />
+  <meta property="og:description" content="Safe AI workflows, simple money setup, free calculators, and practical business tools for people running the whole thing alone." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mysoloos.com" />
   <meta property="og:image" content="https://mysoloos.com/ai-for-bookkeepers/ai-for-bookkeepers-preview.svg" />
@@ -17,330 +17,81 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --navy:#1B2A4E;
-      --deep:#111d37;
-      --gold:#C49A45;
-      --gold2:#d4ad5e;
-      --cream:#FAF7F2;
-      --field:#FBF5EA;
-      --tan:#E8DFD0;
-      --muted:#606677;
-      --green:#365c45;
-    }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    html { scroll-behavior:smooth; }
-    body { font-family:Inter,Arial,sans-serif; background:var(--cream); color:var(--navy); line-height:1.65; }
-    a { color:inherit; }
-    nav { position:sticky; top:0; z-index:20; height:64px; background:var(--deep); display:flex; align-items:center; justify-content:space-between; padding:0 34px; }
-    .logo { color:var(--gold); text-decoration:none; font-weight:800; letter-spacing:.16em; text-transform:uppercase; font-size:14px; }
-    .nav-links { display:flex; gap:22px; align-items:center; }
-    .nav-links a { color:rgba(255,255,255,.68); text-decoration:none; font-size:13px; font-weight:700; }
-    .nav-links a:hover { color:var(--gold); }
-    .nav-links .nav-cta { background:var(--gold); color:var(--navy); padding:9px 15px; border-radius:8px; }
-    .hero { background:linear-gradient(135deg,var(--deep),var(--navy)); color:#fff; padding:78px 24px 84px; }
-    .wrap { max-width:1120px; margin:0 auto; }
-    .hero-grid { display:grid; grid-template-columns:.92fr 1.08fr; gap:44px; align-items:center; }
-    .kicker { color:var(--gold); font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; margin-bottom:15px; }
-    h1,h2,h3 { font-family:"Playfair Display",Georgia,serif; line-height:1.13; }
-    h1 { font-size:clamp(42px,6vw,72px); letter-spacing:-.035em; margin-bottom:22px; }
-    .hero-sub { color:rgba(255,255,255,.72); font-size:18px; max-width:650px; margin-bottom:26px; }
-    .plain-proof { background:rgba(255,255,255,.08); border-left:5px solid var(--gold); border-radius:14px; padding:18px 20px; color:#fff; margin:28px 0; }
-    .checkout-note { color:rgba(255,255,255,.58); font-size:12px; margin-top:10px; }
-    .hero-card .checkout-note, .card .checkout-note, .testing-note .checkout-note { color:var(--muted); }
-    .actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
-    .btn { display:inline-block; border-radius:9px; padding:14px 21px; text-decoration:none; font-weight:800; font-size:14px; border:1.5px solid transparent; }
-    .btn-primary { background:var(--gold); color:var(--navy); }
-    .btn-primary:hover { background:var(--gold2); }
-    .btn-secondary { border-color:rgba(255,255,255,.28); color:#fff; }
-    .btn-secondary:hover { border-color:var(--gold); color:var(--gold); }
-    .hero-card { background:#fff; color:var(--navy); border-radius:22px; padding:26px; box-shadow:0 28px 70px rgba(0,0,0,.32); border:1px solid rgba(255,255,255,.12); }
-    .hero-card img { width:100%; display:block; border-radius:14px; background:var(--field); border:1px solid var(--tan); margin-bottom:18px; }
-    .hero-card h2 { font-size:28px; margin-bottom:8px; }
-    .hero-card p { color:var(--muted); font-size:14px; margin-bottom:18px; }
-    .price-row { display:flex; gap:10px; flex-wrap:wrap; margin:16px 0; }
-    .price-pill { background:var(--field); border:1px solid var(--tan); border-radius:999px; padding:7px 11px; font-size:12px; font-weight:800; }
-    section { padding:72px 24px; }
-    .section-head { max-width:760px; margin-bottom:34px; }
-    .section-title { font-size:clamp(32px,4vw,48px); color:var(--navy); margin-bottom:14px; }
-    .section-sub { color:var(--muted); font-size:16px; max-width:720px; }
-    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
-    .card { background:#fff; border:1px solid var(--tan); border-radius:18px; padding:25px; box-shadow:0 16px 38px rgba(27,42,78,.06); display:flex; flex-direction:column; }
-    .card.featured { background:var(--navy); color:#fff; border-color:var(--navy); }
-    .card h3 { font-size:25px; margin-bottom:10px; }
-    .card p { color:var(--muted); font-size:14px; margin-bottom:16px; flex:1; }
-    .card.featured p { color:rgba(255,255,255,.68); }
-    .meta { color:var(--gold); text-transform:uppercase; letter-spacing:.12em; font-size:10px; font-weight:800; margin-bottom:10px; }
-    .card ul { padding-left:19px; color:var(--muted); font-size:14px; margin-bottom:18px; }
-    .card.featured ul { color:rgba(255,255,255,.72); }
-    .light { background:var(--field); }
-    .dark { background:var(--deep); color:#fff; }
-    .dark .section-title { color:#fff; }
-    .dark .section-sub, .dark p { color:rgba(255,255,255,.68); }
-    .path { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; counter-reset:path; }
-    .path-card { background:#fff; border:1px solid var(--tan); border-radius:16px; padding:24px; position:relative; }
-    .path-card::before { counter-increment:path; content:counter(path); display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:var(--gold); color:var(--navy); font-weight:800; margin-bottom:16px; }
-    .tool-card .next-step { display:block; color:var(--gold); font-size:13px; font-weight:800; text-decoration:none; margin-top:auto; }
-    .tool-card .next-step:hover { color:var(--gold2); }
-    .resource-list { display:grid; gap:13px; }
-    .resource-link { background:#fff; border:1px solid var(--tan); border-radius:14px; padding:18px 20px; text-decoration:none; display:grid; gap:3px; }
-    .resource-link strong { font-family:"Playfair Display",Georgia,serif; font-size:21px; }
-    .resource-link span { color:var(--muted); font-size:13px; }
-    .resource-link .read-link { color:var(--gold); font-size:13px; font-weight:800; margin-top:8px; }
-    .testing-note { background:#fff; border-left:6px solid var(--green); border-radius:15px; padding:24px; max-width:850px; }
-    .about { max-width:850px; }
-    .about p { color:rgba(255,255,255,.7); margin-top:16px; }
-    footer { background:#0b1428; color:rgba(255,255,255,.55); padding:44px 24px; }
-    .footer-grid { max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1.1fr repeat(3,1fr); gap:28px; }
-    footer h4 { color:#fff; margin-bottom:12px; font-size:13px; text-transform:uppercase; letter-spacing:.12em; }
-    footer a { display:block; color:rgba(255,255,255,.68); text-decoration:none; font-size:13px; margin:8px 0; }
-    footer a:hover { color:var(--gold); }
-    .small { font-size:12px; color:rgba(255,255,255,.42); margin-top:20px; }
-    .sticky-checkout { position:fixed; left:0; right:0; bottom:0; z-index:80; background:var(--deep); border-top:2px solid var(--gold); padding:12px 18px; display:flex; justify-content:center; align-items:center; gap:14px; box-shadow:0 -12px 28px rgba(0,0,0,.22); }
-    .sticky-checkout span { color:#fff; font-size:13px; font-weight:800; }
-    .sticky-checkout a { background:var(--gold); color:var(--navy); border-radius:8px; padding:10px 14px; font-size:12px; font-weight:800; text-decoration:none; white-space:nowrap; }
-    @media (max-width:900px) {
-      .hero-grid,.grid-3,.grid-2,.path,.footer-grid { grid-template-columns:1fr; }
-      .hero { padding-top:55px; }
-      .nav-links a:nth-child(3), .nav-links a:nth-child(4) { display:none; }
-    }
-    @media (max-width:560px) {
-      nav { padding:0 18px; }
-      .hero, section { padding-left:18px; padding-right:18px; }
-      .actions .btn { width:100%; text-align:center; }
-      .sticky-checkout { align-items:flex-start; flex-direction:column; gap:8px; }
-      .sticky-checkout a { width:100%; text-align:center; }
-    }
+    :root{--navy:#1B2A4E;--deep:#111d37;--gold:#C49A45;--gold2:#d4ad5e;--cream:#FAF7F2;--field:#FBF5EA;--tan:#E8DFD0;--muted:#606677;--green:#365c45}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,Arial,sans-serif;background:var(--cream);color:var(--navy);line-height:1.65}a{color:inherit}nav{position:sticky;top:0;z-index:20;background:var(--deep);display:flex;align-items:center;justify-content:space-between;padding:18px 28px}.logo{color:var(--gold);text-decoration:none;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:14px}.nav-links{display:flex;gap:20px;align-items:center}.nav-links a{color:rgba(255,255,255,.72);text-decoration:none;font-size:13px;font-weight:700}.nav-links .nav-cta{background:var(--gold);color:var(--navy);padding:9px 15px;border-radius:8px}.hero{background:linear-gradient(135deg,var(--deep),var(--navy));color:#fff;padding:76px 24px 84px}.wrap{max-width:1120px;margin:0 auto}.hero-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:42px;align-items:center}.kicker{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.13}h1{font-size:clamp(42px,6vw,72px);letter-spacing:-.035em;margin-bottom:22px}.hero-sub{color:rgba(255,255,255,.74);font-size:18px;max-width:650px;margin-bottom:26px}.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.btn{display:inline-block;border-radius:9px;padding:14px 21px;text-decoration:none;font-weight:800;font-size:14px;border:1.5px solid transparent}.btn-primary{background:var(--gold);color:var(--navy)}.btn-primary:hover{background:var(--gold2)}.btn-secondary{border-color:rgba(255,255,255,.32);color:#fff}.checkout-note{color:rgba(255,255,255,.6);font-size:12px;margin-top:10px}.hero-card{background:#fff;color:var(--navy);border-radius:22px;padding:26px;box-shadow:0 28px 70px rgba(0,0,0,.32)}.hero-card img{width:100%;display:block;border-radius:14px;background:var(--field);border:1px solid var(--tan);margin-bottom:18px}.hero-card p{color:var(--muted);font-size:14px;margin-bottom:18px}.price-row{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.price-pill{background:var(--field);border:1px solid var(--tan);border-radius:999px;padding:7px 11px;font-size:12px;font-weight:800}section{padding:72px 24px}.section-head{max-width:760px;margin-bottom:34px}.section-title{font-size:clamp(32px,4vw,48px);color:var(--navy);margin-bottom:14px}.section-sub{color:var(--muted);font-size:16px;max-width:720px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.card{background:#fff;border:1px solid var(--tan);border-radius:18px;padding:25px;box-shadow:0 16px 38px rgba(27,42,78,.06);display:flex;flex-direction:column}.card.featured{background:var(--navy);color:#fff;border-color:var(--navy)}.card h3{font-size:25px;margin-bottom:10px}.card p{color:var(--muted);font-size:14px;margin-bottom:16px;flex:1}.card.featured p{color:rgba(255,255,255,.7)}.meta{color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800;margin-bottom:10px}.light{background:var(--field)}.tool-card .next-step{display:block;color:var(--gold);font-size:13px;font-weight:800;text-decoration:none;margin-top:auto}.resource-list{display:grid;gap:13px}.resource-link{background:#fff;border:1px solid var(--tan);border-radius:14px;padding:18px 20px;text-decoration:none;display:grid;gap:3px}.resource-link strong{font-family:"Playfair Display",Georgia,serif;font-size:21px}.resource-link span{color:var(--muted);font-size:13px}.trust{background:#fff;border-left:6px solid var(--green);border-radius:15px;padding:24px;margin-top:28px;max-width:850px}.dark{background:var(--deep);color:#fff}.dark .section-title{color:#fff}.dark p{color:rgba(255,255,255,.7)}footer{background:#0b1428;color:rgba(255,255,255,.55);padding:44px 24px}.footer-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.1fr repeat(3,1fr);gap:28px}footer h4{color:#fff;margin-bottom:12px;font-size:13px;text-transform:uppercase;letter-spacing:.12em}footer a{display:block;color:rgba(255,255,255,.72);text-decoration:none;font-size:13px;margin:8px 0}.small{font-size:12px;color:rgba(255,255,255,.42);margin-top:20px}@media(max-width:900px){.hero-grid,.grid-3,.grid-2,.footer-grid{grid-template-columns:1fr}.nav-links a:not(.nav-cta){display:none}}@media(max-width:560px){nav{padding:16px 18px}.hero,section{padding-left:18px;padding-right:18px}.actions .btn{width:100%;text-align:center}}
   </style>
 </head>
 <body>
   <nav>
     <a class="logo" href="/">SoloOS</a>
     <div class="nav-links">
-      <a href="#tools">Tools</a>
-      <a href="#free-tools">Free Tools</a>
-      <a href="#resources">Resources</a>
-      <a href="#about">About</a>
+      <a href="#tools">Tools</a><a href="#free-tools">Free Tools</a><a href="#resources">Resources</a><a href="#about">About</a>
       <a class="nav-cta" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=nav_checkout">Buy AI Kit</a>
     </div>
   </nav>
-
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <h1>Practical tools for people running a business alone.</h1>
-        <p class="hero-sub">Spreadsheets, systems, and shortcuts built from 20 years inside real business books. No fluff. No subscriptions. Download and use today.</p>
+        <p class="kicker">Business tools for solo owners</p>
+        <h1>Know what came in, what went out, and what to fix next.</h1>
+        <p class="hero-sub">SoloOS builds practical tools for people running the whole thing alone: safer AI workflows, simple money systems, profit clarity, and free calculators that show what your numbers are really doing.</p>
         <div class="actions">
           <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=hero_checkout">Buy AI for Bookkeepers - $47</a>
           <a class="btn btn-secondary" href="#free-tools">Use a Free Tool First</a>
         </div>
-        <p class="checkout-note">Secure checkout opens on Gumroad. Instant digital download.</p>
+        <p class="checkout-note">Paid digital products use secure Gumroad checkout. Setup/checkup services use email confirmation when needed.</p>
       </div>
       <aside class="hero-card">
         <img src="ai-for-bookkeepers/ai-for-bookkeepers-preview.svg" alt="AI for Bookkeepers product preview" />
         <p class="meta">Best starting point</p>
         <h2>AI for Bookkeepers</h2>
         <p>A plain-English starter kit for using AI on client emails, cleanup checklists, summaries, and SOPs without exposing private client data.</p>
-        <div class="price-row">
-          <span class="price-pill">$47 self-serve kit</span>
-          <span class="price-pill">$297 setup add-on</span>
-        </div>
+        <div class="price-row"><span class="price-pill">$47 self-serve kit</span><span class="price-pill">$297 setup add-on</span></div>
         <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=featured_card">Buy on Gumroad - $47</a>
-        <p class="checkout-note">SoloOS by Sa Roan Holdings. Secure checkout opens on Gumroad.</p>
+        <p class="checkout-note">SoloOS by Sa Roan Holdings. Instant digital download.</p>
       </aside>
     </div>
   </header>
-
   <section id="tools">
     <div class="wrap">
-      <div class="section-head">
-        <p class="kicker">Tools</p>
-        <h2 class="section-title">Pick the tool that solves the problem in front of you.</h2>
-        <p class="section-sub">Start with the clearest problem: safer AI workflows, a simple money routine, a profit diagnosis, or one place to see the business.</p>
-      </div>
+      <div class="section-head"><p class="kicker">Tools</p><h2 class="section-title">Pick the tool that solves the problem in front of you.</h2><p class="section-sub">Hard CTAs stay on verified buyer paths. Services that need intake now route through a clean SoloOS request page instead of a mismatched checkout.</p></div>
       <div class="grid-3">
-        <article class="card featured">
-          <p class="meta">$47 kit</p>
-          <h3>AI for Bookkeepers</h3>
-          <p>Prompt library, privacy rules, fake examples, and a one-hour implementation plan for careful bookkeepers.</p>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Buy on Gumroad - $47</a>
-          <p class="checkout-note">Instant digital download.</p>
-        </article>
-        <article class="card">
-          <p class="meta">$297 setup</p>
-          <h3>Safe AI Workflow Setup</h3>
-          <p>Done-with-you help to set up reusable workflows for missing-items emails, cleanup notes, monthly close summaries, and SOP drafts.</p>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-bookkeepers-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Book on Gumroad - $297</a>
-          <p class="checkout-note">Bookable setup offer. Checkout opens on Gumroad.</p>
-        </article>
-        <article class="card">
-          <p class="meta">$97 setup</p>
-          <h3>Simple Money System Setup</h3>
-          <p>A 30-minute setup call plus a practical routine for invoice/payment tracking, expense capture, and a weekly money check-in.</p>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Book on Gumroad - $97</a>
-          <p class="checkout-note">Bookable setup offer. Checkout opens on Gumroad.</p>
-        </article>
-        <article class="card">
-          <p class="meta">$49 service</p>
-          <h3>Profit Clarity Checkup</h3>
-          <p>A focused look at one month of sales, fees, expenses, and working time so you can see where the money is leaking.</p>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/profit-clarity-checkup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Buy on Gumroad - $49</a>
-          <p class="checkout-note">Private intake link is included after checkout.</p>
-        </article>
-        <article class="card">
-          <p class="meta">$37 one-time purchase</p>
-          <h3>Business Control Center</h3>
-          <p>A browser-based control center for solo business owners who need one place for profit, expenses, invoices, company records, and next actions.</p>
-          <a class="btn btn-primary" href="ceo-dashboard/">See Control Center</a>
-        </article>
-        <article class="card">
-          <p class="meta">Free resource</p>
-          <h3>Client Email Templates</h3>
-          <p>Ten reusable emails for missing receipts, uncategorized transactions, cleanup updates, scope boundaries, and monthly summaries.</p>
-          <a class="btn btn-primary" href="resources/bookkeeper-client-email-templates.html">Use the Templates</a>
-        </article>
+        <article class="card featured"><p class="meta">$47 kit</p><h3>AI for Bookkeepers</h3><p>Prompt library, privacy rules, fake examples, and a one-hour implementation plan for careful bookkeepers.</p><a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Buy on Gumroad - $47</a><p class="checkout-note">Instant digital download.</p></article>
+        <article class="card"><p class="meta">$297 setup</p><h3>Safe AI Workflow Setup</h3><p>Done-with-you help to set up reusable workflows for missing-items emails, cleanup notes, monthly close summaries, and SOP drafts.</p><a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-bookkeepers-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Book on Gumroad - $297</a><p class="checkout-note">Bookable setup offer.</p></article>
+        <article class="card"><p class="meta">$97 setup</p><h3>Simple Money System Setup</h3><p>A 30-minute setup call plus a practical routine for invoice/payment tracking, expense capture, and a weekly money check-in.</p><a class="btn btn-primary" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=tools_grid">Book on Gumroad - $97</a><p class="checkout-note">Bookable setup offer.</p></article>
+        <article class="card"><p class="meta">$49 service</p><h3>Profit Clarity Checkup</h3><p>A focused look at one month of sales, fees, expenses, and working time so you can see where the money is leaking.</p><a class="btn btn-primary" href="profit-clarity-checkup/">See the $49 Checkup</a><p class="checkout-note">Request first. Payment and intake instructions are sent by email.</p></article>
+        <article class="card"><p class="meta">$37 one-time purchase</p><h3>Business Control Center</h3><p>A browser-based control center for solo business owners who need one place for profit, expenses, invoices, company records, and next actions.</p><a class="btn btn-primary" href="ceo-dashboard/">See Control Center</a></article>
+        <article class="card"><p class="meta">Free resource</p><h3>Client Email Templates</h3><p>Ten reusable emails for missing receipts, uncategorized transactions, cleanup updates, scope boundaries, and monthly summaries.</p><a class="btn btn-primary" href="resources/bookkeeper-client-email-templates.html">Use the Templates</a></article>
       </div>
     </div>
   </section>
-
   <section id="free-tools" class="light">
     <div class="wrap">
-      <div class="section-head">
-        <p class="kicker">Free tools</p>
-        <h2 class="section-title">Free tools. Use them now.</h2>
-        <p class="section-sub">Quick calculators and checklists for pricing, fees, margins, and business setup.</p>
-      </div>
+      <div class="section-head"><p class="kicker">Free tools</p><h2 class="section-title">Free tools. Use them now.</h2><p class="section-sub">Quick calculators and checklists for pricing, fees, margins, and business setup.</p></div>
       <div class="grid-2">
-        <article class="card tool-card">
-          <strong>Freelance Pricing Calculator</strong>
-          <p>Find the rate that covers taxes, expenses, and income goals.</p>
-          <a class="next-step" href="pricing-calculator/">Use the calculator</a>
-          <a class="next-step" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=pricing">Book the $97 money setup</a>
-        </article>
-        <article class="card tool-card">
-          <strong>Etsy Fee Calculator</strong>
-          <p>See what fees do to a sale before margin disappears.</p>
-          <a class="next-step" href="etsy-fee-calculator/">Use the calculator</a>
-          <a class="next-step" href="https://saroan.gumroad.com/l/profit-clarity-checkup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=etsy_fees">Buy the $49 profit checkup</a>
-        </article>
-        <article class="card tool-card">
-          <strong>Real Profit Margin Calculator</strong>
-          <p>Calculate what a sale actually leaves after costs, labor, fees, and tax planning.</p>
-          <a class="next-step" href="profit-margin-calculator/">Use the calculator</a>
-          <a class="next-step" href="https://saroan.gumroad.com/l/profit-clarity-checkup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=profit_margin">Buy the $49 profit checkup</a>
-        </article>
-        <article class="card tool-card">
-          <strong>New Business Starter Checklist</strong>
-          <p>Set up structure, EIN, banking, bookkeeping, licenses, and launch basics in order.</p>
-          <a class="next-step" href="new-business-starter-checklist.html">Use the checklist</a>
-          <a class="next-step" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=starter_checklist">Book the $97 money setup</a>
-        </article>
+        <article class="card tool-card"><strong>Freelance Pricing Calculator</strong><p>Find the rate that covers taxes, expenses, and income goals.</p><a class="next-step" href="pricing-calculator/">Use the calculator</a><a class="next-step" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=pricing">Book the $97 money setup</a></article>
+        <article class="card tool-card"><strong>Etsy Fee Calculator</strong><p>See what fees do to a sale before margin disappears.</p><a class="next-step" href="etsy-fee-calculator/">Use the calculator</a><a class="next-step" href="profit-clarity-checkup/">See the $49 profit checkup</a></article>
+        <article class="card tool-card"><strong>Real Profit Margin Calculator</strong><p>Calculate what a sale actually leaves after costs, labor, fees, and tax planning.</p><a class="next-step" href="profit-margin-calculator/">Use the calculator</a><a class="next-step" href="profit-clarity-checkup/">See the $49 profit checkup</a></article>
+        <article class="card tool-card"><strong>New Business Starter Checklist</strong><p>Set up structure, EIN, banking, bookkeeping, licenses, and launch basics in order.</p><a class="next-step" href="new-business-starter-checklist.html">Use the checklist</a><a class="next-step" href="https://saroan.gumroad.com/l/simple-money-system-setup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=starter_checklist">Book the $97 money setup</a></article>
       </div>
-      <div class="testing-note" style="margin-top:28px;">
-        <p class="kicker">Traffic but no clarity?</p>
-        <h3>Have sales, site visits, or Etsy views but no idea what is working?</h3>
-        <p>Send one month of sales, fees, expenses, and working time. I will look for the obvious profit leaks and give you the next money decision to make.</p>
-        <a class="btn btn-primary" href="https://saroan.gumroad.com/l/profit-clarity-checkup?utm_source=mysoloos&utm_medium=homepage&utm_campaign=free_tools_bridge&utm_content=clarity_strip">Buy the $49 Profit Checkup</a>
-        <p class="checkout-note">Secure Gumroad checkout. Private intake link included after purchase.</p>
-      </div>
+      <div class="trust"><p class="kicker">Traffic but no clarity?</p><h3>Have sales, site visits, or Etsy views but no idea what is working?</h3><p>Send one month of sales, fees, expenses, and working time. I will look for the obvious profit leaks and give you the next money decision to make.</p><a class="btn btn-primary" href="profit-clarity-checkup/">See the $49 Profit Checkup</a></div>
     </div>
   </section>
-
   <section id="resources">
     <div class="wrap">
-      <div class="section-head">
-        <p class="kicker">Plain-English resources</p>
-        <h2 class="section-title">Plain answers to real business questions.</h2>
-        <p class="section-sub">Read practical guides for bookkeeping, pricing, profit, and solo business decisions.</p>
-      </div>
+      <div class="section-head"><p class="kicker">Plain-English resources</p><h2 class="section-title">Plain answers to real business questions.</h2><p class="section-sub">Read practical guides for bookkeeping, pricing, profit, and solo business decisions.</p></div>
       <div class="resource-list">
-        <a class="resource-link" href="resources/bookkeeper-client-email-templates.html">
-          <strong>10 Client Email Templates Every Bookkeeper Rewrites</strong>
-          <span>Missing receipts, uncategorized transactions, cleanup updates, scope boundaries, and more.</span>
-          <span class="read-link">Read the templates</span>
-        </a>
-        <a class="resource-link" href="resources/ai-for-bookkeepers-safe-chatgpt-client-data.html">
-          <strong>How Bookkeepers Can Use ChatGPT Without Exposing Client Data</strong>
-          <span>Practical safe-use examples for AI without pasting private records into prompts.</span>
-          <span class="read-link">Read the guide</span>
-        </a>
-        <a class="resource-link" href="resources/why-am-i-making-sales-but-not-money.html">
-          <strong>Why Am I Making Sales But Not Money?</strong>
-          <span>The profit leaks to check before trying to sell more.</span>
-          <span class="read-link">Read the article</span>
-        </a>
-        <a class="resource-link" href="resources/how-to-pay-yourself-solo-business.html">
-          <strong>How to Pay Yourself From a Solo Business</strong>
-          <span>Separate the payment-method question from the affordability question.</span>
-          <span class="read-link">Read the article</span>
-        </a>
+        <a class="resource-link" href="resources/bookkeeper-client-email-templates.html"><strong>10 Client Email Templates Every Bookkeeper Rewrites</strong><span>Missing receipts, uncategorized transactions, cleanup updates, scope boundaries, and more.</span></a>
+        <a class="resource-link" href="resources/ai-for-bookkeepers-safe-chatgpt-client-data.html"><strong>How Bookkeepers Can Use ChatGPT Without Exposing Client Data</strong><span>Practical safe-use examples for AI without pasting private records into prompts.</span></a>
+        <a class="resource-link" href="resources/why-am-i-making-sales-but-not-money.html"><strong>Why Am I Making Sales But Not Money?</strong><span>The profit leaks to check before trying to sell more.</span></a>
+        <a class="resource-link" href="resources/how-to-pay-yourself-solo-business.html"><strong>How to Pay Yourself From a Solo Business</strong><span>Separate the payment-method question from the affordability question.</span></a>
       </div>
     </div>
   </section>
-
-  <section class="dark" id="about">
-    <div class="wrap about">
-      <p class="kicker">Why trust this</p>
-      <h2 class="section-title">Built by someone who has been inside the books.</h2>
-      <p>I'm Anna. I spent 20 years inside real business books - construction, automotive, logistics, retail. I know what the books look like when things are working, and what they look like when they're not.</p>
-      <p>The tools here are built from that experience. They solve problems I watched business owners struggle with for two decades. Not generic templates - the tools I wished existed when I was inside those businesses.</p>
-      <p>SoloOS is owned and operated by Sa Roan Holdings LLC.</p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <a class="logo" href="/">SoloOS</a>
-        <p class="small">Practical tools and setup help for bookkeepers and solo business owners.</p>
-      </div>
-      <div>
-        <h4>Bookkeepers</h4>
-        <a href="ai-for-bookkeepers/">AI for Bookkeepers</a>
-        <a href="https://saroan.gumroad.com/l/ai-bookkeepers-setup">Safe AI Workflow Setup</a>
-        <a href="resources/bookkeeper-client-email-templates.html">Client Email Templates</a>
-      </div>
-      <div>
-        <h4>Solo Business</h4>
-        <a href="https://saroan.gumroad.com/l/simple-money-system-setup">Simple Money System Setup</a>
-        <a href="https://saroan.gumroad.com/l/profit-clarity-checkup?utm_source=mysoloos&utm_medium=footer&utm_campaign=sitewide">Profit Clarity Checkup</a>
-        <a href="ceo-dashboard/">Business Control Center Preview</a>
-      </div>
-      <div>
-        <h4>Free Tools</h4>
-        <a href="pricing-calculator/">Pricing Calculator</a>
-        <a href="etsy-fee-calculator/">Etsy Fee Calculator</a>
-        <a href="profit-margin-calculator/">Profit Margin Calculator</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="mailto:hello@mysoloos.com?subject=SoloOS%20question">Contact SoloOS</a>
-      </div>
-    </div>
-  </footer>
-
-  <div class="sticky-checkout" aria-label="Buy SoloOS AI for Bookkeepers">
-    <span>Most useful paid offer: AI for Bookkeepers.</span>
-    <a href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=sticky&utm_campaign=homepage_checkout">Buy on Gumroad - $47</a>
-  </div>
-
+  <section class="dark" id="about"><div class="wrap"><p class="kicker">Why trust this</p><h2 class="section-title">Built by someone who has been inside the books.</h2><p>I'm Anna. I spent 20 years inside real business books: construction, automotive, logistics, retail. I know what the books look like when things are working, and what they look like when they're not.</p><p>SoloOS is owned and operated by Sa Roan Holdings LLC.</p></div></section>
+  <footer><div class="footer-grid"><div><a class="logo" href="/">SoloOS</a><p class="small">Practical tools and setup help for bookkeepers and solo business owners.</p></div><div><h4>Bookkeepers</h4><a href="ai-for-bookkeepers/">AI for Bookkeepers</a><a href="https://saroan.gumroad.com/l/ai-bookkeepers-setup">Safe AI Workflow Setup</a><a href="resources/bookkeeper-client-email-templates.html">Client Email Templates</a></div><div><h4>Solo Business</h4><a href="https://saroan.gumroad.com/l/simple-money-system-setup">Simple Money System Setup</a><a href="profit-clarity-checkup/">Profit Clarity Checkup</a><a href="ceo-dashboard/">Business Control Center Preview</a></div><div><h4>Free Tools</h4><a href="pricing-calculator/">Pricing Calculator</a><a href="etsy-fee-calculator/">Etsy Fee Calculator</a><a href="profit-margin-calculator/">Profit Margin Calculator</a><a href="privacy.html">Privacy Policy</a><a href="mailto:hello@mysoloos.com?subject=SoloOS%20question">Contact SoloOS</a></div></div></footer>
   <script>
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', event => {
-        const target = document.getElementById(link.getAttribute('href').slice(1));
-        if (!target) return;
-        event.preventDefault();
-        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
-      });
-    });
-
-    document.querySelectorAll('a[href*="gumroad.com"]').forEach(link => {
-      link.addEventListener('click', () => {
-        const detail = { label: link.textContent.trim(), destination: link.href, page: 'homepage' };
-        if (window.zaraz && typeof window.zaraz.track === 'function') window.zaraz.track('cta_click', detail);
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'cta_click', ...detail });
-      });
-    });
+    document.querySelectorAll('a[href^="#"]').forEach(link=>{link.addEventListener('click',event=>{const target=document.getElementById(link.getAttribute('href').slice(1));if(!target)return;event.preventDefault();window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-72,behavior:'smooth'});});});
+    document.querySelectorAll('a[href*="gumroad.com"], a[href^="mailto:"]').forEach(link=>{link.addEventListener('click',()=>{const detail={label:link.textContent.trim(),destination:link.href,page:'homepage'};if(window.zaraz&&typeof window.zaraz.track==='function')window.zaraz.track('cta_click',detail);window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',...detail});});});
   </script>
 </body>
 </html>
