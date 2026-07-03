@@ -13,281 +13,51 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
   <style>
-    :root {
-      --navy:#1B2A4E;
-      --navy-deep:#111d37;
-      --gold:#C49A45;
-      --gold-lt:#d4ad5e;
-      --cream:#FAF7F2;
-      --tan:#E8DFD0;
-      --field:#FBF5EA;
-      --muted:#666b78;
-      --green:#365c45;
-      --danger:#8d2d2d;
-    }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { font-family: Inter, Arial, sans-serif; background:var(--cream); color:var(--navy); line-height:1.65; }
-    a { color:inherit; }
+    :root { --navy:#1B2A4E; --navy-deep:#111d37; --gold:#C49A45; --gold-lt:#d4ad5e; --cream:#FAF7F2; --tan:#E8DFD0; --field:#FBF5EA; --muted:#666b78; --green:#365c45; --danger:#8d2d2d; }
+    * { box-sizing:border-box; margin:0; padding:0; } body { font-family: Inter, Arial, sans-serif; background:var(--cream); color:var(--navy); line-height:1.65; } a { color:inherit; }
     nav { height:64px; background:var(--navy); display:flex; align-items:center; justify-content:space-between; padding:0 32px; position:sticky; top:0; z-index:10; }
-    .logo { color:var(--gold); text-decoration:none; font-weight:800; letter-spacing:.15em; text-transform:uppercase; font-size:14px; }
-    .nav-links { display:flex; gap:22px; align-items:center; }
-    .nav-links a { color:rgba(255,255,255,.68); text-decoration:none; font-size:13px; font-weight:650; }
-    .nav-links .cta { background:var(--gold); color:var(--navy); padding:9px 16px; border-radius:8px; }
-    .hero { background:linear-gradient(135deg,var(--navy-deep),var(--navy)); padding:70px 28px 78px; overflow:hidden; }
-    .hero-grid { max-width:1160px; margin:0 auto; display:grid; grid-template-columns: .92fr 1.08fr; gap:44px; align-items:center; }
-    .kicker { color:var(--gold); font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; margin-bottom:18px; }
-    h1 { font-family:Georgia,serif; color:#fff; font-size:clamp(40px,6vw,72px); line-height:1.05; letter-spacing:-.035em; margin-bottom:22px; }
-    .hero-sub { color:rgba(255,255,255,.72); font-size:18px; max-width:620px; margin-bottom:28px; }
-    .hero-quote { background:rgba(255,255,255,.08); border-left:5px solid var(--gold); color:#fff; padding:18px 20px; border-radius:14px; margin:28px 0; font-size:18px; }
-    .hero-img { width:100%; border-radius:24px; box-shadow:0 32px 80px rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.15); background:#fff; }
-    .actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
-    .btn { display:inline-block; text-decoration:none; border-radius:9px; padding:15px 24px; font-weight:800; font-size:15px; }
-    .btn-primary { background:var(--gold); color:var(--navy); }
-    .btn-secondary { border:1.5px solid rgba(255,255,255,.28); color:#fff; }
-    .checkout-note { color:rgba(255,255,255,.58); font-size:12px; margin-top:10px; }
-    .card .checkout-note, .buy-box .checkout-note { color:rgba(255,255,255,.64); }
-    .price { color:var(--gold); font-family:Georgia,serif; font-size:34px; font-weight:800; margin-left:8px; }
-    section { padding:70px 28px; }
-    .wrap { max-width:1080px; margin:0 auto; }
-    .section-title { font-family:Georgia,serif; font-size:clamp(30px,4vw,48px); line-height:1.14; margin-bottom:16px; }
-    .section-sub { color:var(--muted); max-width:690px; margin-bottom:34px; font-size:17px; }
-    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; align-items:start; }
-    .card { background:#fff; border:1px solid var(--tan); border-radius:18px; padding:24px; box-shadow:0 16px 38px rgba(27,42,78,.06); }
-    .card h3 { font-family:Georgia,serif; font-size:24px; line-height:1.18; margin-bottom:10px; }
-    .card p, .card li { color:var(--muted); font-size:15px; }
-    .card ul { padding-left:18px; margin-top:12px; }
-    .screenshot { background:#fff; border:1px solid var(--tan); border-radius:20px; padding:18px; box-shadow:0 20px 46px rgba(27,42,78,.08); }
-    .screen-top { background:var(--navy); color:#fff; border-radius:12px; padding:16px; margin-bottom:14px; }
-    .screen-top strong { color:var(--gold); display:block; font-size:12px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:6px; }
-    .prompt-box { background:var(--field); border-left:4px solid var(--gold); border-radius:10px; padding:14px; color:#333; font-family:"Courier New",monospace; font-size:13px; margin-top:12px; }
-    .warning { border-left:6px solid var(--danger); }
-    .green { border-left:6px solid var(--green); }
-    .dark { background:var(--navy); color:#fff; }
-    .dark p, .dark li { color:rgba(255,255,255,.68); }
-    .dark h2, .dark h3 { color:#fff; }
-    .dark .section-sub { color:rgba(255,255,255,.62); }
-    .buy-box { display:grid; grid-template-columns:1fr auto; gap:22px; align-items:center; background:linear-gradient(135deg,var(--navy),#243660); color:#fff; border-radius:22px; padding:30px; }
-    .buy-box p { color:rgba(255,255,255,.68); }
-    .partner-strip { background:#fff; border:1px solid var(--tan); border-radius:18px; padding:24px; display:grid; grid-template-columns:1fr auto; gap:22px; align-items:center; box-shadow:0 16px 38px rgba(27,42,78,.06); }
-    .partner-strip p { color:var(--muted); }
+    .logo { color:var(--gold); text-decoration:none; font-weight:800; letter-spacing:.15em; text-transform:uppercase; font-size:14px; } .nav-links { display:flex; gap:22px; align-items:center; }
+    .nav-links a { color:rgba(255,255,255,.68); text-decoration:none; font-size:13px; font-weight:650; } .nav-links .cta { background:var(--gold); color:var(--navy); padding:9px 16px; border-radius:8px; }
+    .hero { background:linear-gradient(135deg,var(--navy-deep),var(--navy)); padding:70px 28px 78px; overflow:hidden; } .hero-grid { max-width:1160px; margin:0 auto; display:grid; grid-template-columns: .92fr 1.08fr; gap:44px; align-items:center; }
+    .kicker { color:var(--gold); font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; margin-bottom:18px; } h1 { font-family:Georgia,serif; color:#fff; font-size:clamp(40px,6vw,72px); line-height:1.05; letter-spacing:-.035em; margin-bottom:22px; }
+    .hero-sub { color:rgba(255,255,255,.72); font-size:18px; max-width:620px; margin-bottom:28px; } .hero-quote { background:rgba(255,255,255,.08); border-left:5px solid var(--gold); color:#fff; padding:18px 20px; border-radius:14px; margin:28px 0; font-size:18px; }
+    .hero-img { width:100%; border-radius:24px; box-shadow:0 32px 80px rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.15); background:#fff; } .actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+    .btn { display:inline-block; text-decoration:none; border-radius:9px; padding:15px 24px; font-weight:800; font-size:15px; } .btn-primary { background:var(--gold); color:var(--navy); } .btn-secondary { border:1.5px solid rgba(255,255,255,.28); color:#fff; }
+    .checkout-note { color:rgba(255,255,255,.58); font-size:12px; margin-top:10px; } .card .checkout-note, .buy-box .checkout-note { color:rgba(255,255,255,.64); } .price { color:var(--gold); font-family:Georgia,serif; font-size:34px; font-weight:800; margin-left:8px; }
+    section { padding:70px 28px; } .wrap { max-width:1080px; margin:0 auto; } .section-title { font-family:Georgia,serif; font-size:clamp(30px,4vw,48px); line-height:1.14; margin-bottom:16px; }
+    .section-sub { color:var(--muted); max-width:690px; margin-bottom:34px; font-size:17px; } .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; } .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; align-items:start; }
+    .card { background:#fff; border:1px solid var(--tan); border-radius:18px; padding:24px; box-shadow:0 16px 38px rgba(27,42,78,.06); } .card h3 { font-family:Georgia,serif; font-size:24px; line-height:1.18; margin-bottom:10px; }
+    .card p, .card li { color:var(--muted); font-size:15px; } .card ul { padding-left:18px; margin-top:12px; } .screenshot { background:#fff; border:1px solid var(--tan); border-radius:20px; padding:18px; box-shadow:0 20px 46px rgba(27,42,78,.08); }
+    .screen-top { background:var(--navy); color:#fff; border-radius:12px; padding:16px; margin-bottom:14px; } .screen-top strong { color:var(--gold); display:block; font-size:12px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:6px; }
+    .prompt-box { background:var(--field); border-left:4px solid var(--gold); border-radius:10px; padding:14px; color:#333; font-family:"Courier New",monospace; font-size:13px; margin-top:12px; } .warning { border-left:6px solid var(--danger); } .green { border-left:6px solid var(--green); }
+    .dark { background:var(--navy); color:#fff; } .dark p, .dark li { color:rgba(255,255,255,.68); } .dark h2, .dark h3 { color:#fff; } .dark .section-sub { color:rgba(255,255,255,.62); }
+    .buy-box { display:grid; grid-template-columns:1fr auto; gap:22px; align-items:center; background:linear-gradient(135deg,var(--navy),#243660); color:#fff; border-radius:22px; padding:30px; } .buy-box p { color:rgba(255,255,255,.68); }
+    .partner-strip { background:#fff; border:1px solid var(--tan); border-radius:18px; padding:24px; display:grid; grid-template-columns:1fr auto; gap:22px; align-items:center; box-shadow:0 16px 38px rgba(27,42,78,.06); } .partner-strip p { color:var(--muted); }
     .sticky-checkout { position:fixed; left:0; right:0; bottom:0; z-index:80; background:var(--navy-deep); border-top:2px solid var(--gold); padding:12px 18px; display:flex; justify-content:center; align-items:center; gap:14px; box-shadow:0 -12px 28px rgba(0,0,0,.22); }
-    .sticky-checkout span { color:#fff; font-size:13px; font-weight:800; }
-    .sticky-checkout a { background:var(--gold); color:var(--navy); border-radius:8px; padding:10px 14px; font-size:12px; font-weight:800; text-decoration:none; white-space:nowrap; }
-    footer { background:var(--navy-deep); color:rgba(255,255,255,.55); padding:44px 28px; }
-    footer .wrap { display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; }
-    footer a { color:var(--gold); text-decoration:none; }
-    @media (max-width:850px) {
-      .hero-grid, .grid-2, .grid-3, .buy-box, .partner-strip { grid-template-columns:1fr; }
-      .nav-links a:not(.cta) { display:none; }
-      nav { padding:0 18px; }
-      section, .hero { padding-left:18px; padding-right:18px; }
-      .sticky-checkout { align-items:flex-start; flex-direction:column; gap:8px; }
-      .sticky-checkout a { width:100%; text-align:center; }
-    }
+    .sticky-checkout span { color:#fff; font-size:13px; font-weight:800; } .sticky-checkout a { background:var(--gold); color:var(--navy); border-radius:8px; padding:10px 14px; font-size:12px; font-weight:800; text-decoration:none; white-space:nowrap; }
+    footer { background:var(--navy-deep); color:rgba(255,255,255,.55); padding:44px 28px; } footer .wrap { display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; } footer a { color:var(--gold); text-decoration:none; }
+    @media (max-width:850px) { .hero-grid, .grid-2, .grid-3, .buy-box, .partner-strip { grid-template-columns:1fr; } .nav-links a:not(.cta) { display:none; } nav { padding:0 18px; } section, .hero { padding-left:18px; padding-right:18px; } .sticky-checkout { align-items:flex-start; flex-direction:column; gap:8px; } .sticky-checkout a { width:100%; text-align:center; } }
   </style>
 </head>
 <body>
-  <nav>
-    <a class="logo" href="../">SoloOS</a>
-    <div class="nav-links">
-      <a href="../#tools">Tools</a>
-      <a href="../#free-tools">Free Tools</a>
-      <a href="../#resources">Resources</a>
-      <a href="../#about">About</a>
-      <a class="cta" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=nav_cta">Buy the Kit</a>
-    </div>
-  </nav>
+  <nav><a class="logo" href="../">SoloOS</a><div class="nav-links"><a href="../#tools">Tools</a><a href="../#free-tools">Free Tools</a><a href="../#resources">Resources</a><a href="../#about">About</a><a class="cta" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=nav_cta">Buy the Kit</a></div></nav>
 
-  <header class="hero">
-    <div class="hero-grid">
-      <div>
-        <p class="kicker">AI for Bookkeepers</p>
-        <h1>Use AI without handing it the keys to the books.</h1>
-        <p class="hero-sub">A plain-English starter kit for bookkeepers who want to save time, write clearer client messages, organize cleanup work, and use AI safely without risking client trust.</p>
-        <p class="hero-sub" style="font-size:15px;margin-top:-12px;margin-bottom:18px;">Built from real bookkeeping experience, not generic AI advice. I spent 20 years inside real business books, so client privacy is not an afterthought here.</p>
-        <div class="hero-quote">Your judgment is still the product.</div>
-        <div class="actions">
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=hero_cta">Buy AI Kit - $47</a>
-          <a class="btn btn-secondary" href="#preview">See what's inside</a>
-          <span class="price">$47</span>
-        </div>
-        <p class="checkout-note">Secure checkout. Instant digital download from SoloOS by Sa Roan Holdings.</p>
-      </div>
-      <img class="hero-img" src="ai-for-bookkeepers-preview.svg" alt="AI for Bookkeepers product preview showing prompt library and privacy rules" />
-    </div>
-  </header>
+  <header class="hero"><div class="hero-grid"><div><p class="kicker">AI for Bookkeepers</p><h1>Use AI without handing it the keys to the books.</h1><p class="hero-sub">A plain-English starter kit for bookkeepers who want to save time, write clearer client messages, organize cleanup work, and use AI safely without risking client trust.</p><p class="hero-sub" style="font-size:15px;margin-top:-12px;margin-bottom:18px;">Built from real bookkeeping experience, not generic AI advice. I spent 20 years inside real business books, so client privacy is not an afterthought here.</p><div class="hero-quote">Your judgment is still the product.</div><div class="actions"><a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=hero_cta">Buy AI Kit - $47</a><a class="btn btn-secondary" href="#preview">See what's inside</a><span class="price">$47</span></div><p class="checkout-note">Secure checkout. Instant digital download from SoloOS by Sa Roan Holdings.</p></div><img class="hero-img" src="ai-for-bookkeepers-preview.svg" alt="AI for Bookkeepers product preview showing prompt library and privacy rules" /></div></header>
 
-  <section style="background:var(--field);">
-    <div class="wrap">
-      <p class="kicker">Limited setup add-on</p>
-      <h2 class="section-title">Want help setting this up safely?</h2>
-      <p class="section-sub">For a limited number of bookkeepers, I am offering a $297 Safe AI Workflow Setup. This is for bookkeepers who want the practical benefit of AI without being reckless with client data.</p>
-      <div class="grid-2">
-        <article class="card green">
-          <h3>$297 Safe AI Workflow Setup</h3>
-          <p>In one week, we set up three reusable workflows you can actually use in client work:</p>
-          <ul>
-            <li>Missing-items emails</li>
-            <li>Cleanup notes into checklists</li>
-            <li>Monthly close summaries</li>
-          </ul>
-          <p style="margin-top:14px;">The setup includes the AI for Bookkeepers starter kit.</p>
-          <a class="btn btn-primary" style="margin-top:18px;" href="https://saroan.gumroad.com/l/ai-bookkeepers-setup?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_bookkeepers_setup&utm_content=setup_section">Book Setup - $297</a>
-        </article>
-        <article class="card warning">
-          <h3>Privacy first. No exceptions.</h3>
-          <p>Everything is built around fake or sanitized examples. No client names, account numbers, payroll details, tax IDs, vendor history, bank data, screenshots, passwords, or private client information go into public AI tools.</p>
-          <p style="margin-top:14px;">I spent 20 years inside real business books. That is why this setup starts with privacy, judgment, and safe examples before it ever gets to prompts.</p>
-          <p style="margin-top:14px;font-size:13px;">This setup is for workflow, communication, and organization support only. It is not tax, legal, accounting, financial, or compliance advice. The bookkeeper remains responsible for reviewing all outputs and protecting client data.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+  <section style="background:var(--field);"><div class="wrap"><p class="kicker">Limited setup add-on</p><h2 class="section-title">Want help setting this up safely?</h2><p class="section-sub">For a limited number of bookkeepers, I am offering a $297 Safe AI Workflow Setup. This is for bookkeepers who want the practical benefit of AI without being reckless with client data.</p><div class="grid-2"><article class="card green"><h3>$297 Safe AI Workflow Setup</h3><p>In one week, we set up three reusable workflows you can actually use in client work:</p><ul><li>Missing-items emails</li><li>Cleanup notes into checklists</li><li>Monthly close summaries</li></ul><p style="margin-top:14px;">The setup includes the AI for Bookkeepers starter kit.</p><a class="btn btn-primary" style="margin-top:18px;" href="https://saroan.gumroad.com/l/ai-bookkeepers-setup?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_bookkeepers_setup&utm_content=setup_section">Start Setup - $297</a><p class="checkout-note">After purchase, you receive intake and scheduling instructions.</p></article><article class="card warning"><h3>Privacy first. No exceptions.</h3><p>Everything is built around fake or sanitized examples. No client names, account numbers, payroll details, tax IDs, vendor history, bank data, screenshots, passwords, or private client information go into public AI tools.</p><p style="margin-top:14px;">I spent 20 years inside real business books. That is why this setup starts with privacy, judgment, and safe examples before it ever gets to prompts.</p><p style="margin-top:14px;font-size:13px;">This setup is for workflow, communication, and organization support only. It is not tax, legal, accounting, financial, or compliance advice. The bookkeeper remains responsible for reviewing all outputs and protecting client data.</p></article></div></div></section>
 
-  <section>
-    <div class="wrap">
-      <p class="kicker">The problem</p>
-      <h2 class="section-title">Most AI advice is not written for the person doing real client work.</h2>
-      <p class="section-sub">Bookkeepers do not need generic prompt lists, tech jargon, or advice that ignores client privacy. You need practical examples for the work that actually eats your time.</p>
-      <div class="grid-2" style="margin-bottom:22px;">
-        <article class="card">
-          <h3>Start with the free safety guide</h3>
-          <p>Not sure what is safe to ask AI? Read the practical guide first: seven ways to use ChatGPT for bookkeeping work without exposing client data.</p>
-          <a class="btn btn-primary" href="../resources/ai-for-bookkeepers-safe-chatgpt-client-data.html?utm_source=product_page&utm_medium=internal&utm_campaign=ai_bookkeepers">Read the Safe-Use Guide</a>
-        </article>
-        <article class="card">
-          <h3>Use the client email templates</h3>
-          <p>Steal the reusable language for missing receipts, uncategorized transactions, cleanup updates, scope boundaries, and monthly summaries.</p>
-          <a class="btn btn-primary" href="../resources/bookkeeper-client-email-templates.html?utm_source=product_page&utm_medium=internal&utm_campaign=ai_bookkeepers">Get the Templates</a>
-        </article>
-      </div>
-      <div class="grid-3">
-        <article class="card">
-          <h3>Blank-page work</h3>
-          <p>Client emails, reminder notes, report explanations, and monthly close summaries get easier when AI gives you a strong first draft.</p>
-        </article>
-        <article class="card">
-          <h3>Messy-note work</h3>
-          <p>Cleanup notes can turn into clear checklists grouped by bank, credit card, sales, payroll, client questions, and final review.</p>
-        </article>
-        <article class="card warning">
-          <h3>Privacy-first work</h3>
-          <p>The kit shows what not to paste into AI, how to sanitize details, and where your professional judgment still has to lead.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+  <section><div class="wrap"><p class="kicker">The problem</p><h2 class="section-title">Most AI advice is not written for the person doing real client work.</h2><p class="section-sub">Bookkeepers do not need generic prompt lists, tech jargon, or advice that ignores client privacy. You need practical examples for the work that actually eats your time.</p><div class="grid-2" style="margin-bottom:22px;"><article class="card"><h3>Start with the free safety guide</h3><p>Not sure what is safe to ask AI? Read the practical guide first: seven ways to use ChatGPT for bookkeeping work without exposing client data.</p><a class="btn btn-primary" href="../resources/ai-for-bookkeepers-safe-chatgpt-client-data.html?utm_source=product_page&utm_medium=internal&utm_campaign=ai_bookkeepers">Read the Safe-Use Guide</a></article><article class="card"><h3>Use the client email templates</h3><p>Steal the reusable language for missing receipts, uncategorized transactions, cleanup updates, scope boundaries, and monthly summaries.</p><a class="btn btn-primary" href="../resources/bookkeeper-client-email-templates.html?utm_source=product_page&utm_medium=internal&utm_campaign=ai_bookkeepers">Get the Templates</a></article></div><div class="grid-3"><article class="card"><h3>Blank-page work</h3><p>Client emails, reminder notes, report explanations, and monthly close summaries get easier when AI gives you a strong first draft.</p></article><article class="card"><h3>Messy-note work</h3><p>Cleanup notes can turn into clear checklists grouped by bank, credit card, sales, payroll, client questions, and final review.</p></article><article class="card warning"><h3>Privacy-first work</h3><p>The kit shows what not to paste into AI, how to sanitize details, and where your professional judgment still has to lead.</p></article></div></div></section>
 
-  <section id="preview" style="background:var(--field);">
-    <div class="wrap">
-      <p class="kicker">Screenshots and examples</p>
-      <h2 class="section-title">Open it, copy a prompt, use it today.</h2>
-      <p class="section-sub">The kit is built for action: fake bookkeeping data, copy/paste prompts, checklists, and a one-hour plan.</p>
-      <div class="grid-2">
-        <div class="screenshot">
-          <div class="screen-top"><strong>Prompt example</strong> Missing items email</div>
-          <p>Write a friendly, professional email asking for the missing items below. Keep it clear, brief, and not scolding.</p>
-          <div class="prompt-box">Missing items:<br>- March bank statement<br>- Receipt for $214 office supply purchase<br>- Explanation for a $600 transfer</div>
-        </div>
-        <div class="screenshot">
-          <div class="screen-top"><strong>Safety rule</strong> Protect client trust</div>
-          <p>If you would not paste it into a public forum, do not paste it into a public AI chat.</p>
-          <div class="prompt-box">Client name -> Client A<br>Vendor name -> Vendor 1<br>Bank account -> Operating account<br>Employee name -> Team Member 1</div>
-        </div>
-        <div class="screenshot">
-          <div class="screen-top"><strong>Cleanup workflow</strong> Turn fog into steps</div>
-          <p>Ask AI to group cleanup notes by bank, card, sales, payroll, owner questions, and final review.</p>
-          <div class="prompt-box">Do not make decisions for me. Add a section called "Questions to ask the client."</div>
-        </div>
-        <div class="screenshot">
-          <div class="screen-top"><strong>One-hour plan</strong> No giant course required</div>
-          <p>Draft one email, edit it, turn one messy note into a checklist, create one review prompt, save the best version.</p>
-          <div class="prompt-box">AI is the assistant. You are the bookkeeper.</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section id="preview" style="background:var(--field);"><div class="wrap"><p class="kicker">Screenshots and examples</p><h2 class="section-title">Open it, copy a prompt, use it today.</h2><p class="section-sub">The kit is built for action: fake bookkeeping data, copy/paste prompts, checklists, and a one-hour plan.</p><div class="grid-2"><div class="screenshot"><div class="screen-top"><strong>Prompt example</strong> Missing items email</div><p>Write a friendly, professional email asking for the missing items below. Keep it clear, brief, and not scolding.</p><div class="prompt-box">Missing items:<br>- March bank statement<br>- Receipt for $214 office supply purchase<br>- Explanation for a $600 transfer</div></div><div class="screenshot"><div class="screen-top"><strong>Safety rule</strong> Protect client trust</div><p>If you would not paste it into a public forum, do not paste it into a public AI chat.</p><div class="prompt-box">Client name -> Client A<br>Vendor name -> Vendor 1<br>Bank account -> Operating account<br>Employee name -> Team Member 1</div></div><div class="screenshot"><div class="screen-top"><strong>Cleanup workflow</strong> Turn fog into steps</div><p>Ask AI to group cleanup notes by bank, card, sales, payroll, owner questions, and final review.</p><div class="prompt-box">Do not make decisions for me. Add a section called "Questions to ask the client."</div></div><div class="screenshot"><div class="screen-top"><strong>One-hour plan</strong> No giant course required</div><p>Draft one email, edit it, turn one messy note into a checklist, create one review prompt, save the best version.</p><div class="prompt-box">AI is the assistant. You are the bookkeeper.</div></div></div></div></section>
 
-  <section>
-    <div class="wrap">
-      <p class="kicker">What you get</p>
-      <h2 class="section-title">A starter kit for careful, practical AI use.</h2>
-      <div class="grid-2">
-        <article class="card">
-          <h3>Included</h3>
-          <ul>
-            <li>Plain-English AI starter guide for bookkeepers</li>
-            <li>Copy/paste prompt library</li>
-            <li>Client privacy and sanitizing rules</li>
-            <li>Fake bookkeeping examples</li>
-            <li>Missing-items email prompts</li>
-            <li>Cleanup checklist prompts</li>
-            <li>Report explanation prompts</li>
-            <li>Monthly close and SOP prompts</li>
-            <li>One-hour implementation plan</li>
-          </ul>
-        </article>
-        <article class="card green">
-          <h3>Built by a bookkeeper, not a tech guru</h3>
-          <p>This is not about sounding impressive. It is about getting through client work with fewer blank pages, fewer repeated explanations, and fewer "where do I even start?" moments.</p>
-          <p>AI is useful, but only when it respects the part of the work that still belongs to you: judgment, privacy, and client trust.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+  <section><div class="wrap"><p class="kicker">What you get</p><h2 class="section-title">A starter kit for careful, practical AI use.</h2><div class="grid-2"><article class="card"><h3>Included</h3><ul><li>Plain-English AI starter guide for bookkeepers</li><li>Copy/paste prompt library</li><li>Client privacy and sanitizing rules</li><li>Fake bookkeeping examples</li><li>Missing-items email prompts</li><li>Cleanup checklist prompts</li><li>Report explanation prompts</li><li>Monthly close and SOP prompts</li><li>One-hour implementation plan</li></ul></article><article class="card green"><h3>Built by a bookkeeper, not a tech guru</h3><p>This is not about sounding impressive. It is about getting through client work with fewer blank pages, fewer repeated explanations, and fewer "where do I even start?" moments.</p><p>AI is useful, but only when it respects the part of the work that still belongs to you: judgment, privacy, and client trust.</p></article></div></div></section>
 
-  <section style="background:var(--field);">
-    <div class="wrap">
-      <div class="partner-strip">
-        <div>
-          <p class="kicker">For bookkeeper educators and community owners</p>
-          <h2 class="section-title" style="margin-bottom:10px;">Have an audience of careful bookkeepers?</h2>
-          <p>Approved partners can earn $25 per starter kit buyer and $100 per setup buyer. This is for bookkeeper educators, newsletter owners, template sellers, QuickBooks trainers, and accounting-tech consultants with a real audience.</p>
-        </div>
-        <a class="btn btn-primary" href="mailto:hello@mysoloos.com?subject=AI%20for%20Bookkeepers%20partner%20question">Contact SoloOS About Partners</a>
-      </div>
-    </div>
-  </section>
+  <section style="background:var(--field);"><div class="wrap"><div class="partner-strip"><div><p class="kicker">For bookkeeper educators and community owners</p><h2 class="section-title" style="margin-bottom:10px;">Have an audience of careful bookkeepers?</h2><p>Approved partners can earn $25 per starter kit buyer and $100 per setup buyer. This is for bookkeeper educators, newsletter owners, template sellers, QuickBooks trainers, and accounting-tech consultants with a real audience.</p></div><a class="btn btn-primary" href="mailto:hello@mysoloos.com?subject=AI%20for%20Bookkeepers%20partner%20question">Contact SoloOS About Partners</a></div></div></section>
 
-  <section class="dark">
-    <div class="wrap">
-      <div class="buy-box">
-        <div>
-          <p class="kicker">Ready now</p>
-          <h2 class="section-title">Get AI for Bookkeepers.</h2>
-          <p>A plain-English guide, prompt library, privacy rules, fake examples, and one-hour implementation plan for $47.</p>
-          <p style="margin-top:12px;">I also use SoloOS to run my own business finances, decisions, and product work. If you want the operating system behind the scenes, start with the <a href="../ceo-dashboard/" style="color:var(--gold);">Business Control Center</a>.</p>
-        </div>
-        <div>
-          <a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=bottom_cta">Buy AI Kit - $47</a>
-          <p class="checkout-note">Secure checkout. Instant digital download.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="dark"><div class="wrap"><div class="buy-box"><div><p class="kicker">Ready now</p><h2 class="section-title">Get AI for Bookkeepers.</h2><p>A plain-English guide, prompt library, privacy rules, fake examples, and one-hour implementation plan for $47.</p><p style="margin-top:12px;">I also use SoloOS to run my own business finances, decisions, and product work. If you want the operating system behind the scenes, start with the <a href="../ceo-dashboard/" style="color:var(--gold);">Business Control Center</a>.</p></div><div><a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=bottom_cta">Buy AI Kit - $47</a><p class="checkout-note">Secure checkout. Instant digital download.</p></div></div></div></section>
 
-  <footer>
-    <div class="wrap">
-      <span>© 2026 Sa Roan Holdings LLC · SoloOS</span>
-      <span><a href="../privacy.html">Privacy</a> · <a href="mailto:hello@mysoloos.com?subject=SoloOS%20question">Contact SoloOS</a></span>
-    </div>
-  </footer>
-
-  <div class="sticky-checkout" aria-label="Buy AI for Bookkeepers">
-    <span>Ready to use AI safely in bookkeeping work?</span>
-    <a href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=sticky&utm_campaign=ai_for_bookkeepers">Buy AI Kit - $47</a>
-  </div>
-
-  <script>
-    document.querySelectorAll('a[href*="gumroad.com"]').forEach(link => {
-      link.addEventListener('click', () => {
-        const detail = { label: link.textContent.trim(), destination: link.href, page: 'ai-for-bookkeepers' };
-        if (window.zaraz && typeof window.zaraz.track === 'function') window.zaraz.track('cta_click', detail);
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'cta_click', ...detail });
-      });
-    });
-  </script>
+  <footer><div class="wrap"><span>© 2026 Sa Roan Holdings LLC · SoloOS</span><span><a href="../privacy.html">Privacy</a> · <a href="mailto:hello@mysoloos.com?subject=SoloOS%20question">Contact SoloOS</a></span></div></footer>
+  <div class="sticky-checkout" aria-label="Buy AI for Bookkeepers"><span>Ready to use AI safely in bookkeeping work?</span><a href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=sticky&utm_campaign=ai_for_bookkeepers">Buy AI Kit - $47</a></div>
+  <script>document.querySelectorAll('a[href*="gumroad.com"]').forEach(link => { link.addEventListener('click', () => { const detail = { label: link.textContent.trim(), destination: link.href, page: 'ai-for-bookkeepers' }; if (window.zaraz && typeof window.zaraz.track === 'function') window.zaraz.track('cta_click', detail); window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'cta_click', ...detail }); }); });</script>
 </body>
 </html>
