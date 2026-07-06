@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -38,6 +38,14 @@
     footer { background:var(--navy-deep); color:rgba(255,255,255,.55); padding:44px 28px; } footer .wrap { display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; } footer a { color:var(--gold); text-decoration:none; }
     @media (max-width:850px) { .hero-grid, .grid-2, .grid-3, .buy-box, .partner-strip { grid-template-columns:1fr; } .nav-links a:not(.cta) { display:none; } nav { padding:0 18px; } section, .hero { padding-left:18px; padding-right:18px; } .sticky-checkout { align-items:flex-start; flex-direction:column; gap:8px; } .sticky-checkout a { width:100%; text-align:center; } }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18165329356"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18165329356');
+  </script>
 </head>
 <body>
   <nav><a class="logo" href="../">SoloOS</a><div class="nav-links"><a href="../#tools">Tools</a><a href="../#free-tools">Free Tools</a><a href="../#resources">Resources</a><a href="../#about">About</a><a class="cta" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=nav_cta">Buy the Kit</a></div></nav>
@@ -56,7 +64,7 @@
 
   <section class="dark"><div class="wrap"><div class="buy-box"><div><p class="kicker">Ready now</p><h2 class="section-title">Get AI for Bookkeepers.</h2><p>A plain-English guide, prompt library, privacy rules, fake examples, and one-hour implementation plan for $47.</p><p style="margin-top:12px;">I also use SoloOS to run my own business finances, decisions, and product work. If you want the operating system behind the scenes, start with the <a href="../ceo-dashboard/" style="color:var(--gold);">Business Control Center</a>.</p></div><div><a class="btn btn-primary" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=bottom_cta">Buy AI Kit - $47</a><p class="checkout-note">Secure checkout. Instant digital download.</p></div></div></div></section>
 
-  <footer><div class="wrap"><span>Â© 2026 Sa Roan Holdings LLC Â· SoloOS</span><span><a href="../privacy.html">Privacy</a> Â· <a href="mailto:hello@mysoloos.com?subject=SoloOS%20question">Contact SoloOS</a></span></div></footer>
+  <footer><div class="wrap"><span>© 2026 Sa Roan Holdings LLC · SoloOS</span><span><a href="../privacy.html">Privacy</a> · <a href="mailto:hello@mysoloos.com?subject=SoloOS%20question">Contact SoloOS</a></span></div></footer>
   <div class="sticky-checkout" aria-label="Buy AI for Bookkeepers"><span>Ready to use AI safely in bookkeeping work?</span><a href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=sticky&utm_campaign=ai_for_bookkeepers">Buy AI Kit - $47</a></div>
   <script>document.querySelectorAll('a[href*="gumroad.com"]').forEach(link => { link.addEventListener('click', () => { const detail = { label: link.textContent.trim(), destination: link.href, page: 'ai-for-bookkeepers' }; if (window.zaraz && typeof window.zaraz.track === 'function') window.zaraz.track('cta_click', detail); window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'cta_click', ...detail }); }); });</script>
 </body>
