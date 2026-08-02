@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Simple Money System Setup</title>
+  <desc id="desc">SoloOS preview image for a 97 dollar setup call covering invoices, payments, expenses, and weekly money review.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111d37"/>
+      <stop offset="0.58" stop-color="#1B2A4E"/>
+      <stop offset="1" stop-color="#244332"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1030" cy="118" r="170" fill="#ffffff" opacity="0.08"/>
+  <circle cx="124" cy="548" r="210" fill="#ffffff" opacity="0.07"/>
+  <rect x="78" y="70" width="1044" height="490" rx="34" fill="none" stroke="#FAF7F2" stroke-width="3" opacity="0.95"/>
+  <text x="118" y="126" fill="#C49A45" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="6">SOLOOS SETUP</text>
+  <text x="118" y="214" fill="#FAF7F2" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700">Simple Money</text>
+  <text x="118" y="294" fill="#FAF7F2" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700">System Setup</text>
+  <text x="118" y="352" fill="#E8DFD0" font-family="Inter, Arial, sans-serif" font-size="30">Invoices. Payments. Expenses. Weekly review.</text>
+  <g transform="translate(118 405)">
+    <rect width="176" height="68" rx="12" fill="#FAF7F2"/>
+    <text x="24" y="30" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">30-minute</text>
+    <text x="24" y="52" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">setup call</text>
+  </g>
+  <g transform="translate(318 405)">
+    <rect width="188" height="68" rx="12" fill="#FAF7F2"/>
+    <text x="24" y="30" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Tool path</text>
+    <text x="24" y="52" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">recommendation</text>
+  </g>
+  <g transform="translate(530 405)">
+    <rect width="142" height="68" rx="12" fill="#C49A45"/>
+    <text x="30" y="44" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">$97</text>
+  </g>
+  <g transform="translate(740 170)">
+    <rect width="300" height="310" rx="22" fill="#FAF7F2"/>
+    <rect x="30" y="32" width="240" height="50" rx="10" fill="#1B2A4E"/>
+    <text x="52" y="64" fill="#FAF7F2" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Weekly Money Check</text>
+    <rect x="30" y="108" width="240" height="52" rx="10" fill="#fff" stroke="#E8DFD0"/>
+    <text x="52" y="140" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700">What came in?</text>
+    <rect x="30" y="178" width="240" height="52" rx="10" fill="#fff" stroke="#E8DFD0"/>
+    <text x="52" y="210" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700">What went out?</text>
+    <rect x="30" y="248" width="240" height="52" rx="10" fill="#fff" stroke="#E8DFD0"/>
+    <text x="52" y="280" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700">What needs fixing?</text>
+  </g>
+</svg>
