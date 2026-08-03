@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Profit Clarity Checkup</title>
+  <desc id="desc">SoloOS preview image for a 49 dollar profit checkup reviewing one month of sales, fees, expenses, working time, and next actions.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111d37"/>
+      <stop offset="0.58" stop-color="#1B2A4E"/>
+      <stop offset="1" stop-color="#244332"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1010" cy="120" r="170" fill="#ffffff" opacity="0.08"/>
+  <circle cx="120" cy="545" r="210" fill="#ffffff" opacity="0.07"/>
+  <rect x="76" y="68" width="1048" height="494" rx="34" fill="none" stroke="#FAF7F2" stroke-width="3" opacity="0.95"/>
+  <text x="116" y="126" fill="#C49A45" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="6">SOLOOS BUSINESS TOOL</text>
+  <text x="116" y="220" fill="#FAF7F2" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700">Profit Clarity</text>
+  <text x="116" y="304" fill="#FAF7F2" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="700">Checkup</text>
+  <text x="116" y="362" fill="#E8DFD0" font-family="Inter, Arial, sans-serif" font-size="30">One month of numbers. Three next actions.</text>
+  <g transform="translate(116 418)">
+    <rect width="176" height="68" rx="12" fill="#FAF7F2"/>
+    <text x="24" y="30" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Sales, fees,</text>
+    <text x="24" y="52" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">expenses</text>
+  </g>
+  <g transform="translate(318 418)">
+    <rect width="180" height="68" rx="12" fill="#FAF7F2"/>
+    <text x="24" y="30" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Profit leak</text>
+    <text x="24" y="52" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">diagnosis</text>
+  </g>
+  <g transform="translate(524 418)">
+    <rect width="142" height="68" rx="12" fill="#C49A45"/>
+    <text x="30" y="44" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">$49</text>
+  </g>
+  <g transform="translate(748 162)">
+    <rect width="306" height="326" rx="22" fill="#FAF7F2"/>
+    <rect x="30" y="30" width="246" height="52" rx="10" fill="#1B2A4E"/>
+    <text x="52" y="64" fill="#FAF7F2" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Profit Snapshot</text>
+    <rect x="30" y="112" width="246" height="52" rx="10" fill="#fff" stroke="#E8DFD0"/>
+    <text x="52" y="144" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700">What did I truly earn?</text>
+    <rect x="30" y="186" width="246" height="52" rx="10" fill="#fff" stroke="#E8DFD0"/>
+    <text x="52" y="218" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700">Where is money leaking?</text>
+    <rect x="30" y="260" width="246" height="52" rx="10" fill="#fff" stroke="#E8DFD0"/>
+    <text x="52" y="292" fill="#1B2A4E" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700">What do I fix next?</text>
+  </g>
+</svg>
