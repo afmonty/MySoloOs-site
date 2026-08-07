@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">SoloOS business tools social preview</title>
+  <desc id="desc">A general SoloOS share image for business tools, safe AI workflows, and money clarity.</desc>
+  <rect width="1200" height="630" fill="#111d37"/>
+  <circle cx="1040" cy="120" r="190" fill="#365c45" opacity=".65"/>
+  <circle cx="110" cy="560" r="240" fill="#1B2A4E"/>
+  <path d="M0 520h1200v110H0z" fill="#0b1428"/>
+  <text x="82" y="92" fill="#C49A45" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="800" letter-spacing="8">SOLOOS</text>
+  <text x="82" y="210" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700">Business tools</text>
+  <text x="82" y="292" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700">for the work in</text>
+  <text x="82" y="374" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700">front of you.</text>
+  <text x="86" y="442" fill="#d8deed" font-family="Inter, Arial, sans-serif" font-size="30">Safer AI workflows. Clearer money systems.</text>
+  <text x="86" y="486" fill="#d8deed" font-family="Inter, Arial, sans-serif" font-size="30">Profit checks, setup help, and free calculators.</text>
+  <g transform="translate(770 240)">
+    <rect width="320" height="210" rx="22" fill="#FAF7F2"/>
+    <rect x="32" y="34" width="256" height="36" rx="8" fill="#1B2A4E"/>
+    <rect x="32" y="91" width="256" height="30" rx="7" fill="#ffffff" stroke="#E8DFD0"/>
+    <rect x="32" y="136" width="256" height="30" rx="7" fill="#ffffff" stroke="#E8DFD0"/>
+    <rect x="32" y="181" width="170" height="8" rx="4" fill="#C49A45"/>
+    <text x="52" y="58" fill="#FAF7F2" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="800">CHOOSE YOUR TOOL</text>
+  </g>
+  <rect x="82" y="548" width="250" height="40" rx="20" fill="#C49A45"/>
+  <text x="112" y="575" fill="#111d37" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800">mysoloos.com</text>
+</svg>

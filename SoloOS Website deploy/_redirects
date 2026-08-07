@@ -1,11 +1,14 @@
 /ai-bookkeepers/starter-kit /ai-for-bookkeepers/ 301
 /ai-bookkeepers/starter-kit/ /ai-for-bookkeepers/ 301
 
-/bill-and-budget/ /ceo-dashboard/ 301
-/bill-budget/ /ceo-dashboard/ 301
-/savings-challenge/ /ceo-dashboard/ 301
-/debt-payoff/ /ceo-dashboard/ 301
-/bill-and-budget /ceo-dashboard/ 301
-/bill-budget /ceo-dashboard/ 301
-/savings-challenge /ceo-dashboard/ 301
-/debt-payoff /ceo-dashboard/ 301
+/ceo-dashboard/ /business-control-center/ 301
+/ceo-dashboard /business-control-center/ 301
+
+/bill-and-budget/ /business-control-center/ 301
+/bill-budget/ /business-control-center/ 301
+/savings-challenge/ /business-control-center/ 301
+/debt-payoff/ /business-control-center/ 301
+/bill-and-budget /business-control-center/ 301
+/bill-budget /business-control-center/ 301
+/savings-challenge /business-control-center/ 301
+/debt-payoff /business-control-center/ 301
