@@ -1,3 +1,4 @@
+// No-op deploy-pipeline verification after reconnecting Cloudflare Git builds.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mysoloospagesdev",
