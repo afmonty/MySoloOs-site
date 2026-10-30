@@ -977,8 +977,7 @@
         <p>Get a free PDF guide: <em>The Complete Etsy Fee Breakdown</em> - every fee explained, with a pricing worksheet to make sure every listing hits your income goals.</p>
       </div>
       <div>
-        <iframe name="kit-etsy-hidden" style="display:none" aria-hidden="true"></iframe>
-        <form class="email-form seva-form formkit-form" action="https://app.kit.com/forms/9532049/subscriptions" method="post" target="kit-etsy-hidden" data-sv-form="9532049" data-uid="4eae138570" data-format="inline" data-version="5" onsubmit="handleFormSubmit(event)">
+        <form class="email-form seva-form formkit-form" action="https://app.kit.com/forms/9532049/subscriptions" method="post" data-sv-form="9532049" data-uid="4eae138570" data-format="inline" data-version="5">
           <input type="text"  name="fields[first_name]" placeholder="First name" required autocomplete="given-name" />
           <input type="email" name="email_address" placeholder="Email address" required autocomplete="email" />
           <button type="submit" class="btn-gold">Send Me the Fee Guide</button>
@@ -1210,21 +1209,6 @@
   function calc() {
     if (currentMode === 'fees') calcFees();
     else calcPrice();
-  }
-
-  // -- Form submission ----------------------------------------
-  function handleFormSubmit(e) {
-    const form = e.target;
-    const btn  = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Sending';
-
-    $('form-error').style.display = 'none';
-
-    setTimeout(() => {
-      form.style.display = 'none';
-      $('form-success').style.display = 'block';
-    }, 1500);
   }
 
   // Init

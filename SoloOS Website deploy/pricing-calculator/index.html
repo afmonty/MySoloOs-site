@@ -746,8 +746,7 @@
         <p>We'll email you a PDF summary of your rates plus a free guide: <em>The 5 Pricing Mistakes Freelancers Make</em>. No pitch. No spam.</p>
       </div>
       <div>
-        <iframe name="kit-pricing-hidden" style="display:none" aria-hidden="true"></iframe>
-        <form class="email-form seva-form formkit-form" action="https://app.kit.com/forms/9532052/subscriptions" method="post" target="kit-pricing-hidden" data-sv-form="9532052" data-uid="bc512ff33c" data-format="inline" data-version="5" onsubmit="handleFormSubmit(event)">
+        <form class="email-form seva-form formkit-form" action="https://app.kit.com/forms/9532052/subscriptions" method="post" data-sv-form="9532052" data-uid="bc512ff33c" data-format="inline" data-version="5">
           <input type="text" name="fields[first_name]" placeholder="First name" required autocomplete="given-name" />
           <input type="email" name="email_address" placeholder="Email address" required autocomplete="email" />
           <button type="submit" class="btn-gold">Send Me My Pricing PDF</button>
@@ -862,20 +861,6 @@
     } else {
       rc.innerHTML = `${fmt(baseHourly)}/hr is premium pricing territory. That's not a problem - it's a strategy. <strong>The clients who push back on this rate are the ones who make your life hardest.</strong>`;
     }
-  }
-
-  function handleFormSubmit(e) {
-    const form = e.target;
-    const btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Sending';
-
-    document.getElementById('formError').style.display = 'none';
-
-    setTimeout(() => {
-      form.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    }, 1500);
   }
 
   // Init

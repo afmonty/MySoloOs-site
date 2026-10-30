@@ -125,8 +125,7 @@
       <div class="email-box">
         <div><h2>Know the margin. Track the profit.</h2><p>Get the free SoloOS starter pack and practical tools for running the money side of your business.</p></div>
         <div>
-          <iframe name="kit-profit-hidden" style="display:none" aria-hidden="true"></iframe>
-          <form class="email-form" action="https://app.kit.com/forms/9519803/subscriptions" method="post" target="kit-profit-hidden" onsubmit="handleSubmit(event)">
+          <form class="email-form" action="https://app.kit.com/forms/9519803/subscriptions" method="post">
             <input type="text" name="fields[first_name]" placeholder="First name" required autocomplete="given-name">
             <input type="email" name="email_address" placeholder="Email address" required autocomplete="email">
             <button class="btn" type="submit">Send Me the Free Starter Pack</button>
@@ -158,7 +157,6 @@
       else if(margin<20)h.innerHTML=`You're profitable, but your <strong>${margin.toFixed(1)}% margin</strong> leaves limited room for growth. A price near <strong>${money(target)}</strong> creates a healthier 20% margin.`;
       else h.innerHTML=`Your <strong>${margin.toFixed(1)}% real margin</strong> gives you room to reinvest and absorb surprises. Keep tracking it as costs change.`;
     }
-    function handleSubmit(e){const f=e.target,b=f.querySelector('button');b.disabled=true;b.textContent='Sending...';setTimeout(()=>{f.style.display='none';$('success').style.display='block'},1200)}
     document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calc));calc();
   </script>
   <script src="https://gumroad.com/js/gumroad.js"></script>
