@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free Texas lien notice deadline calculator. Enter the month you did the work and get your Property Code 53.056 notice date, commercial or residential, with the weekend rule applied.">
+  <title>Texas Lien Notice Deadline Calculator (Free) | SoloOS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--navy:#1B2A4E;--deep:#111d37;--gold:#C49A45;--gold2:#d4ad5e;--cream:#FAF7F2;--tan:#E8DFD0;--field:#FBF5EA;--muted:#6B6B6B;--green:#3f8a68;--red:#b85b55}
+    body{font-family:Inter,sans-serif;background:var(--cream);color:var(--navy)}
+    .site-header{background:var(--navy);padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+    .wordmark{color:var(--gold);font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+    .header-nav{color:rgba(255,255,255,.65);font-size:12px}.header-nav a{color:rgba(255,255,255,.8);text-decoration:none}
+    .hero{background:var(--navy);padding:58px 24px 52px;text-align:center;color:#fff}
+    .eyebrow{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:13px}
+    h1,h2,h3{font-family:"Playfair Display",serif}
+    .hero h1{font-size:clamp(30px,6vw,50px);max-width:720px;margin:0 auto 17px;line-height:1.12}
+    .hero p:last-child{max-width:610px;margin:auto;color:rgba(255,255,255,.68);font-size:16px;line-height:1.65}
+    .calculator{max-width:1080px;margin:0 auto;padding:42px 22px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+    .panel{border-radius:12px;padding:32px;border:1px solid var(--tan)}
+    .inputs{background:#fff}.results{background:var(--navy);color:#fff;position:sticky;top:20px}
+    .panel-title{color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:23px}
+    .input-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+    .field.full{grid-column:1/-1}.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+    .hint{color:var(--muted);font-size:10px;line-height:1.4;margin-bottom:7px}
+    .input-wrap{height:46px;display:flex;align-items:center;border:1.5px solid var(--tan);border-radius:7px;background:var(--field);overflow:hidden}
+    .input-wrap:focus-within{border-color:var(--gold)}.prefix,.suffix{padding:0 11px;color:var(--gold);font-size:13px;font-weight:700}
+    .prefix{border-right:1px solid var(--tan)}.suffix{border-left:1px solid var(--tan)}
+    input{width:100%;height:100%;border:0;outline:0;background:transparent;padding:0 11px;color:var(--navy);font-size:15px}
+    .divider{grid-column:1/-1;border-top:1px solid var(--tan);margin:7px 0 1px}
+    .result-hero{padding:21px;border-radius:9px;background:rgba(196,154,69,.13);border:1px solid rgba(196,154,69,.25);margin-bottom:14px}
+    .result-label{color:rgba(255,255,255,.48);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px}
+    .result-value{color:var(--gold);font-family:"Playfair Display",serif;font-size:46px;line-height:1}
+    .result-sub{color:rgba(255,255,255,.48);font-size:11px;margin-top:6px}
+    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+    .summary{padding:14px;border-radius:8px;background:rgba(255,255,255,.055)}
+    .summary strong{display:block;color:#fff;font-size:18px}.summary span{color:rgba(255,255,255,.42);font-size:9px;text-transform:uppercase;letter-spacing:.08em}
+    .breakdown{border-top:1px solid rgba(255,255,255,.12);padding-top:11px}
+    .row{display:flex;justify-content:space-between;gap:12px;padding:5px 0;font-size:12px;color:rgba(255,255,255,.58)}
+    .row.total{border-top:1px solid rgba(255,255,255,.12);margin-top:5px;padding-top:10px;color:#fff;font-weight:700}
+    .health{margin-top:15px;padding:13px 14px;border-radius:8px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.68);font-size:12px;line-height:1.55}
+    .health strong{color:var(--gold)}
+    .result-cta{display:block;margin-top:12px;padding:13px 14px;border-radius:8px;background:var(--gold);color:var(--navy);font-size:12px;font-weight:800;text-decoration:none;text-align:center}
+    .result-cta:hover{background:var(--gold2)}
+    .conversion-strip{max-width:1080px;margin:-20px auto 0;padding:0 22px;position:relative;z-index:2}
+    .conversion-box{background:#fff;border:1px solid var(--tan);border-left:6px solid var(--gold);border-radius:12px;padding:20px 22px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;box-shadow:0 14px 32px rgba(27,42,78,.08)}
+    .conversion-box strong{display:block;font-family:"Playfair Display",serif;font-size:22px;margin-bottom:3px}.conversion-box span{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+    .conversion-actions{display:flex;gap:10px;flex-wrap:wrap}.conversion-btn{display:inline-block;border-radius:8px;padding:12px 16px;background:var(--gold);color:var(--navy);font-weight:800;font-size:12px;text-decoration:none;white-space:nowrap}.conversion-btn.secondary{background:var(--navy);color:#fff}
+    .sticky-gumroad{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--deep);border-top:2px solid var(--gold);padding:12px 18px;display:flex;justify-content:center;gap:14px;align-items:center;box-shadow:0 -12px 28px rgba(0,0,0,.22)}
+    .sticky-gumroad span{color:#fff;font-size:13px;font-weight:700}.sticky-gumroad a{background:var(--gold);color:var(--navy);border-radius:8px;padding:10px 14px;font-size:12px;font-weight:800;text-decoration:none;white-space:nowrap}
+    .email-section,.crosssell{max-width:1080px;margin:0 auto;padding:0 22px 44px}
+    .email-box{background:#fff;border:1px solid var(--tan);border-radius:12px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+    .email-box h2{font-size:25px;margin-bottom:8px}.email-box p{color:var(--muted);font-size:13px;line-height:1.6}
+    .email-form{display:grid;gap:9px}.email-form input{height:44px;background:var(--field);border:1.5px solid var(--tan);border-radius:7px;padding:0 13px}
+    .btn{height:47px;border:0;border-radius:7px;background:var(--gold);color:var(--navy);font-weight:700;cursor:pointer}.btn:hover{background:var(--gold2)}
+    .form-note{font-size:10px!important;text-align:center}.success{display:none;padding:14px;border-radius:7px;background:#eff8f2;color:#28704a;font-size:13px}
+    .crosssell-box{background:var(--navy);border-radius:12px;padding:36px;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center;color:#fff}
+    .crosssell h3{font-size:25px;margin-bottom:8px}.crosssell p{color:rgba(255,255,255,.62);font-size:13px;line-height:1.6}
+    .buy{display:inline-block;border:2px solid var(--gold);border-radius:7px;padding:12px 21px;color:var(--gold);text-decoration:none;text-align:center;font-size:12px;font-weight:700}.buy:hover{background:var(--gold);color:var(--navy)}
+    footer{background:var(--deep);padding:25px;text-align:center;color:rgba(255,255,255,.35);font-size:11px}footer a{color:rgba(255,255,255,.55)}
+    @media(max-width:760px){.calculator,.email-box,.crosssell-box,.conversion-box{grid-template-columns:1fr}.results{position:static}.input-grid{grid-template-columns:1fr}.field.full,.divider{grid-column:auto}.calculator{padding:28px 16px}.panel{padding:24px}.email-section,.crosssell,.conversion-strip{padding-left:16px;padding-right:16px}.crosssell-box{padding:27px}.sticky-gumroad{align-items:flex-start;flex-direction:column;gap:8px}.sticky-gumroad a{width:100%;text-align:center}}
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18165329356"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18165329356');
+  </script>
+  <link rel="canonical" href="https://mysoloos.com/texas-lien-deadline-calculator/">
+  <meta property="og:title" content="Texas Lien Notice Deadline Calculator">
+  <meta property="og:description" content="Enter the month you worked. Get your Texas lien notice deadline, commercial or residential, with the weekend rule applied.">
+  <meta property="og:url" content="https://mysoloos.com/texas-lien-deadline-calculator/">
+  <style>
+    .calculator{grid-template-columns:1fr 1fr}
+    select,input[type=month]{width:100%;height:46px;border:1.5px solid var(--tan);border-radius:7px;background:var(--field);padding:0 12px;font-family:Inter,sans-serif;font-size:15px;color:var(--navy)}
+    .bigdate{font-family:"Playfair Display",serif;font-size:clamp(28px,5vw,42px);line-height:1.1;margin:6px 0 4px}
+    .daysleft{font-size:15px;color:rgba(255,255,255,.75);margin-bottom:4px}
+    .rowline{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-top:1px solid rgba(255,255,255,.14);font-size:14px}
+    .rowline span:last-child{text-align:right;font-weight:600;white-space:nowrap}
+    .flag{background:rgba(196,154,69,.16);border:1px solid rgba(196,154,69,.5);border-radius:8px;padding:11px 13px;font-size:13px;line-height:1.5;margin-top:14px;color:#f3e6cd}
+    .urgent{color:#ffb3ad}
+    .legal{max-width:1080px;margin:0 auto;padding:0 22px 44px;color:var(--muted);font-size:13px;line-height:1.65}
+    .legal strong{color:var(--navy)}
+    @media(max-width:820px){.calculator{grid-template-columns:minmax(0,1fr);padding:28px 16px;gap:18px}.panel{padding:22px}.results{position:static}.rowline{font-size:13px}.rowline span:last-child{white-space:normal}}
+  </style>
+</head>
+<body>
+  <header class="site-header"><a class="wordmark" href="/">SoloOS</a><span class="header-nav"><a href="/#tools">Tools</a> &nbsp;|&nbsp; <a href="/#free-tools">Free Tools</a> &nbsp;|&nbsp; <a href="/#resources">Resources</a> &nbsp;|&nbsp; <a href="/#about">About</a></span></header>
+
+  <section class="hero">
+    <p class="eyebrow">Free Calculator</p>
+    <h1>When Is My Texas Lien Notice Due?</h1>
+    <p>Pick the month you did the work. Miss this date and your lien rights are gone - not weaker, gone. Free, instant, nothing to sign up for.</p>
+  </section>
+
+  <main>
+    <div class="calculator">
+      <section class="panel inputs">
+        <p class="panel-title">Your job</p>
+
+        <div class="field full" style="margin-bottom:18px">
+          <label for="jobtype">What kind of project is it?</label>
+          <p class="hint">This is the single thing most people get wrong. A house someone lives in is residential. An apartment building, office, retail or industrial job is not.</p>
+          <select id="jobtype">
+            <option value="commercial">Commercial / non-residential</option>
+            <option value="residential">Residential (owner-occupied home or duplex)</option>
+          </select>
+        </div>
+
+        <div class="field full" style="margin-bottom:18px">
+          <label for="workmonth">Month you provided the labor or materials</label>
+          <p class="hint">One notice per calendar month you went unpaid. Use the month the work happened, not the invoice date.</p>
+          <input type="month" id="workmonth">
+        </div>
+
+        <div class="field full">
+          <label for="amount">Amount unpaid for that month (optional)</label>
+          <p class="hint">Only used to show what is at stake. Nothing is sent anywhere.</p>
+          <input type="number" id="amount" placeholder="e.g. 8400" min="0" step="any">
+        </div>
+
+        <p class="hint" style="margin-top:20px">Nothing you type leaves your browser. There is no form to submit.</p>
+      </section>
+
+      <section class="panel results">
+        <p class="panel-title">Your deadline</p>
+        <div id="out">
+          <p style="color:rgba(255,255,255,.7);font-size:15px;line-height:1.6">Pick a project type and a month to see your notice deadline.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="legal">
+      <p><strong>How this is calculated.</strong> Texas Property Code &sect;53.056 requires a claimant who is not the original contractor to send a notice of claim to the owner <em>and</em> the original contractor. For projects other than residential construction projects, it is due no later than the <strong>15th day of the third month</strong> after the month the labor or materials were provided. For residential construction projects it is the <strong>15th day of the second month</strong>. &sect;53.003(e) extends a deadline that falls on a Saturday, Sunday or legal holiday to the next day that is not one.</p>
+      <p style="margin-top:12px"><strong>This is not legal advice and is not a substitute for an attorney.</strong> It covers private, non-bonded projects. Whether your job is residential, when your work was actually provided, and whether other deadlines apply are questions only you and your attorney can answer. Texas lien deadlines are strict and missing one permanently destroys the claim. Confirm every date with a Texas construction attorney before you act or decline to act.</p>
+    </div>
+
+    <section class="crosssell"><div class="crosssell-box">
+      <div>
+        <p class="eyebrow">One month is not the job</p>
+        <h3>You owe a notice for every month you went unpaid.</h3>
+        <p>This page does one month. The Texas Lien Deadline Tracker does all of them, in a file you keep with the job: every monthly notice date, the lien affidavit deadline, both retainage notice paths and which one controls, the five-day rule for sending copies, the one-year suit deadline, and a homestead go/no-go gate. Built on the statute, with the section cited beside every date.</p>
+      </div>
+      <div>
+        <a class="buy" href="https://saroan.gumroad.com/l/texas-lien-deadline-tracker?utm_source=lien_calculator&amp;utm_medium=onsite&amp;utm_campaign=calculator_to_tracker&amp;utm_content=bottom_cta" rel="noopener">Get the Lien Deadline Tracker<br>$39 - One-Time Purchase</a><br>
+        <a class="buy" href="/resources/texas-lien-deadlines" style="margin-top:10px">Read the full deadline guide<br>Free</a>
+      </div>
+    </div></section>
+  </main>
+
+  <footer>SoloOS - Free tools for solopreneurs - <a href="/">mysoloos.com</a> - (c) 2026 Sa Roan Holdings LLC</footer>
+
+<script>
+(function(){
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  function nth(y,m,weekday,n){ // nth weekday of month, UTC
+    var d=new Date(Date.UTC(y,m,1)),c=0;
+    while(true){ if(d.getUTCDay()===weekday){c++; if(c===n) return new Date(d);} d.setUTCDate(d.getUTCDate()+1); }
+  }
+  function lastWeekday(y,m,weekday){
+    var d=new Date(Date.UTC(y,m+1,0));
+    while(d.getUTCDay()!==weekday) d.setUTCDate(d.getUTCDate()-1);
+    return d;
+  }
+  function holidayName(d){
+    var y=d.getUTCFullYear(),m=d.getUTCMonth(),day=d.getUTCDate();
+    var fixed={'0-1':'New Year’s Day','5-19':'Juneteenth','6-4':'Independence Day','10-11':'Veterans Day','11-25':'Christmas Day'};
+    var k=m+'-'+day;
+    if(fixed[k]) return fixed[k];
+    if(m===0 && day===nth(y,0,1,3).getUTCDate()) return 'Martin Luther King Jr. Day';
+    if(m===1 && day===nth(y,1,1,3).getUTCDate()) return 'Presidents’ Day';
+    if(m===4 && day===lastWeekday(y,4,1).getUTCDate()) return 'Memorial Day';
+    if(m===8 && day===nth(y,8,1,1).getUTCDate()) return 'Labor Day';
+    if(m===9 && day===nth(y,9,1,2).getUTCDate()) return 'Columbus Day';
+    if(m===10 && day===nth(y,10,4,4).getUTCDate()) return 'Thanksgiving Day';
+    return null;
+  }
+  function fmt(d){ return DAYS[d.getUTCDay()]+', '+MONTHS[d.getUTCMonth()]+' '+d.getUTCDate()+', '+d.getUTCFullYear(); }
+  function money(n){ return '$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:0}); }
+
+  // 15th of the (offset)th month after the month worked
+  function statutory(y,m,offset){ return new Date(Date.UTC(y,m+offset,15)); }
+
+  function rollForward(d){
+    var moved=null,cur=new Date(d.getTime()),guard=0;
+    while(guard++<12){
+      var wd=cur.getUTCDay(), h=holidayName(cur);
+      if(wd===0){ moved=moved||'Sunday'; cur.setUTCDate(cur.getUTCDate()+1); continue; }
+      if(wd===6){ moved=moved||'Saturday'; cur.setUTCDate(cur.getUTCDate()+2); continue; }
+      if(h){ moved=moved||h; cur.setUTCDate(cur.getUTCDate()+1); continue; }
+      break;
+    }
+    return {date:cur,moved:moved};
+  }
+
+  function todayUTC(){ var n=new Date(); return new Date(Date.UTC(n.getFullYear(),n.getMonth(),n.getDate())); }
+
+  function calc(){
+    var out=document.getElementById('out');
+    var mv=document.getElementById('workmonth').value;
+    if(!mv){ out.innerHTML='<p style="color:rgba(255,255,255,.7);font-size:15px;line-height:1.6">Pick a project type and a month to see your notice deadline.</p>'; return; }
+    var parts=mv.split('-'), y=parseInt(parts[0],10), m=parseInt(parts[1],10)-1;
+    if(isNaN(y)||isNaN(m)){ return; }
+
+    var residential = document.getElementById('jobtype').value==='residential';
+    var noticeOffset = residential?2:3;
+    var affOffset    = residential?3:4;
+
+    var nStat=statutory(y,m,noticeOffset), nRoll=rollForward(nStat);
+    var aStat=statutory(y,m,affOffset),    aRoll=rollForward(aStat);
+
+    var today=todayUTC();
+    var days=Math.round((nRoll.date-today)/86400000);
+    var amt=parseFloat(document.getElementById('amount').value);
+
+    var h='';
+    h+='<p style="color:rgba(255,255,255,.62);font-size:13px">Notice of claim under &sect;53.056 &mdash; '+(residential?'residential':'commercial')+' &mdash; for work in '+MONTHS[m]+' '+y+'</p>';
+    h+='<p class="bigdate">'+fmt(nRoll.date)+'</p>';
+
+    if(days>1)        h+='<p class="daysleft">'+days+' days from today</p>';
+    else if(days===1) h+='<p class="daysleft urgent">Due tomorrow</p>';
+    else if(days===0) h+='<p class="daysleft urgent">Due today</p>';
+    else              h+='<p class="daysleft urgent">This date passed '+Math.abs(days)+' days ago</p>';
+
+    if(nRoll.moved) h+='<div class="flag">The statutory date was '+fmt(nStat)+', a '+nRoll.moved+'. &sect;53.003(e) moves a deadline falling on a Saturday, Sunday or legal holiday to the next day that is not one.</div>';
+
+    h+='<div style="margin-top:20px">';
+    h+='<div class="rowline"><span>Rule applied</span><span>15th day of the '+(residential?'2nd':'3rd')+' month</span></div>';
+    if(amt>0) h+='<div class="rowline"><span>At risk if missed</span><span>'+money(amt)+'</span></div>';
+    h+='<div class="rowline"><span>Lien affidavit deadline<br><span style="font-weight:400;color:rgba(255,255,255,.55);font-size:12px">&sect;53.052, 15th of the '+(residential?'3rd':'4th')+' month</span></span><span>'+fmt(aRoll.date)+'</span></div>';
+    h+='</div>';
+
+    if(days<0) h+='<div class="flag">A passed date does not always mean the claim is dead &mdash; other months of work may still be in time, and the facts matter. Talk to a Texas construction attorney before you give up on it.</div>';
+
+    out.innerHTML=h;
+  }
+
+  ['jobtype','workmonth','amount'].forEach(function(id){
+    var el=document.getElementById(id);
+    el.addEventListener('change',calc); el.addEventListener('input',calc);
+  });
+  window.__lienCalc=calc;
+})();
+</script>
+</body>
+</html>
