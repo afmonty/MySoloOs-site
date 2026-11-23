@@ -74,6 +74,7 @@ section { padding:70px 28px; } .wrap { max-width:1080px; margin:0 auto; } .secti
 .builder-local-save p { color:var(--muted); font-size:13px; margin:8px 0; }
 .builder-local-save button { border:1px solid var(--tan); border-radius:8px; padding:7px 10px; background:#fff; color:var(--navy); font:inherit; cursor:pointer; }
 .builder-save-status { min-height:1.3em; margin-bottom:0 !important; }
+.builder-privacy-status { min-height:1.3em; color:var(--muted); font-size:13px; margin:10px 0 0 !important; }
 .builder-output { background:var(--navy-deep); color:#fff; border-radius:18px; padding:22px; min-height:440px; }
 .builder-output h3 { color:#fff; font-family:Georgia,serif; font-size:28px; line-height:1.15; margin-bottom:12px; }
 .builder-output p, .builder-output li { color:rgba(255,255,255,.74); font-size:14px; }
@@ -143,7 +144,7 @@ gtag('config', 'AW-18165329356');
 
 <section style="background:var(--field);"><div class="wrap"><div class="decision-box"><div><p class="kicker">Start here</p><h2>Build one safe workflow first. Setup help is optional.</h2><p>If you came here from the ad, this is the simple first step: download the workflow starter, use the fake-data examples, copy the prompts, and test one safe AI workflow this week. No giant course, no tech lecture, and no client data needed.</p><div class="decision-points"><span>Instant download</span><span>Copy/paste prompts</span><span>Fake examples only</span><span>One-hour first workflow plan</span></div></div><div><a class="btn btn-primary gumroad-button" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=start_here_cta">Get the AI Workflow Starter - $47</a><p class="checkout-note" style="color:var(--muted);max-width:220px;">Secure checkout. Instant digital download. No client data needed.</p></div></div></div></section>
 
-<section id="safe-workflow-builder"><div class="wrap"><p class="kicker">Try the method</p><h2 class="section-title">Build a safer AI workflow sample before you buy.</h2><p class="section-sub">The sample is generated in your browser. The sample event records only the workflow type and page name, not the text fields. Nothing is saved unless you opt in below. Use placeholders only, never client records.</p><div class="builder"><div class="builder-grid"><form id="workflow-builder-form"><label for="workflow-type">What are you trying to draft?</label><select id="workflow-type" name="workflow-type"><option value="missing">Missing receipt or document email</option><option value="cleanup">Cleanup status note</option><option value="monthly">Monthly close summary</option><option value="sop">Simple SOP or checklist</option></select><label for="client-tone">Tone</label><select id="client-tone" name="client-tone"><option value="calm and professional">Calm and professional</option><option value="friendly and brief">Friendly and brief</option><option value="clear and firm">Clear and firm</option></select><label for="workflow-details">Sanitized situation</label><textarea id="workflow-details" name="workflow-details" placeholder="Example: Client A is missing two receipts, one bank statement, and an explanation for a transfer. No names, account numbers, payroll details, tax IDs, or screenshots."></textarea><label for="review-step">What should the bookkeeper review before using it?</label><input id="review-step" name="review-step" placeholder="Example: Verify transaction list, due date, and client-specific context." /><div class="builder-local-save"><label for="save-workflow-draft"><input id="save-workflow-draft" type="checkbox"> <span>Save and restore my draft in this browser</span></label><p>This stores the form fields in this browser profile on this device. Anyone with access to this profile may see them. Do not enter real client records, names, account or card numbers, tax IDs, payroll details, passwords, or other confidential information.</p><button id="clear-workflow-draft" type="button">Delete saved draft</button><p id="workflow-save-status" class="builder-save-status" role="status" aria-live="polite"></p></div><button class="btn btn-primary" type="submit" style="border:0;margin-top:16px;cursor:pointer;">Generate a Safe Workflow Sample</button><p class="builder-note">This is a preview of the method, not the full kit. The paid starter includes the prompt library, fake examples, workflow templates, and one-hour implementation plan.</p></form><div class="builder-output" id="workflow-output" aria-live="polite"><h3>Your safe workflow sample</h3><p>Choose a workflow and add a sanitized situation. The sample will show the privacy check, the AI prompt, and the human review step.</p><div class="builder-privacy"><strong>Privacy rule:</strong><p>Do not paste client names, bank data, payroll details, tax IDs, screenshots, passwords, or private client records into public AI tools.</p></div><div class="output-block"><span class="output-label">Why this matters</span><p>AI is useful for structure and first drafts. It is not the bookkeeper. You still review the facts, the tone, and the professional decision.</p></div></div></div></div><p style="margin-top:22px;"><a class="btn btn-primary gumroad-button" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=builder_cta">Get the full Workflow Starter - $47</a></p></div></section>
+<section id="safe-workflow-builder"><div class="wrap"><p class="kicker">Try the method</p><h2 class="section-title">Build a safer AI workflow sample before you buy.</h2><p class="section-sub">The sample is generated in your browser. The sample event records only the workflow type and page name, not the text fields. Nothing is saved unless you opt in below. Use placeholders only, never client records.</p><div class="builder"><div class="builder-grid"><form id="workflow-builder-form"><label for="workflow-type">What are you trying to draft?</label><select id="workflow-type" name="workflow-type"><option value="missing">Missing receipt or document email</option><option value="cleanup">Cleanup status note</option><option value="monthly">Monthly close summary</option><option value="sop">Simple SOP or checklist</option></select><label for="client-tone">Tone</label><select id="client-tone" name="client-tone"><option value="calm and professional">Calm and professional</option><option value="friendly and brief">Friendly and brief</option><option value="clear and firm">Clear and firm</option></select><label for="workflow-details">Sanitized situation</label><textarea id="workflow-details" name="workflow-details" placeholder="Example: Client A is missing two receipts, one bank statement, and an explanation for a transfer. No names, account numbers, payroll details, tax IDs, or screenshots."></textarea><label for="review-step">What should the bookkeeper review before using it?</label><input id="review-step" name="review-step" placeholder="Example: Verify transaction list, due date, and client-specific context." /><p id="workflow-privacy-status" class="builder-privacy-status" role="status" aria-live="polite">Use placeholders only. A quick on-device check will block some common sensitive patterns, but it cannot catch everything.</p><div class="builder-local-save"><label for="save-workflow-draft"><input id="save-workflow-draft" type="checkbox"> <span>Save and restore my draft in this browser</span></label><p>This stores the form fields in this browser profile on this device. Anyone with access to this profile may see them. Do not enter real client records, names, account or card numbers, tax IDs, payroll details, passwords, or other confidential information.</p><button id="clear-workflow-draft" type="button">Delete saved draft</button><p id="workflow-save-status" class="builder-save-status" role="status" aria-live="polite"></p></div><button class="btn btn-primary" type="submit" style="border:0;margin-top:16px;cursor:pointer;">Generate a Safe Workflow Sample</button><p class="builder-note">This is a preview of the method, not the full kit. The paid starter includes the prompt library, fake examples, workflow templates, and one-hour implementation plan.</p></form><div class="builder-output" id="workflow-output" aria-live="polite"><h3>Your safe workflow sample</h3><p>Choose a workflow and add a sanitized situation. The sample will show the privacy check, the AI prompt, and the human review step.</p><div class="builder-privacy"><strong>Privacy rule:</strong><p>Do not paste client names, bank data, payroll details, tax IDs, screenshots, passwords, or private client records into public AI tools.</p></div><div class="output-block"><span class="output-label">Why this matters</span><p>AI is useful for structure and first drafts. It is not the bookkeeper. You still review the facts, the tone, and the professional decision.</p></div></div></div></div><p style="margin-top:22px;"><a class="btn btn-primary gumroad-button" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=builder_cta">Get the full Workflow Starter - $47</a></p></div></section>
 
 <section><div class="wrap"><div class="grid-2"><article class="value-stack"><p class="kicker">Why it is worth $47</p><h2 class="section-title">This is not a generic AI prompt dump.</h2><p>Most prompt packs give you a pile of ideas and leave you to figure out what is safe. Most AI bookkeeping software lists assume you already know what belongs in software, what belongs in AI, and what should stay under professional review.</p><p>This kit is the beginner bridge. It shows what AI can help with in bookkeeping, what it should not touch, and how to use it beside QuickBooks Desktop, QuickBooks Online, Xero, or your existing workflow without pasting private client data into a public tool.</p><p>It combines the parts a careful bookkeeper actually needs: privacy rules, fake-data examples, client-email prompts, cleanup workflows, monthly close prompts, SOP prompts, QBO-friendly examples, and a one-hour implementation plan.</p><p>It is also grounded in real experience inside business books across construction, automotive, logistics, and retail, including QuickBooks Desktop and QuickBooks Online work. The point is not to make AI sound impressive. The point is to help you draft faster without handing client data to a public chat tool.</p><div class="credential-badges" aria-label="QuickBooks credentials"><p>Current Intuit QuickBooks certifications support the practical bookkeeping judgment behind this kit.</p><div class="credential-badge-row"><img class="credential-badge" src="quickbooks-level-1-certification.png" alt="Intuit ProAdvisor QuickBooks Level 1 certification badge"><img class="credential-badge" src="quickbooks-desktop-certification.png" alt="Intuit ProAdvisor QuickBooks Desktop certification badge"></div></div><div class="value-list"><div>Prompt library with guardrails</div><div>Fake examples, not client data</div><div>QBO-friendly workflow prompts</div><div>One-hour implementation plan</div></div></article><article class="video-preview"><p class="kicker">Quick walkthrough</p><h2 class="section-title">See what the workflow starter is designed to do.</h2><video controls muted playsinline preload="metadata" poster="ai-for-bookkeepers-preview.png"><source src="ai-for-bookkeepers-walkthrough.webm" type="video/webm"><a href="ai-for-bookkeepers-walkthrough.webm">Open the walkthrough video.</a></video><p class="video-caption">Short silent preview: what the kit helps with, how the privacy-first examples work, and why it is built for bookkeepers instead of generic AI users.</p><p style="margin-top:16px;"><a class="btn btn-primary gumroad-button" href="https://saroan.gumroad.com/l/ai-for-bookkeepers?utm_source=mysoloos&utm_medium=product_page&utm_campaign=ai_for_bookkeepers&utm_content=walkthrough_cta">Get the AI Workflow Starter - $47</a></p></article></div></div></section>
 
@@ -175,8 +176,23 @@ const workflowOutput = document.getElementById('workflow-output');
 const saveDraftToggle = document.getElementById('save-workflow-draft');
 const clearDraftButton = document.getElementById('clear-workflow-draft');
 const draftStatus = document.getElementById('workflow-save-status');
+const privacyStatus = document.getElementById('workflow-privacy-status');
 const draftStorageKey = 'soloos-ai-bookkeepers-workflow-draft-v1';
 let lastWorkflowDownload = '';
+function findSensitivePatterns(value) {
+const patterns = [
+['email address', /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i],
+['website link', /\b(?:https?:\/\/|www\.)\S+/i],
+['phone number', /(?:\+?1[ .-]?)?(?:\(\d{3}\)|\d{3})[ .-]?\d{3}[ .-]?\d{4}/],
+['tax/account number', /(?<!\d)(?:\d[ -]?){7,18}\d(?!\d)/],
+['credential-like value', /\b(?:password|passcode|api[_ -]?key|access[_ -]?token|secret)\s*[:=]\s*\S+/i]
+];
+return patterns.filter(([, pattern]) => pattern.test(value)).map(([label]) => label);
+}
+function currentSensitivePatterns() {
+return [...new Set(['workflow-details', 'review-step'].flatMap(id =>
+findSensitivePatterns(document.getElementById(id).value)))];
+}
 const workflowTemplates = {
 missing: {
 title: 'Missing receipt or document email',
@@ -207,6 +223,13 @@ const draftFields = ['workflow-type', 'client-tone', 'workflow-details', 'review
 const readDraft = () => Object.fromEntries(draftFields.map(id => [id, document.getElementById(id).value]));
 const saveDraft = () => {
 if (!saveDraftToggle.checked) return;
+const detected = currentSensitivePatterns();
+if (detected.length) {
+try { localStorage.removeItem(draftStorageKey); } catch (error) {}
+saveDraftToggle.checked = false;
+draftStatus.textContent = `Draft not saved: the quick privacy check spotted a possible ${detected.join(', ')}. Remove it and use placeholders instead.`;
+return;
+}
 try {
 localStorage.setItem(draftStorageKey, JSON.stringify(readDraft()));
 draftStatus.textContent = 'Draft saved in this browser.';
@@ -219,9 +242,15 @@ const savedDraft = localStorage.getItem(draftStorageKey);
 if (savedDraft) {
 const parsedDraft = JSON.parse(savedDraft);
 if (parsedDraft && draftFields.every(id => typeof parsedDraft[id] === 'string')) {
+const detected = findSensitivePatterns(`${parsedDraft['workflow-details']}\n${parsedDraft['review-step']}`);
+if (detected.length) {
+localStorage.removeItem(draftStorageKey);
+draftStatus.textContent = `An older saved draft contained a possible ${detected.join(', ')} and was removed. Use placeholders only.`;
+} else {
 draftFields.forEach(id => { document.getElementById(id).value = parsedDraft[id]; });
 saveDraftToggle.checked = true;
 draftStatus.textContent = 'Your saved draft was restored in this browser.';
+}
 } else {
 localStorage.removeItem(draftStorageKey);
 }
@@ -250,6 +279,13 @@ draftStatus.textContent = 'Could not delete the saved draft in this browser.';
 });
 workflowForm.addEventListener('submit', event => {
 event.preventDefault();
+const detected = currentSensitivePatterns();
+if (detected.length) {
+privacyStatus.textContent = `Sample not generated: the quick privacy check spotted a possible ${detected.join(', ')}. Remove it and use placeholders instead. This check is not exhaustive.`;
+document.getElementById('workflow-details').focus();
+return;
+}
+privacyStatus.textContent = 'Quick privacy check passed. It cannot identify all confidential information; review your text and keep using placeholders.';
 const type = document.getElementById('workflow-type').value;
 const tone = document.getElementById('client-tone').value;
 const details = document.getElementById('workflow-details').value.trim() || 'Client A needs help with a repeated bookkeeping admin task. Use placeholders only.';
